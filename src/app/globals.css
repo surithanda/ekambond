@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ==========================
+   Root Variables
+========================== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Fonts */
+  --font-neue-haas-bold: "Neue Haas Grotesk", sans-serif;
+  --font-neue-haas-medium: "Neue Haas Grotesk Text", sans-serif;
+  --font-neue-haas-regular: "Neue Haas Grotesk Text", sans-serif;
+  --font-canela: "Canela", serif;
+}
+
+/* ==========================
+   Theme Colors
+========================== */
+@theme {
+  --color-primary: #EFECE6;   /* Light cream */
+  --color-secondary: #1A1A1A; /* Dark base */
+  --color-accent: #D9A91E;    /* Yellow/Gold */
+  --color-orange: #C84B31;    /* Warm orange/red */
+  --color-muted: #5A5A5A;     /* Mid gray */
+  --color-surface: #C2A98C;   /* Beige */
+  --color-neutral: #242424;   /* Deep gray */
+  --color-brown: #6E6252;     /* Earthy brown */
+}
+
+/* ==========================
+   Font Utility Classes
+========================== */
+.font-neue-haas-bold {
+  font-family: var(--font-neue-haas-bold), sans-serif;
+  font-weight: 700;
+}
+
+.font-neue-haas-medium {
+  font-family: var(--font-neue-haas-medium), sans-serif;
+  font-weight: 500;
+}
+
+.font-neue-haas-regular {
+  font-family: var(--font-neue-haas-regular), sans-serif;
+  font-weight: 400;
+}
+
+.font-canela {
+  font-family: var(--font-canela), serif;
+  font-weight: 400;
+}
+
+/* ==========================
+   Font Faces
+========================== */
+
+/* Neue Haas Grotesk Bold */
+@font-face {
+  font-family: "Neue Haas Grotesk";
+  src: url("/fonts/NeueHaasGrotText-75Bold-Trial.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neue Haas Grotesk Text Regular */
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGrotText-55Roman-Trial.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neue Haas Grotesk Text Medium */
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGrotText-65Medium-Trial.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Canela Regular */
+@font-face {
+  font-family: "Canela";
+  src: url("/fonts/Canela-Regular.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
