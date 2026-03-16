@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ==========================
+   Root Variables
+========================== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Fonts */
+  --font-neue-haas-bold: "Neue Haas Grotesk", sans-serif;
+  --font-neue-haas-medium: "Neue Haas Grotesk Text", sans-serif;
+  --font-neue-haas-regular: "Neue Haas Grotesk Text", sans-serif;
+  --font-canela: "Canela", serif;
+}
+
+/* ==========================
+   Theme Colors — EkamBond Brand Palette
+   Derived from: Ekambond-3.jpeg logo
+========================== */
+@theme {
+  --color-primary:   #F2F4F8;   /* Off-white / light blue-white background */
+  --color-secondary: #1B3A6E;   /* Deep navy blue — primary brand */
+  --color-accent:    #D9A91E;   /* Golden yellow — highlights & CTAs */
+  --color-green:     #2D6E4E;   /* Emerald green — secondary accent */
+  --color-muted:     #5A6880;   /* Cool blue-gray — body text */
+  --color-surface:   #E8EDF5;   /* Soft blue tint surface */
+  --color-neutral:   #1A2540;   /* Deep navy-dark */
+  --color-navy-light:#3A5FA0;   /* Lighter navy for gradients */
+  --color-gold-light:#F0C842;   /* Lighter gold variant */
+}
+
+/* ==========================
+   CSS Custom Properties for Direct Use
+========================== */
+:root {
+  --navy:      #1B3A6E;
+  --navy-dark: #0F2145;
+  --navy-light:#3A5FA0;
+  --gold:      #D9A91E;
+  --gold-light:#F0C842;
+  --green:     #2D6E4E;
+  --cream:     #F2F4F8;
+  --surface:   #E8EDF5;
+  --muted-text:#5A6880;
+  /* gradient shorthands */
+  --grad-navy:      linear-gradient(135deg, #1B3A6E 0%, #3A5FA0 100%);
+  --grad-gold:      linear-gradient(135deg, #D9A91E 0%, #F0C842 100%);
+  --grad-brand:     linear-gradient(135deg, #1B3A6E 0%, #2D6E4E 100%);
+}
+
+/* ==========================
+   Font Utility Classes
+========================== */
+.font-neue-haas-bold {
+  font-family: var(--font-neue-haas-bold), sans-serif;
+  font-weight: 700;
+}
+
+.font-neue-haas-medium {
+  font-family: var(--font-neue-haas-medium), sans-serif;
+  font-weight: 500;
+}
+
+.font-neue-haas-regular {
+  font-family: var(--font-neue-haas-regular), sans-serif;
+  font-weight: 400;
+}
+
+.font-canela {
+  font-family: var(--font-canela), serif;
+  font-weight: 400;
+}
+
+/* ==========================
+   Font Faces
+========================== */
+
+/* Neue Haas Grotesk Bold */
+@font-face {
+  font-family: "Neue Haas Grotesk";
+  src: url("/fonts/NeueHaasGrotText-75Bold-Trial.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neue Haas Grotesk Text Regular */
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGrotText-55Roman-Trial.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neue Haas Grotesk Text Medium */
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGrotText-65Medium-Trial.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Canela Regular */
+@font-face {
+  font-family: "Canela";
+  src: url("/fonts/Canela-Regular.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

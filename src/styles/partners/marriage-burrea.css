@@ -1,0 +1,92 @@
+/* ==========================
+   Elegant Matrimony Animations
+========================== */
+
+/* Fade and scale in like a soft greeting */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Subtle floating effect like hearts floating */
+@keyframes heartFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+  75% {
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+/* Rotating rings effect for connection/union */
+@keyframes ringSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.6;
+  }
+}
+
+/* Gradient shimmer effect for premium look */
+@keyframes shimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+/* ==========================
+   Utility Animation Classes
+========================== */
+
+.animate-reveal {
+  animation: reveal 1s ease-out forwards;
+}
+
+.animate-heartFloat {
+  animation: heartFloat 5s ease-in-out infinite;
+}
+
+.animate-ringSpin {
+  animation: ringSpin 6s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #FCE7F3, #F9A8D4, #F472B6);
+  background-size: 300% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Delays for sequencing */
+.delay-1 {
+  animation-delay: 1s;
+}
+
+.delay-2 {
+  animation-delay: 2s;
+}
+
+.delay-3 {
+  animation-delay: 3s;
+}
