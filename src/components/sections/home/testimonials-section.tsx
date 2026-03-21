@@ -135,9 +135,9 @@ const TestimonialsSection: React.FC = () => {
           className="mb-12"
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white leading-tight tracking-tight">
-            Discover The Future
+            Empowering the Future
             <br />
-            <span className="font-light">Of Matrimony SaaS Innovation</span>
+            <span className="font-light">Of Indian Enterprise Matrimony</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
             Designed to bring clarity, balance, and quiet focus to your everyday life.

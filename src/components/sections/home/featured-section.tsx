@@ -57,7 +57,7 @@ const FeaturesSection = () => {
   return (
     <section
       className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden"
-      style={{ backgroundColor: "#efece6" }}
+      style={{ backgroundColor: "var(--color-primary)" }}
     >
       {/* Background circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
@@ -141,13 +141,13 @@ const FeaturesSection = () => {
                   <div className="text-center px-2">
                     <h3
                       className={`text-2xl font-bold mb-3 transition-colors duration-300 ${
-                        isHovered ? "text-[#C84B31]" : "text-gray-900"
+                        isHovered ? "text-accent" : "text-white"
                       }`}
                     >
                       {feature.title}
                     </h3>
                     <p
-                      className={`text-gray-700 text-base transition-all duration-500 ${
+                      className={`text-slate-300 text-base transition-all duration-500 ${
                         isHovered
                           ? "opacity-100 transform translate-y-0"
                           : "opacity-70 transform translate-y-2"

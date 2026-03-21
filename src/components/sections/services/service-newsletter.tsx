@@ -239,14 +239,14 @@ export default function ServicesNewsletter() {
             }`}
           >
             {/* Enhanced badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/60 backdrop-blur-lg border border-white/60 hover:border-orange/80 transition-all duration-500 hover:scale-105 cursor-pointer group">
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-orange/80 transition-all duration-500 hover:scale-105 cursor-pointer group">
               <div className="relative">
                 <Zap className="w-5 h-5 text-orange group-hover:text-orange transition-colors duration-500" />
                 <div className="absolute inset-0 text-orange blur-sm opacity-0 group-hover:opacity-50 transition-opacity duration-500">
                   <Zap className="w-5 h-5" />
                 </div>
               </div>
-              <span className="text-neutral text-base font-neue-haas-medium tracking-wide">
+              <span className="text-secondary text-base font-neue-haas-medium tracking-wide">
                 Premium Custom Services
               </span>
               <div className="w-2 h-2 bg-orange rounded-full animate-pulse" />
@@ -254,8 +254,8 @@ export default function ServicesNewsletter() {
 
             {/* Enhanced main heading */}
             <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-neue-haas-medium leading-tight">
-                <span className="text-neutral block">Need a</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-neue-haas-medium leading-tight text-secondary">
+                <span className="block">Need a</span>
                 <span className="relative inline-block mt-2">
                   <span
                     className="relative z-10 bg-gradient-to-r from-orange to-orange bg-clip-text text-transparent"

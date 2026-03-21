@@ -5,64 +5,64 @@ import Image from "next/image";
 
 const HeroSection = () => {
   const profiles: any = {
-    usa: [
-      {
-        name: "Jessica",
-        age: 28,
-        location: "New York",
-        image: "/images/hero/humans/jessica.png",
-      },
-      {
-        name: "Michael",
-        age: 32,
-        location: "California",
-        image: "/images/hero/humans/michael.png",
-      },
-      {
-        name: "Sarah",
-        age: 29,
-        location: "Texas",
-        image: "/images/hero/humans/sarah.png",
-      },
-    ],
     india: [
       {
-        name: "Aaradhya",
-        age: 26,
-        location: "Mumbai",
-        image: "/images/hero/humans/aradhya.png",
+        name: "Mumbai Enterprise Hub",
+        capacity: "1.2M+ Profiles",
+        location: "Maharashtra Data Node",
+        image: "/images/rebrand/leader.png",
       },
       {
-        name: "Vivaan",
-        age: 30,
-        location: "Bangalore",
-        image: "/images/hero/humans/Vivaan.png",
+        name: "Bangalore Innovation Hub",
+        capacity: "AI Optimization",
+        location: "Karnataka Node",
+        image: "/images/rebrand/tech_hub.png",
       },
       {
-        name: "Devi",
-        age: 27,
-        location: "Delhi",
-        image: "/images/hero/humans/devi.png",
+        name: "Delhi Capital Network",
+        capacity: "Cloud Native",
+        location: "NCR Gateway",
+        image: "/images/rebrand/couple.png",
+      },
+    ],
+    usa: [
+      {
+        name: "US Enterprise Hub",
+        capacity: "Network Leader",
+        location: "New York Terminal",
+        image: "/images/rebrand/usa_leader.png",
+      },
+      {
+        name: "Silicon Valley Node",
+        capacity: "AI Matchmaker",
+        location: "California Core",
+        image: "/images/rebrand/usa_tech.png",
+      },
+      {
+        name: "America Diaspora Center",
+        capacity: "Premium Reach",
+        location: "Texas Bureau",
+        image: "/images/rebrand/usa_couple.png",
       },
     ],
     canada: [
       {
-        name: "Emma",
-        age: 31,
-        location: "Toronto",
-        image: "/images/hero/humans/emma.png",
+        name: "Canada Legacy Node",
+        capacity: "Verified Trust",
+        location: "Toronto Hub",
+        image: "/images/rebrand/canada_leader.png",
       },
       {
-        name: "James",
-        age: 33,
-        location: "Vancouver",
-        image: "/images/hero/humans/james.png",
+        name: "Toronto Tech Matrix",
+        capacity: "High Capacity",
+        location: "Ontario Engine",
+        image: "/images/rebrand/canada_tech.png",
       },
       {
-        name: "Sophie",
-        age: 28,
-        location: "Montreal",
-        image: "/images/hero/humans/sophie.png",
+        name: "Vancouver Social Hub",
+        capacity: "Community Link",
+        location: "BC Gateway",
+        image: "/images/rebrand/canada_couple.png",
       },
     ],
   };
@@ -106,21 +106,22 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-orange-100 to-pink-50 relative overflow-hidden">
-      {/* Background Image */}
+    <div className="min-h-screen bg-primary relative overflow-hidden">
+      {/* Background Image with Strong Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero/hero-section-image-two.png"
-          alt="Global Connections"
+          src="/images/rebrand/tech_hub.png"
+          alt="Global Infrastructure"
           className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-primary/95" />
       </div>
 
       <div className="relative z-10 px-4 sm:px-6 lg:px-12 pt-20 max-w-full mx-auto">
         {/* Main Content Row */}
-        <div className="w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-12 mb-12 lg:mb-16">
+        <div className="w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-12 mb-4 lg:mb-6">
           {/* Left Column: Flags and Profile Cards */}
-          <div className="w-full lg:w-1/2 flex flex-col lg:flex-row items-start gap-36 mt-10">
+          <div className="w-full lg:w-1/2 flex flex-col lg:flex-row items-start gap-40 mt-6">
             {/* Flags Section */}
             <div className="flex lg:flex-col gap-10  justify-center lg:justify-start">
               {countries?.map((country) => (
@@ -211,11 +212,11 @@ const HeroSection = () => {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <h3 className="text-2xl lg:text-3xl font-canela  mb-1">
+                          <h3 className="text-2xl lg:text-3xl font-neue-haas-bold mb-1">
                             {profile.name}
                           </h3>
-                          <p className="text-white/90 text-base font-canela lg:text-lg">
-                            {profile.age} • {profile.location}
+                          <p className="text-white/90 text-base font-neue-haas-medium lg:text-lg">
+                            {profile.capacity} • {profile.location}
                           </p>
                         </motion.div>
                       </div>
@@ -225,20 +226,41 @@ const HeroSection = () => {
               })}
             </div>
           </div>
+
+          {/* Right Column: AI Matrimony Network Image */}
+          <div className="hidden lg:flex lg:w-1/2 justify-center items-center mt-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative w-full max-w-[750px] xl:max-w-[900px] 2xl:max-w-[1000px] aspect-square rounded-[60px] lg:rounded-[100px] overflow-hidden shadow-[0_32px_128px_rgba(0,0,0,0.6)] border border-white/5"
+            >
+              <img
+                src="/images/rebrand/network_globe.png"
+                alt="Global Matrimony Network"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-transparent to-orange-400/20 mix-blend-overlay" />
+              
+              {/* Decorative Glow - Extra Intensity for Large Screens */}
+              <div className="absolute -inset-20 bg-indigo-500/30 blur-[150px] -z-10 opacity-70" />
+              <div className="absolute -bottom-20 -right-20 bg-orange-500/10 blur-[120px] -z-10 opacity-40 animate-pulse" />
+            </motion.div>
+          </div>
         </div>
 
         {/* Text Content Section */}
-        <div className="w-full flex justify-start mb-20">
+        <div className="w-full flex justify-start mb-12">
           <div className="text-left max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-3xl xl:text-7xl font-bold leading-tight mb-6 lg:mb-8 text-black font-neue-haas-bold">
-              Powering the Future of
+            <h1 className="text-4xl sm:text-5xl lg:text-3xl xl:text-7xl font-bold leading-tight mb-6 lg:mb-8 text-secondary font-neue-haas-bold">
+              Powering the Global
               <br />
-              <span >
-                Matrimony Platforms
+              <span className="text-accent underline decoration-orange decoration-4 underline-offset-8">
+                Indian Diaspora
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-accent font-canela ">
-              Technology that empowers meaningful connections.
+            <p className="text-xl sm:text-2xl lg:text-3xl text-accent font-canela max-w-2xl">
+              Scalable matrimony infrastructure for Bharat's expansion across the globe.
             </p>
           </div>
         </div>

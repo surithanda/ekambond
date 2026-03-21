@@ -42,7 +42,6 @@ export default function Navbar() {
     { href: "/services", label: "Services" },
     { href: "/partners", label: "Partners" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/meetpeople", label: "Meet People" },
   ];
 
   const getNavbarStyle = () => {
@@ -61,9 +60,9 @@ export default function Navbar() {
     return {
       background: `linear-gradient(
         135deg,
-        rgba(255, 250, 245, ${opacity}) 0%,
-        rgba(255, 248, 240, ${opacity * 0.8}) 50%,
-        rgba(255, 245, 235, ${opacity * 0.6}) 100%
+        rgba(15, 23, 42, ${opacity}) 0%,
+        rgba(15, 23, 42, ${opacity * 0.8}) 50%,
+        rgba(15, 23, 42, ${opacity * 0.6}) 100%
       )`,
       backdropFilter: `blur(${blur}px) saturate(180%)`,
       border: `1px solid rgba(255, 255, 255, ${0.3 * scrollProgress})`,
@@ -78,10 +77,10 @@ export default function Navbar() {
   const getDesktopNavStyle = () => {
     if (!isScrolled) {
       return {
-        background: "rgba(255, 250, 245, 0.4)",
+        background: "rgba(15, 23, 42, 0.4)",
         backdropFilter: "blur(20px)",
-        border: "1px solid rgba(255, 255, 255, 0.6)",
-        boxShadow: "0 8px 32px rgba(210, 180, 140, 0.2)",
+        border: "1px solid rgba(255, 255, 255, 0.15)",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
       };
     }
 
@@ -91,9 +90,9 @@ export default function Navbar() {
     return {
       background: `linear-gradient(
         135deg,
-        rgba(255, 253, 250, ${opacity}) 0%,
-        rgba(255, 251, 245, ${opacity}) 50%,
-        rgba(255, 249, 240, ${opacity}) 100%
+        rgba(30, 41, 59, ${opacity}) 0%,
+        rgba(15, 23, 42, ${opacity}) 50%,
+        rgba(15, 23, 42, ${opacity}) 100%
       )`,
       backdropFilter: "blur(25px) saturate(200%)",
       border: "1px solid rgba(255, 255, 255, 0.8)",
@@ -145,7 +144,7 @@ export default function Navbar() {
                 }}
               />
             </div>
-            <p className="text-xl lg:text-2xl text-gray-900 font-semibold">Ekambond</p>
+            <p className="text-xl lg:text-2xl text-secondary font-semibold">Ekambond</p>
           </Link>
 
           {/* Desktop Navigation */}
@@ -161,8 +160,8 @@ export default function Navbar() {
                   className={`text-sm tracking-wide transition-all duration-300 relative group
                     ${
                       isActive(link.href)
-                        ? "text-orange-600 font-semibold"
-                        : "text-gray-700 hover:text-orange-600 cursor-pointer font-normal"
+                        ? "text-orange font-semibold"
+                        : "text-slate-200 hover:text-orange cursor-pointer font-normal"
                     }`}
                 >
                   {link.label}

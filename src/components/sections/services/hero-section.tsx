@@ -19,7 +19,7 @@ const ServicesHeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#EFECE6] to-[#F5F2EC]">
+    <section className="relative min-h-screen overflow-hidden bg-primary">
       {/* Background decorative elements */}
       <motion.div
         className="absolute right-0 top-20 h-96 w-96 rounded-full opacity-10"
@@ -44,7 +44,7 @@ const ServicesHeroSection: React.FC = () => {
             variants={fadeInUp}
           >
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-neue-haas-bold leading-[0.95] tracking-tight text-[#1A1A1A]">
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-neue-haas-bold leading-[0.95] tracking-tight text-secondary">
               Complete
               <br />
               matrimony
@@ -121,7 +121,7 @@ const ServicesHeroSection: React.FC = () => {
                 />
               </div>
               <div>
-                <div className="text-5xl font-neue-haas-light text-[#1A1A1A]">1,000+</div>
+                <div className="text-5xl font-neue-haas-light text-secondary">1,000+</div>
                 <div className="text-sm font-neue-haas-medium uppercase tracking-wider text-muted">
                   Trusted Partners
                 </div>
@@ -154,7 +154,7 @@ const ServicesHeroSection: React.FC = () => {
 
               {/* Floating Card */}
               <motion.div
-                className="absolute -bottom-8 -left-8 z-20 w-80 rounded-2xl p-8 shadow-2xl backdrop-blur-sm bg-[rgba(239,236,230,0.95)] border border-[rgba(26,26,26,0.1)]"
+                className="absolute -bottom-8 -left-8 z-20 w-80 rounded-2xl p-8 shadow-2xl backdrop-blur-sm bg-surface/95 border border-white/10"
                 variants={float}
                 animate="animate"
               >
@@ -186,7 +186,7 @@ const ServicesHeroSection: React.FC = () => {
 
               {/* Accent Badge */}
               <motion.div
-                className="absolute right-8 top-8 z-30 rounded-full px-4 py-2 text-sm font-neue-haas-medium shadow-lg bg-[#D9A91E] text-[#1A1A1A]"
+                className="absolute right-8 top-8 z-30 rounded-full px-4 py-2 text-sm font-neue-haas-medium shadow-lg bg-accent text-primary"
                 whileHover={{ scale: 1.1 }}
               >
                 Premium

@@ -142,9 +142,9 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl text-muted leading-relaxed font-neue-haas-regular"
             >
-              From solving established climate risk cycles to advanced
-              mathematical planning for your company. Start with our Ready to
-              Work plan and scale as needed.
+              Scale your marriage bureau with our industry-leading enterprise
+              solutions. Start with our foundational platform and add 
+              advanced AI modules as your vision and business grows.
             </motion.p>
 
             {/* CTA Buttons */}

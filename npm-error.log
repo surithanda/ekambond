@@ -1,0 +1,12 @@
+npm WARN ERESOLVE overriding peer dependency
+npm WARN While resolving: ekambond-landing-page@0.1.0
+npm WARN Found: typescript@5.9.2
+npm WARN node_modules/typescript
+npm WARN   dev typescript@"5.0.0" from the root project
+npm WARN   9 more (@typescript-eslint/eslint-plugin, ...)
+npm WARN 
+npm WARN Could not resolve dependency:
+npm WARN peerOptional typescript@">=3.3.1" from eslint-config-next@15.5.4
+npm WARN node_modules/eslint-config-next
+npm WARN   dev eslint-config-next@"15.5.4" from the root project
+npm WARN ERESOLVE overriding peer dependency

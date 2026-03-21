@@ -127,7 +127,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-primary via-white to-primary py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br from-primary via-surface to-primary py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <style jsx global>{`
         @keyframes float {
           0%,

@@ -62,7 +62,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-orange-50 via-white to-orange-50 overflow-hidden">
+    <footer className="relative bg-primary overflow-hidden border-t border-white/5">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div
@@ -122,8 +122,8 @@ export default function Footer() {
                     <Heart className="w-7 h-7 text-white fill-current" />
                   </div>
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-neue-haas-medium text-gray-900">
-                  Ekam<span style={{ color: "#C84B31" }}>bond</span>
+                <h2 className="text-4xl lg:text-5xl font-neue-haas-medium text-secondary">
+                  Ekam<span style={{ color: "var(--color-orange)" }}>bond</span>
                 </h2>
     
               </div>
@@ -139,13 +139,11 @@ export default function Footer() {
                 href="mailto:support@ekambond.com"
                 className="relative inline-flex items-center gap-4 px-6 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%)",
+                  background: "rgba(255, 255, 255, 0.03)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(255,255,255,0.8)",
-                  boxShadow:
-                    "0 8px 32px 0 rgba(200, 75, 49, 0.12), inset 0 1px 0 0 rgba(255,255,255,0.9)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.2)",
                 }}
               >
                 {/* Liquid Blob Background */}
@@ -167,10 +165,10 @@ export default function Footer() {
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div className="relative text-left">
-                  <div className="text-xs text-gray-600 font-neue-haas-regular mb-1">
+                  <div className="text-xs text-muted font-neue-haas-regular mb-1">
                     Email us at
                   </div>
-                  <div className="text-gray-900 font-neue-haas-medium">
+                  <div className="text-secondary font-neue-haas-medium">
                     support@ekambond.com
                   </div>
                 </div>
@@ -220,7 +218,7 @@ export default function Footer() {
                 >
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-3xl font-neue-haas-medium text-gray-900">
+                <h3 className="text-3xl font-neue-haas-medium text-secondary">
                   Stay Connected
                 </h3>
               </div>
@@ -239,7 +237,7 @@ export default function Footer() {
                       type="email"
                       name="email"
                       placeholder="Enter your email"
-                      className="flex-1 px-5 py-3.5 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400/50 transition-all shadow-sm"
+                      className="flex-1 px-5 py-3.5 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 text-secondary placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange/50 transition-all shadow-sm"
                     />
                     <PrimaryButton label="Subscribe"  />
 
@@ -254,11 +252,11 @@ export default function Footer() {
         </div>
 
         {/* Middle Section - Links */}
-        <div className="py-16 border-t border-gray-200">
+        <div className="py-16 border-t border-white/5">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
             {/* Company Links */}
             <div>
-              <h3 className="text-sm font-neue-haas-medium text-gray-900 mb-6 uppercase tracking-wider">
+              <h3 className="text-sm font-neue-haas-medium text-secondary mb-6 uppercase tracking-wider">
                 Company
               </h3>
               <ul className="space-y-4">
@@ -271,7 +269,7 @@ export default function Footer() {
                   >
                     <a
                       href={link.href}
-                      className="group flex items-center gap-3 text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                      className="group flex items-center gap-3 text-muted hover:text-secondary transition-colors duration-300"
                     >
                       <link.icon
                         className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"
@@ -292,7 +290,7 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div>
-              <h3 className="text-sm font-neue-haas-medium text-gray-900 mb-6 uppercase tracking-wider">
+              <h3 className="text-sm font-neue-haas-medium text-secondary mb-6 uppercase tracking-wider">
                 Legal
               </h3>
               <ul className="space-y-4">
@@ -305,7 +303,7 @@ export default function Footer() {
                   >
                     <a
                       href={link.href}
-                      className="group flex items-center gap-3 text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                      className="group flex items-center gap-3 text-muted hover:text-secondary transition-colors duration-300"
                     >
                       <link.icon
                         className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"
@@ -326,7 +324,7 @@ export default function Footer() {
 
             {/* Social Media */}
             <div className="col-span-2">
-              <h3 className="text-sm font-neue-haas-medium text-gray-900 mb-6 uppercase tracking-wider">
+              <h3 className="text-sm font-neue-haas-medium text-secondary mb-6 uppercase tracking-wider">
                 Follow Us
               </h3>
               <div className="flex flex-wrap gap-3 mb-8">
@@ -344,8 +342,8 @@ export default function Footer() {
                           "linear-gradient(to bottom right, #C84B31, #D55A3F)",
                       }}
                     ></div>
-                    <div className="relative w-11 h-11 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center overflow-hidden">
-                      <social.icon className="w-5 h-5 text-gray-600 relative z-10 transition-colors duration-300 group-hover:text-white" />
+                    <div className="relative w-11 h-11 bg-white/5 border border-white/10 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center overflow-hidden">
+                      <social.icon className="w-5 h-5 text-muted relative z-10 transition-colors duration-300 group-hover:text-white" />
                       <div
                         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
@@ -388,14 +386,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="py-8 border-t border-gray-200">
+        <div className="py-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Copyright */}
            <p className="text-muted text-sm text-center md:text-left font-neue-haas-regular">
   © 2025{" "}
   <span
     className="font-neue-haas-medium"
-    style={{ color: "#C84B31" }}
+    style={{ color: "var(--color-orange)" }}
   >
     EkamBond Matrimony Enterprise Services LLC
   </span>
@@ -404,18 +402,18 @@ export default function Footer() {
 
 
             {/* Made with Love Badge */}
-            <div className="flex items-center gap-2 bg-white border border-gray-200 px-5 py-2.5 rounded-full shadow-sm">
-              <span className="text-sm text-gray-600 font-neue-haas-medium">
+            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full shadow-sm">
+              <span className="text-sm text-muted font-neue-haas-medium">
                 Crafted with
               </span>
               <Heart
                 className="w-4 h-4 fill-current animate-pulse"
                 style={{
-                  color: "#C84B31",
+                  color: "var(--color-orange)",
                   animationDuration: "1.5s",
                 }}
               />
-              <span className="text-sm text-gray-600 font-neue-haas-regular">
+              <span className="text-sm text-muted font-neue-haas-regular">
                 for meaningful connections
               </span>
             </div>

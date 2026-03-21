@@ -12,9 +12,9 @@ import HeroSection from "@/components/sections/features/hero-section";
 
 export const metadata = {
   title:
-    "EkamBond Matrimony Enterprise Services | Bridging Hearts, Ensuring Trust",
+    "EkamBond Enterprise Suite | Powerful Matchmaking APIs & Tools",
   description:
-    "Discover EkamBond Matrimony, a trusted platform connecting individuals for long-term relationships with background verification, AI matchmaking, and global reach for safe and meaningful connections.",
+    "Explore our full suite of enterprise features for matrimony businesses including AI Matchmaking APIs, profile management software, and automated background checks.",
 };
 
 const Features: React.FC = () => {

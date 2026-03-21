@@ -9,47 +9,47 @@ const MatrimonyServices = () => {
   const services = [
     {
       id: 1,
-      title: "White Labeling",
+      title: "Global Indian Support",
       image: "/images/hero/features-section/Feature-One.png",
-      description: "Custom branding solutions for your matrimony platform.",
+      description: "Localized solutions for the Global Indian Diaspora.",
     },
     {
       id: 2,
-      title: "Match Maker Support",
+      title: "Pan-India Bureau Sync",
       image: "/images/hero/features-section/features-section-2.png",
-      description: "Dedicated support to enhance matchmaking success.",
+      description: "Integrated network for regional matrimonial bureaus.",
     },
     {
       id: 3,
-      title: "Event Management",
+      title: "Cultural AI Nodes",
       image: "/images/hero/features-section/features-section-3.png",
-      description: "Seamless planning and execution of matrimonial events.",
+      description: "Advanced matching based on cultural and regional nuances.",
     },
     {
       id: 4,
-      title: "Partners Onboarding",
+      title: "NRI Expansion Hub",
       image: "/images/hero/features-section/features-section-4.png",
-      description: "Streamlined onboarding for business partners.",
+      description: "Scale your business to reach Indians across 40+ countries.",
     },
   ];
 
   return (
     <section
       className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden"
-      style={{ backgroundColor: "#efece6" }}
+      style={{ backgroundColor: "var(--color-primary)" }}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div
           className="absolute top-1/4 left-10 w-72 h-72 rounded-full blur-3xl"
           style={{
-            backgroundColor: "#C84B31",
+            backgroundColor: "var(--color-orange)",
             animation: "pulse 4s ease-in-out infinite",
           }}
         ></div>
         <div
           className="absolute bottom-1/4 right-10 w-72 h-72 rounded-full blur-3xl bg-orange"
           style={{
-            backgroundColor: "#C84B31",
+            backgroundColor: "var(--color-orange)",
             animation: "pulse 4s ease-in-out infinite 2s",
           }}
         ></div>
@@ -103,13 +103,13 @@ const MatrimonyServices = () => {
                   {/* Title and Description */}
                   <div className="text-center px-2">
                     <h3
-                      className="text-2xl font-bold text-gray-900 mb-3 transition-colors duration-300"
-                      style={{ color: isHovered ? "#C84B31" : "#111827" }}
+                      className="text-2xl font-bold mb-3 transition-colors duration-300"
+                      style={{ color: isHovered ? "var(--color-accent)" : "var(--color-secondary)" }}
                     >
                       {feature.title}
                     </h3>
                     <p
-                      className={`text-gray-700 text-base transition-all duration-500 ${
+                      className={`text-slate-300 text-base transition-all duration-500 ${
                         isHovered
                           ? "opacity-100 transform translate-y-0"
                           : "opacity-70 transform translate-y-2"

@@ -18,14 +18,14 @@
    Theme Colors
 ========================== */
 @theme {
-  --color-primary: #EFECE6;   /* Light cream */
-  --color-secondary: #1A1A1A; /* Dark base */
-  --color-accent: #D9A91E;    /* Yellow/Gold */
-  --color-orange: #C84B31;    /* Warm orange/red */
-  --color-muted: #5A5A5A;     /* Mid gray */
-  --color-surface: #C2A98C;   /* Beige */
-  --color-neutral: #242424;   /* Deep gray */
-  --color-brown: #6E6252;     /* Earthy brown */
+  --color-primary: #0F172A;   /* Slate 900 (Professional Background) */
+  --color-secondary: #F8FAFC; /* Slate 50 (Text/Contrast) */
+  --color-accent: #38BDF8;    /* Sky Blue (Tech Accent) */
+  --color-orange: #6366F1;    /* Indigo (Professional Primary) */
+  --color-muted: #94A3B8;     /* Slate 400 (Secondary Text) */
+  --color-surface: #1E293B;   /* Slate 800 (Cards/Surfaces) */
+  --color-neutral: #334155;   /* Slate 700 (Borders) */
+  --color-brown: #0EA5E9;     /* Deep Cyan */
 }
 
 /* ==========================
@@ -58,7 +58,7 @@
 /* Neue Haas Grotesk Bold */
 @font-face {
   font-family: "Neue Haas Grotesk";
-  src: url("/fonts/NeueHaasGrotText-75Bold-Trial.otf") format("truetype");
+  src: url("/fonts/NeueHaasGrotText-75Bold-Trial.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -67,7 +67,7 @@
 /* Neue Haas Grotesk Text Regular */
 @font-face {
   font-family: "Neue Haas Grotesk Text";
-  src: url("/fonts/NeueHaasGrotText-55Roman-Trial.otf") format("truetype");
+  src: url("/fonts/NeueHaasGrotText-55Roman-Trial.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -76,7 +76,7 @@
 /* Neue Haas Grotesk Text Medium */
 @font-face {
   font-family: "Neue Haas Grotesk Text";
-  src: url("/fonts/NeueHaasGrotText-65Medium-Trial.otf") format("truetype");
+  src: url("/fonts/NeueHaasGrotText-65Medium-Trial.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -85,7 +85,7 @@
 /* Canela Regular */
 @font-face {
   font-family: "Canela";
-  src: url("/fonts/Canela-Regular.otf") format("truetype");
+  src: url("/fonts/Canela-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

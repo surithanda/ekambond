@@ -6,20 +6,17 @@ import React from "react";
 
 export const metadata = {
   title:
-    "EkamBond Matrimony Enterprise Services | Bridging Hearts, Ensuring Trust",
+    "EkamBond | The Enterprise Matrimony Platform for Bureaus & Matchmakers",
   description:
-    "Discover EkamBond Matrimony, a trusted platform connecting individuals for long-term relationships with background verification, AI matchmaking, and global reach for safe and meaningful connections.",
+    "Scale your matrimony business with EkamBond, the ultimate enterprise platform for marriage bureaus. Features include white-labeled apps, AI-powered matchmaking, and secure verification tools.",
 };
 
 const App = () => {
   return (
     <div>
       <HeroSection />
-
       <MatrimonyServices />
-
       <FeaturesSection />
-
       <TestimonialsSection />
     </div>
   );
