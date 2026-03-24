@@ -30,7 +30,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         whileTap={{ scale: 0.98 }}
         className={`px-8 py-3.5 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group whitespace-nowrap hover:cursor-pointer ${className}`}
         style={{
-          background: 'linear-gradient(to right, #C84B31, #D55A3F)',
+          background: 'linear-gradient(135deg, #1B3A6E 0%, #3A5FA0 100%)',
         }}
       >
         <span>{label}</span>

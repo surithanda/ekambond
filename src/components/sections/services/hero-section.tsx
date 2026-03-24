@@ -29,7 +29,7 @@ const ServicesHeroSection: React.FC = () => {
       />
       <motion.div
         className="absolute bottom-0 left-0 h-72 w-72 rounded-full opacity-10"
-        style={{ backgroundColor: "#C84B31" }}
+        style={{ backgroundColor: "#1B3A6E" }}
         variants={float}
         animate="animate"
       />
@@ -44,12 +44,12 @@ const ServicesHeroSection: React.FC = () => {
             variants={fadeInUp}
           >
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-neue-haas-bold leading-[0.95] tracking-tight text-[#1A1A1A]">
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-neue-haas-bold leading-[0.95] tracking-tight text-[#0F2145]">
               Complete
               <br />
               matrimony
               <br />
-              <span className="bg-gradient-to-r from-[#D9A91E] to-[#C84B31] bg-clip-text text-transparent font-neue-haas-bold">
+              <span className="bg-gradient-to-r from-[#D9A91E] to-[#1B3A6E] bg-clip-text text-transparent font-neue-haas-bold">
                 solutions
               </span>{" "}
               for
@@ -75,7 +75,7 @@ const ServicesHeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex items-center gap-6">
               {/* <motion.button
-                className="rounded-full px-12 py-5 text-lg font-neue-haas-medium text-[#EFECE6] bg-[#1A1A1A] transition-all duration-300 hover:shadow-xl"
+                className="rounded-full px-12 py-5 text-lg font-neue-haas-medium text-[#EFECE6] bg-[#0F2145] transition-all duration-300 hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -121,7 +121,7 @@ const ServicesHeroSection: React.FC = () => {
                 />
               </div>
               <div>
-                <div className="text-5xl font-neue-haas-light text-[#1A1A1A]">1,000+</div>
+                <div className="text-5xl font-neue-haas-light text-[#0F2145]">1,000+</div>
                 <div className="text-sm font-neue-haas-medium uppercase tracking-wider text-muted">
                   Trusted Partners
                 </div>
@@ -165,7 +165,7 @@ const ServicesHeroSection: React.FC = () => {
                       <div className="text-sm font-neue-haas-medium text-muted">
                         Success Rate
                       </div>
-                      <div className="text-2xl font-neue-haas-light text-[#1A1A1A]">
+                      <div className="text-2xl font-neue-haas-light text-[#0F2145]">
                         98.5%
                       </div>
                     </div>
@@ -186,7 +186,7 @@ const ServicesHeroSection: React.FC = () => {
 
               {/* Accent Badge */}
               <motion.div
-                className="absolute right-8 top-8 z-30 rounded-full px-4 py-2 text-sm font-neue-haas-medium shadow-lg bg-[#D9A91E] text-[#1A1A1A]"
+                className="absolute right-8 top-8 z-30 rounded-full px-4 py-2 text-sm font-neue-haas-medium shadow-lg bg-[#D9A91E] text-[#0F2145]"
                 whileHover={{ scale: 1.1 }}
               >
                 Premium

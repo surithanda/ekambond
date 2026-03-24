@@ -28,7 +28,7 @@ export default function PartnersHero() {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] w-full bg-primary overflow-hidden">
+    <section className="relative min-h-[80vh] w-full overflow-hidden" style={{ background: "linear-gradient(145deg, #0F2145 0%, #1B3A6E 40%, #1E3D70 60%, #0F2145 100%)" }}>
       {/* Animated background circles */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

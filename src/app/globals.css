@@ -1,61 +1,303 @@
 @import "tailwindcss";
 
 /* ==========================
-   Root Variables
+   EkamBond Design Token System
+   Logo palette: Crimson Red · Gold · Cream · Deep Navy
+   SINGLE SOURCE OF TRUTH — no hex values in components
 ========================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: transparent;
+  --foreground: #2D1F14;
 
-  /* Fonts */
-  --font-neue-haas-bold: "Neue Haas Grotesk", sans-serif;
-  --font-neue-haas-medium: "Neue Haas Grotesk Text", sans-serif;
+  /* ── Core Brand ── */
+  --brand-crimson:       #C8302A;
+  --brand-crimson-dark:  #A02020;
+  --brand-crimson-soft:  rgba(200, 48, 42, 0.12);
+  --brand-gold:          #D9A91E;
+  --brand-gold-light:    #F0C842;
+  --brand-gold-soft:     rgba(217, 169, 30, 0.15);
+  --brand-gold-border:   rgba(217, 169, 30, 0.35);
+  --brand-cream:         #FDF6EC;
+  --brand-ivory:         rgba(253, 246, 236, 0.7);
+  --brand-navy:          #1B3A6E;
+  --brand-navy-dark:     #0F2145;
+  --brand-navy-light:    #3A5FA0;
+  --brand-navy-soft:     rgba(27, 58, 110, 0.08);
+
+  /* ── Section Backgrounds ── */
+  --color-bg-hero:         linear-gradient(145deg, #1A0A06 0%, #2D1208 30%, #3D1A0A 60%, #1B1010 100%);
+  --color-bg-dark:         linear-gradient(145deg, #1A0A06 0%, #2D1208 45%, #3A1408 80%, #1A0A06 100%);
+  --color-bg-warm:         linear-gradient(160deg, #FDF6EC 0%, #F0E4C8 50%, #FDF6EC 100%);
+  --color-bg-light:        linear-gradient(160deg, rgba(253,246,236,0.9) 0%, rgba(248,238,220,0.9) 50%, rgba(253,246,236,0.9) 100%);
+
+  /* ── CTA Colors ── */
+  --color-cta-primary-bg:    linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  --color-cta-primary-text:  var(--brand-navy-dark);
+  --color-cta-ghost-bg:      rgba(255,255,255,0.08);
+  --color-cta-ghost-border:  rgba(255,255,255,0.22);
+  --color-cta-ghost-text:    #FFFFFF;
+  --color-cta-demo-bg:       rgba(200,48,42,0.15);
+  --color-cta-demo-border:   rgba(200,48,42,0.35);
+  --color-cta-demo-text:     #F08080;
+
+  /* ── Text ── */
+  --color-text-on-dark:      rgba(255, 243, 220, 0.90);
+  --color-text-muted-dark:   rgba(255, 230, 180, 0.55);
+  --color-text-on-light:     #2D1F14;
+  --color-text-muted-light:  #7A6654;
+  --color-text-accent:       var(--brand-gold);
+
+  /* ── Cards ── */
+  --color-card-dark:         rgba(255,255,255,0.05);
+  --color-card-dark-border:  rgba(255,255,255,0.10);
+  --color-card-light:        rgba(255,255,255,0.82);
+  --color-card-light-border: rgba(200,150,60,0.18);
+
+  /* ── Badges ── */
+  --color-badge-bg:          rgba(217,169,30,0.15);
+  --color-badge-border:      rgba(217,169,30,0.35);
+  --color-badge-text-light:  #8B6914;
+  --color-badge-text-dark:   var(--brand-gold);
+
+  /* ── Gradients ── */
+  --grad-gold:       linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  --grad-crimson:    linear-gradient(135deg, var(--brand-crimson) 0%, #E05050 100%);
+  --grad-navy:       linear-gradient(135deg, var(--brand-navy-dark) 0%, var(--brand-navy) 100%);
+  --grad-brand:      linear-gradient(145deg, #1A0A06 0%, #2D1208 35%, #3D1A0A 70%, #1A0A06 100%);
+  --grad-gold-text:  linear-gradient(90deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  --grad-crimson-text: linear-gradient(90deg, var(--brand-crimson) 0%, #E86060 100%);
+
+  /* ── Shadows ── */
+  --shadow-gold:       0 8px 24px rgba(217,169,30,0.30);
+  --shadow-gold-hover: 0 12px 36px rgba(217,169,30,0.45);
+  --shadow-crimson:    0 8px 24px rgba(200,48,42,0.25);
+  --shadow-navy:       0 8px 24px rgba(15,33,69,0.25);
+  --shadow-card:       0 4px 24px rgba(80,40,10,0.08);
+  --shadow-card-hover: 0 20px 48px rgba(80,40,10,0.15);
+
+  /* ── Layout ── */
+  --section-py:   6rem;
+  --section-px:   1rem;
+  --card-radius:  1.25rem;
+  --pill-radius:  9999px;
+
+  /* ── Animation ── */
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:      200ms;
+  --dur-base:      350ms;
+  --dur-slow:      600ms;
+
+  /* ── Fonts ── */
+  --font-neue-haas-bold:    "Neue Haas Grotesk", sans-serif;
+  --font-neue-haas-medium:  "Neue Haas Grotesk Text", sans-serif;
   --font-neue-haas-regular: "Neue Haas Grotesk Text", sans-serif;
-  --font-canela: "Canela", serif;
+  --font-canela:            "Canela", serif;
+}
+
+/* Legacy Tailwind theme block */
+@theme {
+  --color-primary:    transparent;
+  --color-secondary:  #1B3A6E;
+  --color-accent:     #D9A91E;
+  --color-red:        #C8302A;
+  --color-green:      #2D6E4E;
+  --color-muted:      #5A6880;
+  --color-surface:    rgba(232,237,245,0.6);
+  --color-neutral:    #1A2540;
+  --color-navy-light: #3A5FA0;
+  --color-gold-light: #F0C842;
+}
+
+html, body {
+  background: transparent !important;
 }
 
 /* ==========================
-   Theme Colors
+   Global Animations
 ========================== */
-@theme {
-  --color-primary: #EFECE6;   /* Light cream */
-  --color-secondary: #1A1A1A; /* Dark base */
-  --color-accent: #D9A91E;    /* Yellow/Gold */
-  --color-orange: #C84B31;    /* Warm orange/red */
-  --color-muted: #5A5A5A;     /* Mid gray */
-  --color-surface: #C2A98C;   /* Beige */
-  --color-neutral: #242424;   /* Deep gray */
-  --color-brown: #6E6252;     /* Earthy brown */
+@keyframes eb-pulse-glow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.28; transform: scale(1.12); }
+}
+@keyframes eb-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes eb-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50%       { transform: scale(1.2); opacity: 0.3; }
+}
+
+.eb-glow  { animation: eb-pulse-glow 4s ease-in-out infinite; }
+.eb-float { animation: eb-float 5s ease-in-out infinite; }
+
+/* ==========================
+   Reusable Component Classes
+========================== */
+
+/* Cards */
+.eb-card-dark {
+  background: var(--color-card-dark);
+  border: 1px solid var(--color-card-dark-border);
+  backdrop-filter: blur(16px);
+  border-radius: var(--card-radius);
+}
+.eb-card-light {
+  background: var(--color-card-light);
+  border: 1px solid var(--color-card-light-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--dur-base), transform var(--dur-base);
+}
+.eb-card-light:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+/* Badge */
+.eb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 1rem;
+  border-radius: var(--pill-radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-badge-border);
+}
+.eb-badge-light { color: var(--color-badge-text-light); }
+.eb-badge-dark  { color: var(--color-badge-text-dark); }
+
+/* Buttons */
+.eb-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--pill-radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--grad-gold);
+  color: var(--color-cta-primary-text);
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--dur-fast) var(--ease-smooth), box-shadow var(--dur-fast);
+  text-decoration: none;
+}
+.eb-btn-primary:hover { transform: scale(1.04); box-shadow: var(--shadow-gold-hover); }
+
+.eb-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--pill-radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--color-cta-ghost-bg);
+  border: 1px solid var(--color-cta-ghost-border);
+  color: var(--color-cta-ghost-text);
+  backdrop-filter: blur(12px);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+  text-decoration: none;
+}
+.eb-btn-ghost:hover { background: rgba(255,255,255,0.14); transform: scale(1.03); }
+
+.eb-btn-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--pill-radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--color-cta-demo-bg);
+  border: 1px solid var(--color-cta-demo-border);
+  color: var(--color-cta-demo-text);
+  backdrop-filter: blur(12px);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+  text-decoration: none;
+}
+.eb-btn-demo:hover { background: rgba(200,48,42,0.25); transform: scale(1.03); }
+
+/* Badges */
+.eb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(217,169,30,0.15);
+  border: 1.5px solid rgba(217,169,30,0.35);
+  color: var(--brand-gold);
+}
+.eb-badge-dark {
+  background: rgba(217,169,30,0.12);
+  border-color: rgba(217,169,30,0.30);
+  color: var(--brand-gold-light);
+}
+
+/* Glow animation */
+.eb-glow {
+  animation: eb-pulse-glow 6s ease-in-out infinite;
+}
+
+/* Gradient text utilities */
+.eb-text-gold {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-image: var(--grad-gold-text);
+}
+.eb-text-crimson {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-image: var(--grad-crimson-text);
+}
+
+/* Texture utilities */
+.eb-dot-grid-dark {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,220,150,0.18) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+.eb-dot-grid-light {
+  background-image: radial-gradient(circle at 1px 1px, rgba(120,80,20,0.10) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Dividers */
+.eb-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-gold-border), transparent);
+  margin: 2rem 0;
 }
 
 /* ==========================
    Font Utility Classes
 ========================== */
-.font-neue-haas-bold {
-  font-family: var(--font-neue-haas-bold), sans-serif;
-  font-weight: 700;
-}
-
-.font-neue-haas-medium {
-  font-family: var(--font-neue-haas-medium), sans-serif;
-  font-weight: 500;
-}
-
-.font-neue-haas-regular {
-  font-family: var(--font-neue-haas-regular), sans-serif;
-  font-weight: 400;
-}
-
-.font-canela {
-  font-family: var(--font-canela), serif;
-  font-weight: 400;
-}
+.font-neue-haas-bold    { font-family: var(--font-neue-haas-bold); font-weight: 700; }
+.font-neue-haas-medium  { font-family: var(--font-neue-haas-medium); font-weight: 500; }
+.font-neue-haas-regular { font-family: var(--font-neue-haas-regular); font-weight: 400; }
+.font-canela            { font-family: var(--font-canela); font-weight: 400; }
 
 /* ==========================
    Font Faces
 ========================== */
-
-/* Neue Haas Grotesk Bold */
 @font-face {
   font-family: "Neue Haas Grotesk";
   src: url("/fonts/NeueHaasGrotText-75Bold-Trial.otf") format("truetype");
@@ -63,8 +305,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Neue Haas Grotesk Text Regular */
 @font-face {
   font-family: "Neue Haas Grotesk Text";
   src: url("/fonts/NeueHaasGrotText-55Roman-Trial.otf") format("truetype");
@@ -72,8 +312,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Neue Haas Grotesk Text Medium */
 @font-face {
   font-family: "Neue Haas Grotesk Text";
   src: url("/fonts/NeueHaasGrotText-65Medium-Trial.otf") format("truetype");
@@ -81,8 +319,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Canela Regular */
 @font-face {
   font-family: "Canela";
   src: url("/fonts/Canela-Regular.otf") format("truetype");

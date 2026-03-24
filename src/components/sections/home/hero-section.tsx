@@ -1,249 +1,318 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Globe,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  BarChart3,
+  Layers,
+  ChevronRight,
+  Star,
+} from "lucide-react";
 import Image from "next/image";
 
+const pillars = [
+  { icon: Globe,       label: "Global Reach",       sub: "Multi-country presence" },
+  { icon: Sparkles,    label: "AI-Powered",          sub: "Smart matchmaking engine" },
+  { icon: ShieldCheck, label: "Verified Profiles",   sub: "Background-checked members" },
+  { icon: BarChart3,   label: "Enterprise SLA",      sub: "Reliable & scalable infra" },
+];
+
+const features = [
+  { icon: Layers, label: "White Label Ready" },
+  { icon: ShieldCheck, label: "Background Verification" },
+  { icon: Sparkles, label: "AI Matchmaking" },
+  { icon: Globe, label: "Global Reach" },
+  { icon: BarChart3, label: "Partner Analytics" },
+  { icon: Users, label: "Match Maker Support" },
+];
+
 const HeroSection = () => {
-  const profiles: any = {
-    usa: [
-      {
-        name: "Jessica",
-        age: 28,
-        location: "New York",
-        image: "/images/hero/humans/jessica.png",
-      },
-      {
-        name: "Michael",
-        age: 32,
-        location: "California",
-        image: "/images/hero/humans/michael.png",
-      },
-      {
-        name: "Sarah",
-        age: 29,
-        location: "Texas",
-        image: "/images/hero/humans/sarah.png",
-      },
-    ],
-    india: [
-      {
-        name: "Aaradhya",
-        age: 26,
-        location: "Mumbai",
-        image: "/images/hero/humans/aradhya.png",
-      },
-      {
-        name: "Vivaan",
-        age: 30,
-        location: "Bangalore",
-        image: "/images/hero/humans/Vivaan.png",
-      },
-      {
-        name: "Devi",
-        age: 27,
-        location: "Delhi",
-        image: "/images/hero/humans/devi.png",
-      },
-    ],
-    canada: [
-      {
-        name: "Emma",
-        age: 31,
-        location: "Toronto",
-        image: "/images/hero/humans/emma.png",
-      },
-      {
-        name: "James",
-        age: 33,
-        location: "Vancouver",
-        image: "/images/hero/humans/james.png",
-      },
-      {
-        name: "Sophie",
-        age: 28,
-        location: "Montreal",
-        image: "/images/hero/humans/sophie.png",
-      },
-    ],
-  };
-
-  const countries = [
-    { id: "usa", name: "USA", flag: "🇺🇸" },
-    { id: "india", name: "India", flag: "🇮🇳" },
-    { id: "canada", name: "Canada", flag: "🇨🇦" },
-  ];
-
-  const [activeCountry, setActiveCountry] = useState("india");
-  const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProfileIndex((prev) => (prev + 1) % 3);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentProfiles = profiles[activeCountry];
-
-  const handleCountryChange = (countryId: any) => {
-    setActiveCountry(countryId);
-    setCurrentProfileIndex(0);
-  };
-
-  const getProfileCardStyle = (index: any) => {
-    const isActive = index === currentProfileIndex;
-    const isPrev = index === (currentProfileIndex - 1 + 3) % 3;
-    const isNext = index === (currentProfileIndex + 1) % 3;
-
-    if (isActive) {
-      return { position: 0, zIndex: 30, scale: 1, opacity: 1 };
-    } else if (isPrev) {
-      return { position: -100, zIndex: 20, scale: 0.85, opacity: 0.5 };
-    } else if (isNext) {
-      return { position: 100, zIndex: 10, scale: 0.85, opacity: 0.5 };
-    }
-    return { position: 0, zIndex: 0, scale: 0.85, opacity: 0 };
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-orange-100 to-pink-50 relative overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero/hero-section-image-two.png"
-          alt="Global Connections"
-          className="w-full h-full object-cover"
-        />
+    <section
+      className="min-h-screen relative overflow-hidden flex flex-col"
+      style={{ background: "var(--color-bg-hero)" }}
+    >
+      {/* Warm crimson glow top-right — matches logo */}
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 70% 20%, rgba(200,48,42,0.18) 0%, transparent 60%)",
+        }}
+      />
+      {/* Gold glow bottom-left — matches logo ornaments */}
+      <div
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at 20% 80%, rgba(217,169,30,0.14) 0%, transparent 60%)",
+        }}
+      />
+      {/* Subtle gold glow center */}
+      <div
+        className="absolute top-1/3 right-1/3 w-[300px] h-[300px] rounded-full pointer-events-none eb-glow"
+        style={{
+          background: "radial-gradient(circle, rgba(217,169,30,0.08) 0%, transparent 70%)",
+        }}
+      />
+      {/* Dot grid texture */}
+      <div
+        className="absolute inset-0 pointer-events-none eb-dot-grid-dark opacity-30"
+      />
+
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-4 sm:px-8 lg:px-16 py-16 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* ── Left Column ── */}
+          <div>
+            {/* Top badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 text-sm font-semibold"
+              style={{
+                background: "rgba(217,169,30,0.15)",
+                border: "1px solid rgba(217,169,30,0.4)",
+                color: "#D9A91E",
+              }}
+            >
+              <Star className="w-4 h-4 fill-current" />
+              Matrimony Partner Network
+              <Star className="w-4 h-4 fill-current" />
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-neue-haas-bold leading-[1.1] mb-6"
+              style={{ color: "#FFFFFF", fontSize: "clamp(2.5rem, 5vw, 3.75rem)" }}
+            >
+              Power Your Matrimony{" "}
+              <span
+                style={{
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                  backgroundImage: "linear-gradient(90deg, #D9A91E 0%, #F0C842 60%, #D9A91E 100%)",
+                  backgroundClip: "text",
+                  backgroundSize: "200% auto",
+                }}
+              >
+                Business
+              </span>{" "}
+              with EkamBond
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg sm:text-xl leading-relaxed mb-8 max-w-xl"
+              style={{ color: "rgba(220,230,255,0.82)" }}
+            >
+              EkamBond is the{" "}
+              <span className="font-semibold" style={{ color: "#D9A91E" }}>complete B2B platform</span>{" "}
+              that gives matrimony organizations white-label websites, AI search, a full admin portal, and Stripe-powered billing — live in{" "}
+              <span className="font-semibold" style={{ color: "#D9A91E" }}>1–2 weeks</span>, no dev team needed.
+            </motion.p>
+
+            {/* CTA buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap gap-4 mb-12"
+            >
+              <Link
+                href="/register"
+                className="eb-btn-primary"
+              >
+                Become a Partner
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/features"
+                className="eb-btn-ghost"
+              >
+                Explore Features
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/partners#journey"
+                className="eb-btn-demo"
+              >
+                See a Live Demo
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+
+            {/* Trust line */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"
+              style={{ color: "var(--color-text-muted-dark)" }}
+            >
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              No credit card required &nbsp;•&nbsp;
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              Full admin portal included &nbsp;•&nbsp;
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              live in 1–2 weeks
+            </motion.div>
+          </div>
+
+          {/* ── Right Column ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Feature grid card */}
+            <div
+              className="rounded-3xl p-8 relative overflow-hidden"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 32px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
+              }}
+            >
+              {/* Gold accent */}
+              <div
+                className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(217,169,30,0.2) 0%, transparent 70%)" }}
+              />
+
+              {/* Logo + title */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className="relative w-14 h-14 flex-shrink-0">
+                  <Image
+                    src="/images/ekambond-logo.png"
+                    alt="EkamBond"
+                    fill
+                    className="object-contain rounded-2xl"
+                  />
+                </div>
+                <div>
+                  <p className="font-bold text-white text-lg leading-none">EkamBond</p>
+                  <p className="text-xs tracking-widest uppercase mt-1" style={{ color: "#D9A91E" }}>
+                    Partner Network
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature pills */}
+              <p className="text-xs uppercase tracking-wider mb-5 font-semibold" style={{ color: "rgba(217,169,30,0.8)" }}>
+                Everything your platform needs
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {features.map((f, i) => (
+                  <motion.div
+                    key={f.label}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.35 + i * 0.07 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl"
+                    style={{
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(217,169,30,0.15)" }}
+                    >
+                      <f.icon className="w-4 h-4" style={{ color: "var(--brand-gold)" }} />
+                    </div>
+                    <span className="text-sm font-medium" style={{ color: "var(--color-text-on-dark)" }}>
+                      {f.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA inside card */}
+              <div
+                className="mt-7 flex items-center justify-between px-5 py-4 rounded-2xl"
+                style={{
+                  background: "linear-gradient(135deg, rgba(217,169,30,0.15) 0%, rgba(217,169,30,0.06) 100%)",
+                  border: "1px solid rgba(217,169,30,0.25)",
+                }}
+              >
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: "var(--color-text-on-dark)" }}>Ready to grow?</p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--color-text-muted-dark)" }}>
+                    Join a growing network of matrimony partners
+                  </p>
+                </div>
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105"
+                  style={{ background: "linear-gradient(135deg, #D9A91E 0%, #F0C842 100%)", color: "#0F2145" }}
+                >
+                  Talk to Us <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-12 pt-20 max-w-full mx-auto">
-        {/* Main Content Row */}
-        <div className="w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-12 mb-12 lg:mb-16">
-          {/* Left Column: Flags and Profile Cards */}
-          <div className="w-full lg:w-1/2 flex flex-col lg:flex-row items-start gap-36 mt-10">
-            {/* Flags Section */}
-            <div className="flex lg:flex-col gap-10  justify-center lg:justify-start">
-              {countries?.map((country) => (
-                <button
-                  key={country.id}
-                  onClick={() => handleCountryChange(country.id)}
-                  className={`relative group transition-all duration-500 ${
-                    activeCountry === country.id
-                      ? "scale-110"
-                      : "scale-100 hover:scale-105"
-                  }`}
-                >
-                  <div
-                    className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl
-                   backdrop-blur-xl border border-white/30 shadow-2xl transition-all duration-500
-                   ${
-                     activeCountry === country.id
-                       ? "bg-gradient-to-br from-white/90 via-white/70 to-white/50 shadow-[0_8px_32px_rgba(255,255,255,0.4)]"
-                       : "bg-gradient-to-br from-white/40 via-white/20 to-white/10"
-                   }
-                   before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/40 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500
-                   after:absolute after:inset-[1px] after:rounded-2xl after:bg-gradient-to-br after:from-transparent after:via-white/10 after:to-transparent
-                 `}
-                  >
-                    <span className="relative z-10 drop-shadow-lg">
-                      {country.flag}
-                    </span>
-                  </div>
-
-                  {/* Active Indicator Bar */}
-                  {activeCountry === country.id && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-8 h-2 bg-gradient-to-r from-[#C87B4C] to-[#E89A6F] rounded-full shadow-lg"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Profile Cards with Smooth Animation */}
-            <div className="relative h-[400px] sm:h-[500px] lg:h-[520px] flex-1 max-w-[360px] mx-auto lg:mx-0">
-              {currentProfiles.map((profile: any, index: number) => {
-                const style = getProfileCardStyle(index);
-                return (
-                  <motion.div
-                    key={`${activeCountry}-${index}`}
-                    className="absolute left-1/2 top-0"
-                    initial={false}
-                    animate={{
-                      x: `calc(-50% + ${style.position}px)`,
-                      scale: style.scale,
-                      opacity: style.opacity,
-                      zIndex: style.zIndex,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 30,
-                      mass: 0.8,
-                    }}
-                  >
-                    {/* Profile Card */}
-                    <div className="w-[280px] sm:w-[320px] lg:w-[360px] h-[380px] sm:h-[450px] lg:h-[480px] rounded-3xl overflow-hidden bg-white shadow-2xl">
-                      <div className="relative h-full">
-                        <img
-                          src={profile.image}
-                          alt={profile.name}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                        <div className="absolute top-4 left-4 backdrop-blur-xl bg-gradient-to-br from-white/80 via-white/60 to-white/40 border border-white/30 px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-                          <span className="bg-gradient-to-r from-[#C87B4C] to-[#E89A6F] bg-clip-text text-transparent">
-                            {
-                              countries.find((c) => c.id === activeCountry)
-                                ?.name
-                            }
-                          </span>
-                        </div>
-                        <motion.div
-                          className="absolute bottom-0 left-0 right-0 p-6 text-white"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2 }}
-                        >
-                          <h3 className="text-2xl lg:text-3xl font-canela  mb-1">
-                            {profile.name}
-                          </h3>
-                          <p className="text-white/90 text-base font-canela lg:text-lg">
-                            {profile.age} • {profile.location}
-                          </p>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Text Content Section */}
-        <div className="w-full flex justify-start mb-20">
-          <div className="text-left max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-3xl xl:text-7xl font-bold leading-tight mb-6 lg:mb-8 text-black font-neue-haas-bold">
-              Powering the Future of
-              <br />
-              <span >
-                Matrimony Platforms
-              </span>
-            </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-accent font-canela ">
-              Technology that empowers meaningful connections.
+      {/* Value pillars bar */}
+      <div
+        className="relative z-10 border-t w-full"
+        style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(0,0,0,0.2)" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pt-4 pb-2">
+          {/* Platform descriptors bar — no numbers */}
+          <div className="text-center mb-4">
+            <p className="text-xs tracking-widest" style={{ color: "var(--color-text-muted-dark)" }}>
+              Multi-tenant white-label platform
+              <span className="mx-3 opacity-30">·</span>
+              Deep matrimony-domain profile model
+              <span className="mx-3 opacity-30">·</span>
+              AI-powered natural language search
+              <span className="mx-3 opacity-30">·</span>
+              1–2 week onboarding from config to live
             </p>
           </div>
+          <div className="h-px w-full mb-4" style={{ background: "rgba(255,255,255,0.06)" }} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/10">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                className="flex items-center gap-3 md:px-8"
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "rgba(217,169,30,0.15)" }}
+                >
+                  <p.icon className="w-5 h-5" style={{ color: "#D9A91E" }} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white leading-none">{p.label}</p>
+                  <p className="text-xs mt-1" style={{ color: "rgba(200,215,255,0.55)" }}>{p.sub}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
