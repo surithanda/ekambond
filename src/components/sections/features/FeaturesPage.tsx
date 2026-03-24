@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import DemoModal from "@/components/ui/DemoModal";
 import {
   ArrowRight, CheckCircle, ChevronRight, ChevronDown, Zap, Clock, Lock, Sparkles,
   Smartphone, Monitor, Brain,
@@ -287,6 +288,7 @@ export default function FeaturesPage() {
   const [activeTab, setActiveTab] = useState<string>("matrimony");
   const tabRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
 
   useEffect(() => {
     const el = tabRef.current;
@@ -441,8 +443,9 @@ export default function FeaturesPage() {
               </div>
               <CtaStrip
                 label="See a live example"
-                href="/partners"
+                href="#"
                 sub="View how partner platforms look to end users"
+                onClick={() => setDemoOpen(true)}
               />
             </motion.div>
           )}
@@ -546,6 +549,7 @@ export default function FeaturesPage() {
           )}
         </AnimatePresence>
       </div>
+      <DemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
     </div>
   );
 }
@@ -561,7 +565,7 @@ function SectionHeading({ badge, title, sub }: { badge: string; title: string; s
   );
 }
 
-function CtaStrip({ label, href, sub }: { label: string; href: string; sub: string }) {
+function CtaStrip({ label, href, sub, onClick }: { label: string; href: string; sub: string; onClick?: () => void }) {
   return (
     <div className="mt-14 rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
       style={{ background: "linear-gradient(135deg, rgba(217,169,30,0.10) 0%, rgba(200,48,42,0.07) 100%)", border: "1.5px solid rgba(200,150,60,0.20)" }}>
@@ -569,9 +573,15 @@ function CtaStrip({ label, href, sub }: { label: string; href: string; sub: stri
         <p className="font-bold text-base" style={{ color: "var(--color-text-on-light)" }}>{label}</p>
         <p className="text-sm" style={{ color: "var(--color-text-muted-light)" }}>{sub}</p>
       </div>
-      <Link href={href} className="eb-btn-primary flex-shrink-0">
-        {label} <ChevronRight className="w-4 h-4" />
-      </Link>
+      {onClick ? (
+        <button onClick={onClick} className="eb-btn-primary flex-shrink-0">
+          {label} <ChevronRight className="w-4 h-4" />
+        </button>
+      ) : (
+        <Link href={href} className="eb-btn-primary flex-shrink-0">
+          {label} <ChevronRight className="w-4 h-4" />
+        </Link>
+      )}
     </div>
   );
 }

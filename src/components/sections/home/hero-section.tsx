@@ -95,7 +95,7 @@ const HeroSection = () => {
               className="font-neue-haas-bold leading-[1.1] mb-6"
               style={{ color: "#FFFFFF", fontSize: "clamp(2.5rem, 5vw, 3.75rem)" }}
             >
-              Power Your Matrimony{" "}
+              Power Your Matrimony Business with{" "}
               <span
                 style={{
                   WebkitTextFillColor: "transparent",
@@ -105,9 +105,8 @@ const HeroSection = () => {
                   backgroundSize: "200% auto",
                 }}
               >
-                Business
-              </span>{" "}
-              with EkamBond
+                EkamBond
+              </span>
             </motion.h1>
 
             {/* Subheadline */}
