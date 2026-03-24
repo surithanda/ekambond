@@ -48,10 +48,10 @@ const StatsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-neue-haas-medium mb-4" style={{ color: '#1A1A1A' }}>
+          <h2 className="text-4xl md:text-5xl font-neue-haas-medium mb-4" style={{ color: '#0F2145' }}>
             Proven Excellence
           </h2>
-          <div className="w-24 h-1 mx-auto" style={{ background: 'linear-gradient(90deg, #D9A91E, #C84B31)' }}></div>
+          <div className="w-24 h-1 mx-auto" style={{ background: 'linear-gradient(90deg, #D9A91E, #1B3A6E)' }}></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-full">
@@ -112,7 +112,7 @@ const StatsSection = () => {
                 <motion.h3
                   className="text-5xl md:text-6xl font-neue-haas-bold mb-3"
                   style={{ 
-                    color: '#1A1A1A',
+                    color: '#0F2145',
                     textShadow: '0 2px 8px rgba(26, 26, 26, 0.1)'
                   }}
                   initial={{ scale: 0.8, opacity: 0 }}

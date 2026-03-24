@@ -36,7 +36,7 @@ const MatrimonyServices = () => {
   return (
     <section
       className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden"
-      style={{ background: "linear-gradient(160deg, #F2F4F8 0%, #E8EDF5 50%, #F2F4F8 100%)" }}
+      style={{ background: "linear-gradient(160deg, rgba(242,244,248,0.55) 0%, rgba(232,237,245,0.55) 50%, rgba(242,244,248,0.55) 100%)" }}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15">
         <div

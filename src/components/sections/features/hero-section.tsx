@@ -103,13 +103,13 @@ export default function HeroSectionDynamic({
         canvas.height / 2,
         Math.max(canvas.width, canvas.height) / 2
       );
-      gradient.addColorStop(0, "rgba(234, 88, 12, 0.03)");
+      gradient.addColorStop(0, "rgba(217,169,30, 0.03)");
       gradient.addColorStop(1, "rgba(15, 23, 42, 0)");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Dynamic connections
-      ctx.strokeStyle = "#EA580C";
+      ctx.strokeStyle = "#D9A91E";
       ctx.lineWidth = 0.5;
 
       for (let i = 0; i < particles.length; i++) {
@@ -132,7 +132,7 @@ export default function HeroSectionDynamic({
       particles.forEach((p) => {
         // Glow effect
         ctx.globalAlpha = p.opacity * 0.3;
-        ctx.fillStyle = "#EA580C";
+        ctx.fillStyle = "#D9A91E";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
         ctx.fill();
@@ -172,7 +172,8 @@ export default function HeroSectionDynamic({
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[80vh] bg-primary py-12 overflow-hidden flex items-center justify-center"
+      className="relative min-h-[80vh] py-12 overflow-hidden flex items-center justify-center"
+      style={{ background: "linear-gradient(145deg, #0F2145 0%, #1B3A6E 40%, #1E3D70 60%, #0F2145 100%)" }}
     >
       {/* Enhanced Canvas Background */}
       <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />
@@ -182,7 +183,7 @@ export default function HeroSectionDynamic({
         <motion.div
           className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl"
           style={{
-            background: "radial-gradient(circle, #EA580C 0%, transparent 70%)",
+            background: "radial-gradient(circle, #D9A91E 0%, transparent 70%)",
             x: x1,
             y: y1,
           }}
@@ -192,7 +193,7 @@ export default function HeroSectionDynamic({
         <motion.div
           className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full blur-3xl"
           style={{
-            background: "radial-gradient(circle, #DC2626 0%, transparent 70%)",
+            background: "radial-gradient(circle, #1B3A6E 0%, transparent 70%)",
             x: x2,
             y: y2,
           }}
@@ -204,7 +205,7 @@ export default function HeroSectionDynamic({
         <motion.div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl"
           style={{
-            background: "radial-gradient(circle, rgba(234, 88, 12, 0.1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(217,169,30, 0.1) 0%, transparent 70%)",
           }}
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -255,8 +256,8 @@ export default function HeroSectionDynamic({
         />
         <defs>
           <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#EA580C" />
-            <stop offset="100%" stopColor="#DC2626" />
+            <stop offset="0%" stopColor="#D9A91E" />
+            <stop offset="100%" stopColor="#1B3A6E" />
           </linearGradient>
         </defs>
       </svg>
@@ -276,9 +277,9 @@ export default function HeroSectionDynamic({
               animate={{ rotate: [0, 180, 360] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles className="w-4 h-4 text-orange" />
+              <Sparkles className="w-4 h-4 text-[#D9A91E]" />
             </motion.div>
-            <span className="text-black text-sm font-neue-haas-medium tracking-wide">
+            <span className="text-white text-sm font-neue-haas-medium tracking-wide">
               {badgeText}
             </span>
           </motion.div>
@@ -290,15 +291,15 @@ export default function HeroSectionDynamic({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-neue-haas-bold text-black mb-6 tracking-tight leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-neue-haas-bold text-white mb-6 tracking-tight leading-tight">
               {title}
               <br />
               <span className="relative inline-block">
-                <span className="bg-orange bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#D9A91E] to-[#F0C842] bg-clip-text text-transparent">
                   {highlightedText}
                 </span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 w-full h-1 bg-orange rounded-full"
+                  className="absolute -bottom-2 left-0 w-full h-1 bg-[#D9A91E] rounded-full"
                   initial={{ scaleX: 0, opacity: 0 }}
                   animate={{ scaleX: 1, opacity: 1 }}
                   transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
@@ -340,7 +341,7 @@ export default function HeroSectionDynamic({
 
       {/* Mouse Follow Element */}
       <motion.div
-        className="absolute w-6 h-6 rounded-full bg-orange/20 backdrop-blur-sm pointer-events-none"
+        className="absolute w-6 h-6 rounded-full bg-[#D9A91E]/20 backdrop-blur-sm pointer-events-none"
         style={{
           x: mouseX,
           y: mouseY,

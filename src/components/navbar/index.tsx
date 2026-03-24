@@ -77,24 +77,33 @@ export default function Navbar() {
         <div className="max-w-full mx-auto flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 z-50">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0">
+          <Link href="/" className="flex items-center space-x-3 z-50">
+            {/* Logo — enlarged */}
+            <div className="relative w-14 h-14 lg:w-20 lg:h-20 flex-shrink-0">
               <Image
-                src="/Ekambond-3.jpeg"
+                src="/images/ekambond-logo.png"
                 alt="EkamBond Logo"
                 fill
-                className="object-contain rounded-full"
+                className="object-contain"
                 priority
               />
             </div>
-            <div className="flex flex-col leading-none">
+            <div className="flex flex-col leading-none gap-0.5" style={{ width: "fit-content" }}>
               <span
-                className="text-lg lg:text-xl font-bold tracking-tight"
-                style={{ color: "#1B3A6E" }}
+                className="text-xl lg:text-3xl font-extrabold whitespace-nowrap"
+                style={{ color: "#1B3A6E", letterSpacing: "-0.02em" }}
               >
                 EkamBond
               </span>
-              <span className="text-[10px] lg:text-xs tracking-widest uppercase font-medium" style={{ color: "#D9A91E" }}>
+              <span
+                className="text-[8px] lg:text-[10px] uppercase font-semibold block"
+                style={{
+                  color: "#D9A91E",
+                  letterSpacing: "0.06em",
+                  width: "100%",          /* capped to EkamBond text width */
+                  lineHeight: "1.3",
+                }}
+              >
                 Matrimony Partner Network
               </span>
             </div>
@@ -194,7 +203,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3 px-6 py-4 border-b" style={{ borderColor: "rgba(27,58,110,0.08)" }}>
             <div className="relative w-9 h-9 flex-shrink-0">
               <Image
-                src="/Ekambond-3.jpeg"
+                src="/images/ekambond-logo.png"
                 alt="EkamBond Logo"
                 fill
                 className="object-contain rounded-full"

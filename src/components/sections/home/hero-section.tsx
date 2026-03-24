@@ -200,7 +200,7 @@ const HeroSection = () => {
               <div className="flex items-center gap-4 mb-8">
                 <div className="relative w-14 h-14 flex-shrink-0">
                   <Image
-                    src="/Ekambond-3.jpeg"
+                    src="/images/ekambond-logo.png"
                     alt="EkamBond"
                     fill
                     className="object-contain rounded-2xl"

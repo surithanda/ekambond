@@ -12,8 +12,8 @@ const ServiceImage: React.FC<ServiceImageProps> = ({ id, isHovered }) => {
       <div className={`absolute inset-0 rounded-3xl transition-opacity duration-500 ${
         isHovered ? 'opacity-100' : 'opacity-0'
       }`} style={{
-        boxShadow: `0 0 40px ${isHovered ? '#C84B31' : 'transparent'}`,
-        border: '2px solid #C84B31'
+        boxShadow: `0 0 40px ${isHovered ? '#1B3A6E' : 'transparent'}`,
+        border: '2px solid #1B3A6E'
       }}></div>
 
       <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -25,7 +25,7 @@ const ServiceImage: React.FC<ServiceImageProps> = ({ id, isHovered }) => {
       {/* Accent overlay on hover */}
       <div className={`absolute inset-0 transition-all duration-500 mix-blend-overlay ${
         isHovered ? 'opacity-40' : 'opacity-0'
-      }`} style={{ backgroundColor: '#C84B31' }}></div>
+      }`} style={{ backgroundColor: '#1B3A6E' }}></div>
 
       {/* Shine effect */}
       <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transition-all duration-700 ${

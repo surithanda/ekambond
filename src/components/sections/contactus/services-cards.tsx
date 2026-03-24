@@ -52,7 +52,7 @@ const services = [
     ],
     gradient:
       "linear-gradient(135deg, rgba(200, 75, 49, 0.12), rgba(217, 169, 30, 0.08))",
-    iconColor: "#C84B31",
+    iconColor: "#1B3A6E",
   },
 ];
 
@@ -220,10 +220,10 @@ const ServicesCards = () => {
                 className="w-full px-6 py-4 rounded-full font-neue-haas-medium transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
                 style={{
                   background: service.featured
-                    ? "linear-gradient(135deg, #C84B31, #D9A91E)"
+                    ? "linear-gradient(135deg, #1B3A6E, #D9A91E)"
                     : "rgba(26,26,26,0.05)",
-                  border: service.featured ? "none" : "2px solid #1A1A1A",
-                  color: service.featured ? "#EFECE6" : "#1A1A1A",
+                  border: service.featured ? "none" : "2px solid #0F2145",
+                  color: service.featured ? "#EFECE6" : "#0F2145",
                 }}
                 whileHover={{
                   scale: 1.02,

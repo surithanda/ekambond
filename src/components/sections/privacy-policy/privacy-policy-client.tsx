@@ -377,7 +377,7 @@ export default function PrivacyPolicyClient() {
                             Contact us at{" "}
                             <a
                               href={`mailto:${section.contact}`}
-                              className="text-[#C84B31] font-semibold hover:underline"
+                              className="text-[#1B3A6E] font-semibold hover:underline"
                             >
                               {section.contact}
                             </a>{" "}

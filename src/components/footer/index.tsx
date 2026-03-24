@@ -98,7 +98,7 @@ export default function Footer() {
                 {/* Real Logo Image */}
                 <div className="relative w-16 h-16 flex-shrink-0">
                   <Image
-                    src="/Ekambond-3.jpeg"
+                    src="/images/ekambond-logo.png"
                     alt="EkamBond Logo"
                     fill
                     className="object-contain rounded-2xl"

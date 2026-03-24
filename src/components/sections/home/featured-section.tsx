@@ -57,10 +57,10 @@ const FeaturesSection = () => {
   return (
     <section
       className="min-h-screen flex items-center py-20 px-4 relative overflow-hidden"
-      style={{ background: "linear-gradient(160deg, #E8EDF5 0%, #F2F4F8 50%, #E8EDF5 100%)" }}
+      style={{ background: "linear-gradient(160deg, rgba(232,237,245,0.55) 0%, rgba(242,244,248,0.55) 50%, rgba(232,237,245,0.55) 100%)" }}
     >
       {/* Background circles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15">
         <div
           className="absolute top-1/4 left-10 w-72 h-72 rounded-full blur-3xl"
           style={{

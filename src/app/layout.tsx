@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "EkamBond | Matrimony Partner Network",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Powering the future of matrimony platforms with trust, technology, and meaningful connections.",
     type: "website",
-    images: [{ url: "/Ekambond-3.jpeg", width: 1024, height: 512, alt: "EkamBond Logo" }],
+    images: [{ url: "/images/ekambond-logo.png", width: 324, height: 331, alt: "EkamBond Logo" }],
   },
 };
 
@@ -31,9 +33,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased" style={{ background: "#F2F4F8" }}>
+      <body className="antialiased" style={{ background: "transparent" }}>
+        {/* ── Global watermark — appears on every page ── */}
+        <div
+          className="fixed inset-0 z-0 pointer-events-none select-none flex items-center justify-center"
+          aria-hidden="true"
+        >
+          <Image
+            src="/images/ekambond-logo.png"
+            alt=""
+            width={700}
+            height={700}
+            className="object-contain"
+            style={{ opacity: 0.065, filter: "blur(0.5px)" }}
+            priority
+          />
+        </div>
+
         <Navbar />
-        <div className="pt-20">
+        {/* pt-24 accommodates the taller navbar (logo now 64px) */}
+        <div className="relative z-10 pt-24">
           {children}
         </div>
         <Footer />

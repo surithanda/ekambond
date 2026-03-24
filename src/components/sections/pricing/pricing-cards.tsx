@@ -38,7 +38,7 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
         <motion.div
           className="absolute w-[700px] h-[700px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(212, 92, 68, 0.1) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(27,58,110, 0.1) 0%, transparent 70%)',
             right: '-10%',
             bottom: '0%',
           }}
@@ -66,7 +66,7 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
               onClick={() => setBillingCycle('annual')}
               className="px-8 py-2.5 rounded-full text-sm font-neue-haas-medium transition-all duration-300"
               style={{
-                background: billingCycle === 'annual' ? 'rgba(42, 42, 42, 0.9)' : 'transparent',
+                background: billingCycle === 'annual' ? 'rgba(27,58,110, 0.9)' : 'transparent',
                 color: billingCycle === 'annual' ? '#F8F6F2' : '#2A2A2A',
                 boxShadow: billingCycle === 'annual' ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
               }}
@@ -77,7 +77,7 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
               onClick={() => setBillingCycle('monthly')}
               className="px-8 py-2.5 rounded-full text-sm font-neue-haas-medium transition-all duration-300"
               style={{
-                background: billingCycle === 'monthly' ? 'rgba(42, 42, 42, 0.9)' : 'transparent',
+                background: billingCycle === 'monthly' ? 'rgba(27,58,110, 0.9)' : 'transparent',
                 color: billingCycle === 'monthly' ? '#F8F6F2' : '#2A2A2A',
                 boxShadow: billingCycle === 'monthly' ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
               }}
@@ -108,7 +108,7 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
                   className="relative rounded-3xl overflow-hidden h-full"
                   style={{
                     background: isHighlighted 
-                      ? 'rgba(42, 42, 42, 0.97)'
+                      ? 'rgba(27,58,110, 0.97)'
                       : 'rgba(255, 255, 255, 0.35)',
                     backdropFilter: 'blur(30px)',
                     border: isHighlighted 
@@ -116,7 +116,7 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
                       : '1.5px solid rgba(255, 255, 255, 0.6)',
                     boxShadow: isHighlighted
                       ? '0 25px 70px -20px rgba(232, 185, 35, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05) inset'
-                      : '0 10px 40px -10px rgba(42, 42, 42, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.4) inset',
+                      : '0 10px 40px -10px rgba(27,58,110, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.4) inset',
                   }}
                 >
                   {/* Liquid Shine Effect */}
@@ -148,9 +148,9 @@ export default function PlanCards({ selectedPlan, onPlanSelect }: PlanCardsProps
                             ? 'linear-gradient(135deg, #E8B923, #D45C44)'
                             : isHighlighted 
                             ? 'rgba(232, 185, 35, 0.2)'
-                            : 'rgba(42, 42, 42, 0.1)',
+                            : 'rgba(27,58,110, 0.1)',
                           color: plan.badgeColor === 'gradient' ? '#2A2A2A' : isHighlighted ? '#E8B923' : '#2A2A2A',
-                          border: plan.badgeColor === 'gradient' ? 'none' : '1px solid rgba(42, 42, 42, 0.15)',
+                          border: plan.badgeColor === 'gradient' ? 'none' : '1px solid rgba(27,58,110, 0.15)',
                         }}
                       >
                         {plan.badge} {plan.badge === 'Popular' && '•'}

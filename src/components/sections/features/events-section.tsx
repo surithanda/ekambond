@@ -39,8 +39,8 @@ const EventInvites = () => {
                 {/* Event Preview */}
                 <div className="text-center space-y-6">
                   <div className="relative mx-auto w-24 h-24">
-                    <div className="absolute inset-0 rounded-2xl shadow-lg transform rotate-6" style={{ background: 'linear-gradient(to bottom right, #C84B31, #D55A3F)' }}></div>
-                    <div className="absolute inset-0 rounded-2xl shadow-lg flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #C84B31, #D55A3F)' }}>
+                    <div className="absolute inset-0 rounded-2xl shadow-lg transform rotate-6" style={{ background: 'linear-gradient(to bottom right, #1B3A6E, #D55A3F)' }}></div>
+                    <div className="absolute inset-0 rounded-2xl shadow-lg flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #1B3A6E, #D55A3F)' }}>
                       <Calendar className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -70,7 +70,7 @@ const EventInvites = () => {
                     {eventStats.map((stat, index) => (
                       <div key={index} className="flex items-center justify-between p-3 rounded-xl" style={{ backgroundColor: 'rgba(200, 75, 49, 0.1)', borderColor: 'rgba(200, 75, 49, 0.2)', borderWidth: '1px' }}>
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(200, 75, 49, 0.15)', color: '#C84B31' }}>
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(200, 75, 49, 0.15)', color: '#1B3A6E' }}>
                             <Zap className="w-4 h-4" />
                           </div>
                           <div>
@@ -78,7 +78,7 @@ const EventInvites = () => {
                             <div className="text-xs font-neue-haas-regular text-gray-500">{stat.description}</div>
                           </div>
                         </div>
-                        <div className="text-lg font-neue-haas-medium" style={{ color: '#C84B31' }}>{stat.value}</div>
+                        <div className="text-lg font-neue-haas-medium" style={{ color: '#1B3A6E' }}>{stat.value}</div>
                       </div>
                     ))}
                   </div>
@@ -88,18 +88,18 @@ const EventInvites = () => {
                 <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'rgba(200, 75, 49, 0.15)' }}>
-                      <CalendarCheck className="w-5 h-5" style={{ color: '#C84B31' }} />
+                      <CalendarCheck className="w-5 h-5" style={{ color: '#1B3A6E' }} />
                     </div>
                     <div className="flex-1">
                       <div className="text-sm font-neue-haas-medium text-gray-700">Calendar integration</div>
                       <div className="text-xs font-neue-haas-regular text-gray-500">Sync with all platforms</div>
                     </div>
-                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#C84B31' }}></div>
+                    <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#1B3A6E' }}></div>
                   </div>
                   <div className="mt-3 w-full bg-gray-100 rounded-full h-2">
                     <div 
                       className="h-2 rounded-full transition-all duration-1000"
-                      style={{ width: '85%', background: 'linear-gradient(to right, #C84B31, #D55A3F)' }}
+                      style={{ width: '85%', background: 'linear-gradient(to right, #1B3A6E, #D55A3F)' }}
                     ></div>
                   </div>
                   <div className="text-xs font-neue-haas-regular text-gray-500 mt-2">Processing event invitations</div>
@@ -112,7 +112,7 @@ const EventInvites = () => {
               animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -top-6 -right-6 w-12 h-12 rounded-2xl opacity-20 shadow-lg"
-              style={{ background: 'linear-gradient(to bottom right, #C84B31, #D55A3F)' }}
+              style={{ background: 'linear-gradient(to bottom right, #1B3A6E, #D55A3F)' }}
             ></motion.div>
             <motion.div
               animate={{ y: [0, 10, 0], scale: [1, 1.1, 1] }}
@@ -134,7 +134,7 @@ const EventInvites = () => {
                 transition={{ duration: 0.6 }}
                 className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-sm border border-gray-100"
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #C84B31, #D55A3F)' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #1B3A6E, #D55A3F)' }}>
                   <Calendar className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-sm font-neue-haas-medium text-gray-700">
@@ -188,7 +188,7 @@ const EventInvites = () => {
                     <div className="flex items-center gap-4">
                       <div
                         className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive ? "shadow-lg" : "bg-gray-100"}`}
-                        style={isActive ? { background: 'linear-gradient(to bottom right, #C84B31, #D55A3F)' } : {}}
+                        style={isActive ? { background: 'linear-gradient(to bottom right, #1B3A6E, #D55A3F)' } : {}}
                       >
                         <Icon className={`w-6 h-6 transition-colors duration-300 ${isActive ? "text-white" : "text-muted"}`} />
                       </div>
@@ -203,7 +203,7 @@ const EventInvites = () => {
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
                               className="w-5 h-5 rounded-full flex items-center justify-center"
-                              style={{ backgroundColor: '#C84B31' }}
+                              style={{ backgroundColor: '#1B3A6E' }}
                             >
                               <CheckCircle className="w-3 h-3 text-white" />
                             </motion.div>
@@ -222,8 +222,8 @@ const EventInvites = () => {
                                 {feature.description}
                               </p>
                               <div className="flex items-center gap-2 mt-3">
-                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#C84B31' }}></div>
-                                <span className="text-sm font-neue-haas-medium" style={{ color: '#C84B31' }}>
+                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#1B3A6E' }}></div>
+                                <span className="text-sm font-neue-haas-medium" style={{ color: '#1B3A6E' }}>
                                   {feature.stat}
                                 </span>
                               </div>

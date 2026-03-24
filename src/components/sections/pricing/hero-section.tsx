@@ -15,7 +15,7 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[80vh] bg-primary relative overflow-hidden mt-16">
+    <section className="min-h-[80vh] relative overflow-hidden mt-16" style={{ background: "linear-gradient(145deg, #0F2145 0%, #1B3A6E 40%, #1E3D70 60%, #0F2145 100%)" }}>
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
