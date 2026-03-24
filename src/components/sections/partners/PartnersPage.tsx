@@ -41,42 +41,65 @@ const dayOneItems = [
   { item: "Background verification configured", detail: "Document types accepted, workflow set up per your preferences" },
 ];
 
+// ─── Role config ──────────────────────────────────────────────────────────────
+const ROLES: Record<string, { label: string; color: string; bg: string }> = {
+  Partner:          { label: "Partner",          color: "#D9A91E", bg: "rgba(217,169,30,0.15)" },
+  EkamBond:         { label: "EkamBond",         color: "#C8302A", bg: "rgba(200,48,42,0.12)" },
+  TechDesign:       { label: "Technical Design", color: "#1B3A6E", bg: "rgba(27,58,110,0.12)" },
+  Deployment:       { label: "Deployment",       color: "#2D9E6E", bg: "rgba(45,158,110,0.12)" },
+  Support:          { label: "Support",           color: "#7C3AED", bg: "rgba(124,58,237,0.12)" },
+};
+
 // ─── 7 Step Journey ───────────────────────────────────────────────────────────
 const journeySteps = [
   {
     num: "01", icon: MessageSquare, title: "Submit Enquiry",
     desc: "Fill out the partner registration form. Our team receives your details immediately.",
     time: "1 hour", color: "#D9A91E",
+    responsible: ["Partner"],
+    milestone: false,
   },
   {
     num: "02", icon: Shield, title: "Verification, Approval & Documentation",
     desc: "We verify your organisation details, review your application, and collect required documentation.",
     time: "1–2 days", color: "#C8302A",
+    responsible: ["EkamBond", "Partner"],
+    milestone: true,
   },
   {
     num: "03", icon: Settings, title: "Brand Configuration & Customisation",
-    desc: "We configure your logo, colour palette, typography, subscription plans, and platform settings to match your brand.",
+    desc: "We configure your logo, colour palette, typography, subscription plans, and platform settings.",
     time: "3–4 days", color: "#D9A91E",
+    responsible: ["TechDesign", "Partner"],
+    milestone: true,
   },
   {
     num: "04", icon: Globe, title: "Domain Setup",
     desc: "Point your domain to the platform. SSL certificate provisioned automatically and tested end-to-end.",
     time: "1–2 days", color: "#C8302A",
+    responsible: ["Deployment", "Partner"],
+    milestone: true,
   },
   {
-    num: "05", icon: Laptop, title: "PartnerKey Generation, Onboarding & UAT",
+    num: "05", icon: Laptop, title: "PartnerKey, Onboarding & UAT",
     desc: "Your unique PartnerKey is generated, admin access granted, and we run full User Acceptance Testing together.",
     time: "1 day", color: "#D9A91E",
+    responsible: ["EkamBond", "TechDesign", "Partner"],
+    milestone: true,
   },
   {
     num: "06", icon: Rocket, title: "Go Live & Sign-off",
     desc: "Your branded matrimony platform goes live, accepting registrations and payments. Formal sign-off completed.",
     time: "1 day", color: "#C8302A",
+    responsible: ["Deployment", "Partner"],
+    milestone: true,
   },
   {
     num: "07", icon: Heart, title: "Ongoing Support",
     desc: "Dedicated support channel, feature updates, and access to all new features as they ship.",
-    time: "Forever", color: "#D9A91E",
+    time: "Annual Renewal", color: "#7C3AED",
+    responsible: ["Support", "Partner"],
+    milestone: false,
   },
 ];
 
@@ -267,8 +290,26 @@ export default function PartnersPage() {
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start"
+            className="grid grid-cols-1 lg:grid-cols-[auto_1fr_1fr_1fr] gap-8 items-start"
           >
+            {/* Col 0 — Vertical label */}
+            <div className="hidden lg:flex items-center justify-center self-stretch">
+              <div style={{
+                writingMode: "vertical-rl",
+                transform: "rotate(180deg)",
+                whiteSpace: "nowrap",
+                letterSpacing: "0.32em",
+                fontSize: "16px",
+                fontWeight: 900,
+                textTransform: "uppercase",
+                color: "#ffffff",
+                textShadow: "0 0 20px rgba(217,169,30,0.8), 0 0 40px rgba(217,169,30,0.4)",
+                opacity: 1,
+              }}>
+                How It Works for a Local Matchmaker
+              </div>
+            </div>
+
             {/* Col 1 — Illustration */}
             <div className="relative rounded-3xl overflow-hidden"
               style={{ aspectRatio: "1/1", background: "rgba(255,255,255,0.05)", border: "1.5px solid rgba(217,169,30,0.20)" }}>
@@ -277,13 +318,14 @@ export default function PartnersPage() {
                 alt="A local matchmaker meeting with a family"
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
+                sizes="(max-width: 1024px) 100vw, 25vw"
               />
             </div>
 
             {/* Col 2 — Scenario Text */}
             <div>
-              <span className="eb-badge eb-badge-dark mb-5">How It Works for a Local Matchmaker</span>
+              {/* Mobile-only badge (hidden on desktop since vertical text replaces it) */}
+              <span className="lg:hidden eb-badge eb-badge-dark mb-5">How It Works for a Local Matchmaker</span>
               <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-snug" style={{ color: "var(--color-text-on-dark)" }}>
                 You Keep the Relationships.{" "}
                 <span style={{ color: "var(--brand-gold)" }}>We Handle the Technology.</span>
@@ -329,16 +371,17 @@ export default function PartnersPage() {
         </div>
       </section>
 
+
       {/* ── Day 1 Checklist ── */}
       <section className="py-16 px-4" style={{ background: "linear-gradient(180deg, #FDF6EC 0%, #F5EAD5 100%)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <span className="eb-badge mx-auto mb-4">Immediate Value</span>
+            <span className="eb-badge mx-auto mb-4">Your Launch Deliverables</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: "var(--color-text-on-light)" }}>
-              What You Get on <span style={{ color: "var(--brand-crimson)" }}>Day 1</span>
+              What&apos;s Ready at <span style={{ color: "var(--brand-crimson)" }}>Go-Live</span>
             </h2>
             <p className="text-base" style={{ color: "var(--color-text-muted-light)" }}>
-              Not promises — deliverables. Every item on this list is completed before we hand over access.
+              Not promises — deliverables. Every item below is completed before we hand over access.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -407,40 +450,217 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ── 6-Step Journey ── */}
-      <section className="py-16 px-4" style={{ background: "var(--color-bg-hero)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="absolute inset-0 eb-dot-grid-dark opacity-20 pointer-events-none" />
+      {/* ── Onboarding Journey ── */}
+      <section className="py-16 px-4 relative overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(42,16,8,0.75) 0%, rgba(26,10,6,0.85) 100%)", backgroundColor: "#1A0A06" }}>
+        <div className="absolute inset-0 eb-dot-grid-dark opacity-20 pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative z-10">
+
+          {/* Header */}
           <div className="text-center mb-14">
-            <span className="eb-badge eb-badge-dark mx-auto mb-4">From Enquiry to Live</span>
+            <span className="eb-badge eb-badge-dark mx-auto mb-4">Project Delivery Milestones</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: "var(--color-text-on-dark)" }}>
               Your 7-Step Onboarding Journey
             </h2>
-            <p className="text-base" style={{ color: "var(--color-text-muted-dark)" }}>
-              Start to finish in 1–2 weeks. Here's exactly what happens after you register.
+            <p className="text-base max-w-2xl mx-auto" style={{ color: "var(--color-text-muted-dark)" }}>
+              Start to finish in ~10 days — within 2 weeks. Here&apos;s exactly what happens and who owns each milestone.
             </p>
           </div>
+
+          {/* Role Legend */}
+          <div className="flex flex-wrap gap-2 justify-center mb-10">
+            {Object.values(ROLES).map((r) => (
+              <span key={r.label} className="text-xs font-semibold px-3 py-1.5 rounded-full"
+                style={{ background: r.bg, color: r.color, border: `1px solid ${r.color}44` }}>
+                ● {r.label}
+              </span>
+            ))}
+          </div>
+
+          {/* Desktop: Horizontal path */}
+          <div className="hidden lg:block">
+            {/* Connecting line */}
+            <div className="relative">
+              <div className="absolute top-8 left-0 right-0 h-0.5 mx-16"
+                style={{ background: "linear-gradient(90deg, rgba(217,169,30,0.2) 0%, rgba(217,169,30,0.6) 50%, rgba(217,169,30,0.2) 100%)" }} />
+              {/* Step nodes */}
+              <div className="grid grid-cols-7 gap-0">
+                {journeySteps.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <motion.div key={step.num}
+                      initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      className="flex flex-col items-center text-center px-1">
+                      {/* Node circle */}
+                      <div className="relative mb-4 z-10">
+                        <div className="w-16 h-16 rounded-full flex items-center justify-center ring-2"
+                          style={{
+                            background: step.milestone ? `${step.color}22` : "rgba(255,255,255,0.08)",
+                            border: `2px solid ${step.color}`,
+                            boxShadow: step.milestone ? `0 0 16px ${step.color}55` : "none",
+                          }}>
+                          <Icon className="w-6 h-6" style={{ color: step.color }} />
+                        </div>
+                        {/* Step number */}
+                        <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center"
+                          style={{ background: step.color, color: "#1A0A06" }}>
+                          {parseInt(step.num)}
+                        </span>
+                        {/* Milestone diamond */}
+                        {step.milestone && (
+                          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-[8px] font-black"
+                            style={{ color: step.color }}>◆</span>
+                        )}
+                      </div>
+                      {/* Time badge */}
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full mb-2"
+                        style={{ background: `${step.color}20`, color: step.color }}>
+                        {step.time}
+                      </span>
+                      {/* Title */}
+                      <p className="text-xs font-bold leading-tight mb-2" style={{ color: "var(--color-text-on-dark)" }}>
+                        {step.title}
+                      </p>
+                      {/* Responsible roles */}
+                      <div className="flex flex-wrap gap-1 justify-center">
+                        {(step as { responsible?: string[] }).responsible?.map((r) => {
+                          const role = ROLES[r];
+                          return role ? (
+                            <span key={r} className="text-[9px] font-semibold px-1.5 py-0.5 rounded"
+                              style={{ background: role.bg, color: role.color }}>
+                              {role.label}
+                            </span>
+                          ) : null;
+                        })}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Descriptions row */}
+            <div className="grid grid-cols-7 gap-0 mt-6">
+              {journeySteps.map((step, i) => (
+                <motion.div key={`desc-${step.num}`}
+                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.07 }}
+                  className="px-1 text-center">
+                  <p className="text-[10px] leading-relaxed" style={{ color: "var(--color-text-muted-dark)" }}>
+                    {step.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical timeline */}
+          <div className="lg:hidden space-y-0">
+            {journeySteps.map((step, i) => {
+              const Icon = step.icon;
+              const isLast = i === journeySteps.length - 1;
+              return (
+                <motion.div key={step.num}
+                  initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  className="flex gap-4">
+                  {/* Left: connector */}
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center relative z-10"
+                      style={{ background: `${step.color}20`, border: `2px solid ${step.color}` }}>
+                      <Icon className="w-5 h-5" style={{ color: step.color }} />
+                      <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full text-[9px] font-black flex items-center justify-center"
+                        style={{ background: step.color, color: "#1A0A06" }}>{parseInt(step.num)}</span>
+                    </div>
+                    {!isLast && <div className="w-0.5 flex-1 mt-1" style={{ background: `${step.color}40`, minHeight: "32px" }} />}
+                  </div>
+                  {/* Right: content */}
+                  <div className="pb-6 flex-1">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <h3 className="text-sm font-bold" style={{ color: "var(--color-text-on-dark)" }}>{step.title}</h3>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                        style={{ background: `${step.color}20`, color: step.color }}>
+                        {step.time}
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed mb-2" style={{ color: "var(--color-text-muted-dark)" }}>{step.desc}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {(step as { responsible?: string[] }).responsible?.map((r) => {
+                        const role = ROLES[r];
+                        return role ? (
+                          <span key={r} className="text-[9px] font-semibold px-2 py-0.5 rounded"
+                            style={{ background: role.bg, color: role.color }}>
+                            {role.label}
+                          </span>
+                        ) : null;
+                      })}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Journey Detail Cards ── */}
+      <section className="py-14 px-4" style={{ background: "linear-gradient(180deg, #FDF6EC 0%, #F5EAD5 100%)" }}>
+        <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {journeySteps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <motion.div key={step.num}
-                  initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-3xl p-6 relative"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1.5px solid rgba(255,255,255,0.10)" }}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-4xl font-black opacity-20" style={{ color: step.color }}>{step.num}</span>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ background: `${step.color}22`, border: `1.5px solid ${step.color}44` }}>
-                      <Icon className="w-5 h-5" style={{ color: step.color }} />
+                <motion.div key={`card-${step.num}`}
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.07 }}
+                  className="rounded-2xl overflow-hidden flex flex-col"
+                  style={{
+                    background: "#fff",
+                    border: "1.5px solid rgba(200,150,60,0.18)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.07)",
+                    borderTop: `4px solid ${step.color}`,
+                  }}>
+                  {/* Card header */}
+                  <div className="px-5 pt-5 pb-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl font-black opacity-25" style={{ color: step.color }}>{step.num}</span>
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                          style={{ background: `${step.color}18`, border: `1.5px solid ${step.color}44` }}>
+                          <Icon className="w-4 h-4" style={{ color: step.color }} />
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1"
+                        style={{ background: `${step.color}15`, color: step.color }}>
+                        <Clock className="w-3 h-3" />{step.time}
+                      </span>
                     </div>
-                    <span className="ml-auto text-xs font-bold px-2.5 py-1 rounded-full"
-                      style={{ background: `${step.color}22`, color: step.color }}>
-                      <Clock className="w-3 h-3 inline mr-1" />{step.time}
-                    </span>
+                    <h3 className="text-sm font-bold leading-snug mb-2"
+                      style={{ color: "var(--color-text-on-light)" }}>
+                      {step.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed"
+                      style={{ color: "var(--color-text-muted-light)" }}>
+                      {step.desc}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: "var(--color-text-on-dark)" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted-dark)" }}>{step.desc}</p>
+                  {/* Responsible roles footer */}
+                  <div className="mt-auto px-5 pb-4">
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-1.5"
+                      style={{ color: "rgba(100,80,40,0.5)" }}>Responsible</p>
+                    <div className="flex flex-wrap gap-1">
+                      {(step as { responsible?: string[] }).responsible?.map((r) => {
+                        const role = ROLES[r];
+                        return role ? (
+                          <span key={r} className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                            style={{ background: role.bg, color: role.color, border: `1px solid ${role.color}44` }}>
+                            {role.label}
+                          </span>
+                        ) : null;
+                      })}
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -448,7 +668,6 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ── Comparison Table ── */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
