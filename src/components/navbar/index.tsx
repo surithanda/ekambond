@@ -43,7 +43,8 @@ export default function Navbar() {
     { href: "/services", label: "Services" },
     { href: "/partners", label: "Partners" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/meetpeople", label: "Meet People" },
+    { href: "/franchise", label: "Franchise" },
+    { href: "/download-app", label: "Get App" },
   ];
 
   // Always solid white frosted-glass navbar — scroll only deepens the shadow slightly
@@ -139,9 +140,16 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/get-started"
+              href="/register"
+              className="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block"
+              style={{ background: "rgba(200,48,42,0.10)", color: "#C8302A", border: "1.5px solid rgba(200,48,42,0.25)" }}
+            >
+              Register
+            </Link>
+            <Link
+              href="/register"
               className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block"
               style={{
                 background: "linear-gradient(135deg, #1B3A6E 0%, #3A5FA0 100%)",
@@ -242,14 +250,14 @@ export default function Navbar() {
 
           <div className="px-4 py-4" style={{ borderTop: "1px solid rgba(27,58,110,0.08)", background: "rgba(27,58,110,0.02)" }}>
             <Link
-              href="/get-started"
+              href="/register"
               onClick={handleLinkClick}
               className="block w-full px-6 py-3 rounded-xl text-base font-semibold text-white transition-all duration-300 text-center hover:opacity-90 hover:shadow-lg"
               style={{
                 background: "linear-gradient(135deg, #1B3A6E 0%, #3A5FA0 100%)",
               }}
             >
-              Get Started
+              Get Started → Register
             </Link>
           </div>
         </div>

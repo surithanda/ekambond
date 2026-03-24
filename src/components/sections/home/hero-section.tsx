@@ -36,31 +36,32 @@ const HeroSection = () => {
   return (
     <section
       className="min-h-screen relative overflow-hidden flex flex-col"
-      style={{
-        background: "linear-gradient(145deg, #0F2145 0%, #1B3A6E 40%, #1E3D70 60%, #0F2145 100%)",
-      }}
+      style={{ background: "var(--color-bg-hero)" }}
     >
-      {/* Radial glow top-right */}
+      {/* Warm crimson glow top-right — matches logo */}
       <div
         className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 70% 20%, rgba(217,169,30,0.18) 0%, transparent 65%)",
+          background: "radial-gradient(circle at 70% 20%, rgba(200,48,42,0.18) 0%, transparent 60%)",
         }}
       />
-      {/* Radial glow bottom-left */}
+      {/* Gold glow bottom-left — matches logo ornaments */}
       <div
         className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 20% 80%, rgba(45,110,78,0.2) 0%, transparent 65%)",
+          background: "radial-gradient(circle at 20% 80%, rgba(217,169,30,0.14) 0%, transparent 60%)",
+        }}
+      />
+      {/* Subtle gold glow center */}
+      <div
+        className="absolute top-1/3 right-1/3 w-[300px] h-[300px] rounded-full pointer-events-none eb-glow"
+        style={{
+          background: "radial-gradient(circle, rgba(217,169,30,0.08) 0%, transparent 70%)",
         }}
       />
       {/* Dot grid texture */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-10"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-        }}
+        className="absolute inset-0 pointer-events-none eb-dot-grid-dark opacity-30"
       />
 
       {/* Main content */}
@@ -118,8 +119,9 @@ const HeroSection = () => {
               style={{ color: "rgba(220,230,255,0.82)" }}
             >
               EkamBond is the{" "}
-              <span className="font-semibold" style={{ color: "#D9A91E" }}>end-to-end B2B platform</span>{" "}
-              that gives matrimony companies white-label tech, AI matchmaking, verified profiles, and partner support — so you can focus on growing connections.
+              <span className="font-semibold" style={{ color: "#D9A91E" }}>complete B2B platform</span>{" "}
+              that gives matrimony organizations white-label websites, AI search, a full admin portal, and Stripe-powered billing — live in{" "}
+              <span className="font-semibold" style={{ color: "#D9A91E" }}>1–2 weeks</span>, no dev team needed.
             </motion.p>
 
             {/* CTA buttons */}
@@ -130,28 +132,24 @@ const HeroSection = () => {
               className="flex flex-wrap gap-4 mb-12"
             >
               <Link
-                href="/partners"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #D9A91E 0%, #F0C842 100%)",
-                  color: "#0F2145",
-                  fontWeight: 700,
-                }}
+                href="/register"
+                className="eb-btn-primary"
               >
                 Become a Partner
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/features"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold transition-all duration-300 hover:scale-105"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.25)",
-                  color: "#FFFFFF",
-                  backdropFilter: "blur(12px)",
-                }}
+                className="eb-btn-ghost"
               >
                 Explore Features
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/partners#journey"
+                className="eb-btn-demo"
+              >
+                See a Live Demo
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </motion.div>
@@ -161,15 +159,15 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex items-center gap-2 text-sm"
-              style={{ color: "rgba(200,215,255,0.65)" }}
+              className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"
+              style={{ color: "var(--color-text-muted-dark)" }}
             >
-              <CheckCircle2 className="w-4 h-4" style={{ color: "#2D6E4E" }} />
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
               No credit card required &nbsp;•&nbsp;
-              <CheckCircle2 className="w-4 h-4" style={{ color: "#2D6E4E" }} />
-              Free onboarding &nbsp;•&nbsp;
-              <CheckCircle2 className="w-4 h-4" style={{ color: "#2D6E4E" }} />
-              White-label in days
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              Full admin portal included &nbsp;•&nbsp;
+              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              live in 1–2 weeks
             </motion.div>
           </div>
 
@@ -235,9 +233,9 @@ const HeroSection = () => {
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ background: "rgba(217,169,30,0.15)" }}
                     >
-                      <f.icon className="w-4 h-4" style={{ color: "#D9A91E" }} />
+                      <f.icon className="w-4 h-4" style={{ color: "var(--brand-gold)" }} />
                     </div>
-                    <span className="text-sm font-medium" style={{ color: "rgba(220,230,255,0.9)" }}>
+                    <span className="text-sm font-medium" style={{ color: "var(--color-text-on-dark)" }}>
                       {f.label}
                     </span>
                   </motion.div>
@@ -253,8 +251,8 @@ const HeroSection = () => {
                 }}
               >
                 <div>
-                  <p className="text-sm font-semibold text-white">Ready to grow?</p>
-                  <p className="text-xs mt-0.5" style={{ color: "rgba(200,215,255,0.6)" }}>
+                  <p className="text-sm font-semibold" style={{ color: "var(--color-text-on-dark)" }}>Ready to grow?</p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--color-text-muted-dark)" }}>
                     Join a growing network of matrimony partners
                   </p>
                 </div>
@@ -276,7 +274,20 @@ const HeroSection = () => {
         className="relative z-10 border-t w-full"
         style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(0,0,0,0.2)" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pt-4 pb-2">
+          {/* Platform descriptors bar — no numbers */}
+          <div className="text-center mb-4">
+            <p className="text-xs tracking-widest" style={{ color: "var(--color-text-muted-dark)" }}>
+              Multi-tenant white-label platform
+              <span className="mx-3 opacity-30">·</span>
+              Deep matrimony-domain profile model
+              <span className="mx-3 opacity-30">·</span>
+              AI-powered natural language search
+              <span className="mx-3 opacity-30">·</span>
+              1–2 week onboarding from config to live
+            </p>
+          </div>
+          <div className="h-px w-full mb-4" style={{ background: "rgba(255,255,255,0.06)" }} />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/10">
             {pillars.map((p, i) => (
               <motion.div

@@ -1,27 +1,12 @@
-import BenefitsSection from '@/components/sections/partners/benifits-section'
-import CTASection from '@/components/sections/partners/cta-section'
-import PartnersHero from '@/components/sections/partners/hero-section'
-import MarriageServicesSection from '@/components/sections/partners/marriage-service-section'
-import NonProfitSection from '@/components/sections/partners/non-profit-section'
-import TestimonialsSection from '@/components/sections/partners/testimonials-section'
-import React from 'react'
+﻿import { Metadata } from "next";
+import PartnersPage from "@/components/sections/partners/PartnersPage";
 
-export const metadata = {
-  title: "EkamBond Matrimony Partners | Non-Profits & Marriage Bureaus",
-  description: "Partner with EkamBond Matrimony to enhance matchmaking for regional communities, digitize services for marriage bureaus, integrate API-based data for broader matches, and focus on strengthening community matrimonial outcomes.",
+export const metadata: Metadata = {
+  title: "Become a Partner | EkamBond Matrimony Platform",
+  description:
+    "Partner with EkamBond to launch your branded matrimony platform in 1–2 weeks. Built for marriage bureaus, community organizations, and professional matchmakers.",
 };
 
-const Partners = () => {
-  return (
-     <div className="min-h-screen bg-primary">
-      <PartnersHero />
-      <NonProfitSection />
-      <MarriageServicesSection />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <CTASection />
-    </div>
-  )
+export default function Partners() {
+  return <PartnersPage />;
 }
-
-export default Partners

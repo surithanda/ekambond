@@ -1,28 +1,22 @@
-import FeaturesSection from "@/components/sections/home/featured-section";
 import HeroSection from "@/components/sections/home/hero-section";
 import MatrimonyServices from "@/components/sections/home/MatrimonyServices";
-import TestimonialsSection from "@/components/sections/home/testimonials-section";
+import DifferentiationSection from "@/components/sections/home/DifferentiationSection";
+import AiSearchSpotlight from "@/components/sections/home/AiSearchSpotlight";
+import FeaturesSection from "@/components/sections/home/featured-section";
+import PremiumPartnersStrip from "@/components/sections/home/PremiumPartnersStrip";
+import PartnerCTASection from "@/components/sections/home/PartnerCTASection";
 import React from "react";
 
-export const metadata = {
-  title:
-    "EkamBond Matrimony Enterprise Services | Bridging Hearts, Ensuring Trust",
-  description:
-    "Discover EkamBond Matrimony, a trusted platform connecting individuals for long-term relationships with background verification, AI matchmaking, and global reach for safe and meaningful connections.",
-};
-
-const App = () => {
+export default function Home() {
   return (
     <div>
       <HeroSection />
-
       <MatrimonyServices />
-
+      <DifferentiationSection />
+      <AiSearchSpotlight />
       <FeaturesSection />
-
-      <TestimonialsSection />
+      <PremiumPartnersStrip />
+      <PartnerCTASection />
     </div>
   );
-};
-
-export default App;
+}

@@ -4,6 +4,8 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "react-hot-toast";
 import Image from "next/image";
+import PwaInstallBanner from "@/components/PwaInstallBanner";
+import PartnerNotificationBanner from "@/components/PartnerNotificationBanner";
 
 export const metadata: Metadata = {
   title: "EkamBond | Matrimony Partner Network",
@@ -33,6 +35,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2D1208" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="EkamBond" />
+        <link rel="apple-touch-startup-image" href="/images/ekambond-logo.png" />
+      </head>
       <body className="antialiased" style={{ background: "transparent" }}>
         {/* ── Global watermark — appears on every page ── */}
         <div
@@ -56,6 +66,8 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <PwaInstallBanner />
+        <PartnerNotificationBanner />
         <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
