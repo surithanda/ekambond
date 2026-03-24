@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -41,37 +41,42 @@ const dayOneItems = [
   { item: "Background verification configured", detail: "Document types accepted, workflow set up per your preferences" },
 ];
 
-// ─── 6 Step Journey ───────────────────────────────────────────────────────────
+// ─── 7 Step Journey ───────────────────────────────────────────────────────────
 const journeySteps = [
   {
     num: "01", icon: MessageSquare, title: "Submit Enquiry",
-    desc: "Fill out the partner registration form in under 5 minutes.",
-    time: "5 min", color: "#D9A91E",
+    desc: "Fill out the partner registration form. Our team receives your details immediately.",
+    time: "1 hour", color: "#D9A91E",
   },
   {
-    num: "02", icon: Phone, title: "Onboarding Call",
-    desc: "A dedicated setup specialist calls within 24 hours to understand your needs.",
-    time: "24 hrs", color: "#C8302A",
+    num: "02", icon: Shield, title: "Verification, Approval & Documentation",
+    desc: "We verify your organisation details, review your application, and collect required documentation.",
+    time: "1–2 days", color: "#C8302A",
   },
   {
-    num: "03", icon: Settings, title: "Brand Configuration",
-    desc: "We configure your logo, palette, domain, and subscription plans using your inputs.",
-    time: "Day 1", color: "#D9A91E",
+    num: "03", icon: Settings, title: "Brand Configuration & Customisation",
+    desc: "We configure your logo, colour palette, typography, subscription plans, and platform settings to match your brand.",
+    time: "3–4 days", color: "#D9A91E",
   },
   {
     num: "04", icon: Globe, title: "Domain Setup",
-    desc: "Point your domain to the platform. SSL certificate provisioned automatically.",
-    time: "Day 1–2", color: "#C8302A",
+    desc: "Point your domain to the platform. SSL certificate provisioned automatically and tested end-to-end.",
+    time: "1–2 days", color: "#C8302A",
   },
   {
-    num: "05", icon: Rocket, title: "Platform Goes Live",
-    desc: "Your branded matrimony platform is live, accepting registrations and payments.",
-    time: "48 hrs", color: "#D9A91E",
+    num: "05", icon: Laptop, title: "PartnerKey Generation, Onboarding & UAT",
+    desc: "Your unique PartnerKey is generated, admin access granted, and we run full User Acceptance Testing together.",
+    time: "1 day", color: "#D9A91E",
   },
   {
-    num: "06", icon: Heart, title: "Ongoing Support",
-    desc: "Dedicated support channel, feature updates, and access to new features as they ship.",
-    time: "Forever", color: "#C8302A",
+    num: "06", icon: Rocket, title: "Go Live & Sign-off",
+    desc: "Your branded matrimony platform goes live, accepting registrations and payments. Formal sign-off completed.",
+    time: "1 day", color: "#C8302A",
+  },
+  {
+    num: "07", icon: Heart, title: "Ongoing Support",
+    desc: "Dedicated support channel, feature updates, and access to all new features as they ship.",
+    time: "Forever", color: "#D9A91E",
   },
 ];
 
@@ -257,7 +262,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ── Ravi's Story ── */}
+      {/* ── Partner Scenario ── */}
       <section className="py-14 px-4" style={{ background: "linear-gradient(135deg, #2D1208 0%, #1A0A06 100%)" }}>
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -268,43 +273,45 @@ export default function PartnersPage() {
             <div className="relative rounded-3xl overflow-hidden"
               style={{ aspectRatio: "1/1", background: "rgba(255,255,255,0.05)", border: "1.5px solid rgba(217,169,30,0.20)" }}>
               <Image
-                src="/images/ravi-story.png"
-                alt="A traditional matchmaker sitting with a family over tea"
+                src="/images/matchmaker-scenario.png"
+                alt="A local matchmaker meeting with a family"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
 
-            {/* Col 2 — Story Text */}
+            {/* Col 2 — Scenario Text */}
             <div>
-              <span className="eb-badge eb-badge-dark mb-5">A Story Every Matchmaker Knows</span>
+              <span className="eb-badge eb-badge-dark mb-5">How It Works for a Local Matchmaker</span>
               <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-snug" style={{ color: "var(--color-text-on-dark)" }}>
-                Trusted by Families.{" "}
-                <span style={{ color: "var(--brand-gold)" }}>Now Powered</span>{" "}
-                by Technology.
+                You Keep the Relationships.{" "}
+                <span style={{ color: "var(--brand-gold)" }}>We Handle the Technology.</span>
               </h2>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(253,246,236,0.7)" }}>
-                Ravi had been helping families find marriage matches in his town for over 12 years. People trusted him — they came to his home, sat for tea, and shared their deepest family concerns openly.
+                Consider a local matchmaker who has been helping families for years. Families trust them
+                personally — they visit homes, sit over tea, and understand community values deeply.
               </p>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(253,246,236,0.7)" }}>
-                But families started asking: <em style={{ color: "var(--brand-gold)" }}>&ldquo;Is our profile online? Can you show matches faster? How do we avoid fake profiles?&rdquo;</em>
+                But families increasingly ask: <em style={{ color: "var(--brand-gold)" }}>&ldquo;Can we see profiles online? Can you match faster? How do we know profiles are genuine?&rdquo;</em>
               </p>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(253,246,236,0.7)" }}>
-                Big matrimony portals were bypassing local brokers — dealing directly with families. Ravi didn&apos;t want to lose respect. He wanted support — not replacement.
+                Large matrimony portals deal directly with families — bypassing local matchmakers entirely.
+                EkamBond does the opposite: your brand stays front and center, while we provide
+                the platform, AI matching, and billing invisibly in the background.
               </p>
             </div>
 
-            {/* Col 3 — What Changed */}
+            {/* Col 3 — What Changes */}
             <div className="rounded-3xl p-7" style={{ background: "rgba(255,255,255,0.05)", border: "1.5px solid rgba(217,169,30,0.20)" }}>
-              <p className="text-sm font-bold mb-5" style={{ color: "var(--brand-gold)" }}>After joining EkamBond as a Channel Partner —</p>
+              <p className="text-sm font-bold mb-5" style={{ color: "var(--brand-gold)" }}>With EkamBond as your technology partner —</p>
               <div className="space-y-4">
                 {[
-                  { emoji: "🤝", text: "He continues meeting families personally — nothing changed there" },
-                  { emoji: "🔐", text: "Profiles are securely created and managed on a professional system" },
-                  { emoji: "⚡", text: "Matches are filtered faster with AI search — 10x more efficient" },
-                  { emoji: "💰", text: "Payments and commissions are transparent and automatic" },
-                  { emoji: "🌟", text: "Families feel more confident. Ravi feels more empowered." },
+                  { emoji: "🤝", text: "You continue meeting families personally — your relationships don't change" },
+                  { emoji: "🔐", text: "Profiles are created and managed on a secure, professional system" },
+                  { emoji: "⚡", text: "AI-powered search finds relevant matches in seconds, not hours" },
+                  { emoji: "💰", text: "Subscriptions and commissions are tracked and handled automatically" },
+                  { emoji: "🌟", text: "Families see a more organized, trustworthy, professional operation" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-start gap-3">
                     <span className="text-xl flex-shrink-0">{item.emoji}</span>
@@ -313,8 +320,8 @@ export default function PartnersPage() {
                 ))}
               </div>
               <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(217,169,30,0.20)" }}>
-                <p className="text-sm italic" style={{ color: "rgba(253,246,236,0.5)" }}>
-                  &ldquo;He remains the face of trust. We work quietly in the background.&rdquo;
+                <p className="text-sm" style={{ color: "rgba(253,246,236,0.5)" }}>
+                  You remain the face of trust. We work quietly in the background.
                 </p>
               </div>
             </div>
@@ -365,16 +372,17 @@ export default function PartnersPage() {
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
               {/* Story text — 3 cols */}
               <div className="lg:col-span-3">
-                <span className="eb-badge mb-4">A Marriage Bureau Owner&apos;s Perspective</span>
+                <span className="eb-badge mb-4">A Bureau Owner&apos;s Scenario</span>
                 <h2 className="text-2xl font-bold mb-4 leading-snug" style={{ color: "var(--color-text-on-light)" }}>
-                  Lakshmi had strong connections.<br />
-                  <span style={{ color: "var(--brand-crimson)" }}>EkamBond gave her the platform.</span>
+                  Strong local connections.
+                  <br />
+                  <span style={{ color: "var(--brand-crimson)" }}>EkamBond provides the platform.</span>
                 </h2>
                 <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-text-muted-light)" }}>
-                  Lakshmi runs a small marriage bureau from her home. She has strong community connections but limited reach — no website, no digital presence, and no way to show families that she was organized and trustworthy.
+                  A typical bureau owner runs their business from home — strong community connections, but limited digital presence. No website, no way to show families that they are organized and credible.
                 </p>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted-light)" }}>
-                  After joining EkamBond: she receives full system support for profile handling, tracks every match status in one place, and her work now looks professional and organized. Families trust her even more.
+                  With EkamBond: full system support for profile handling, match status tracked in one place, and the whole operation looks and feels professional. Families trust the process even more.
                 </p>
               </div>
 
@@ -383,14 +391,14 @@ export default function PartnersPage() {
                 <div className="rounded-2xl p-6 text-center"
                   style={{ background: "linear-gradient(135deg, #2D1208 0%, #1A0A06 100%)", border: "1.5px solid rgba(217,169,30,0.25)" }}>
                   <div className="text-5xl mb-4" style={{ color: "rgba(217,169,30,0.25)", fontFamily: "Georgia, serif" }}>&ldquo;</div>
-                  <p className="text-base font-bold italic leading-relaxed mb-4" style={{ color: "var(--color-text-on-dark)" }}>
+                  <p className="text-base font-semibold italic leading-relaxed mb-4" style={{ color: "var(--color-text-on-dark)" }}>
                     People think I built a big system.
                   </p>
                   <p className="text-xl font-black" style={{ color: "var(--brand-gold)" }}>
                     Actually, I joined the right one.
                   </p>
                   <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(217,169,30,0.20)" }}>
-                    <p className="text-xs" style={{ color: "rgba(253,246,236,0.45)" }}>Marriage bureau owner — EkamBond partner</p>
+                    <p className="text-xs" style={{ color: "rgba(253,246,236,0.45)" }}>How it feels when EkamBond is your platform</p>
                   </div>
                 </div>
               </div>
@@ -406,13 +414,13 @@ export default function PartnersPage() {
           <div className="text-center mb-14">
             <span className="eb-badge eb-badge-dark mx-auto mb-4">From Enquiry to Live</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: "var(--color-text-on-dark)" }}>
-              Your 6-Step Onboarding Journey
+              Your 7-Step Onboarding Journey
             </h2>
             <p className="text-base" style={{ color: "var(--color-text-muted-dark)" }}>
               Start to finish in 1–2 weeks. Here's exactly what happens after you register.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {journeySteps.map((step, i) => {
               const Icon = step.icon;
               return (

@@ -9,7 +9,7 @@ const PLANS = [
   {
     id: "nonprofit",
     icon: Heart,
-    name: "Seed",
+    name: "Non-profit",
     target: "Non-Profits & Religious Orgs",
     tagline: "Serve your community, not your bottom line",
     color: "#2D9E6E",
@@ -17,24 +17,27 @@ const PLANS = [
     border: "rgba(45,158,110,0.25)",
     monthlyFee: "$0",
     monthlyLabel: "/ month platform fee",
-    setupFee: "$299",
+    setupFee: "Contact us",
     setupLabel: "one-time setup",
-    revenueShare: "$1",
-    revenueShareLabel: "per active profile / month",
+    revenueShare: "$100",
+    revenueShareLabel: "per active profile / year",
     memberCap: "Up to 300 profiles",
-    aiCredits: "5 AI searches / member / day",
+    aiCredits: "10 AI Credits free with registration per profile",
     teamSeats: "2 admin seats",
     support: "Email support",
     highlight: false,
     features: [
       "White-label website with your brand",
       "Full partner admin portal",
-      "AI-powered matchmaking (basic quota)",
-      "Background verification workflow",
       "Member subscription billing (Stripe)",
-      "1 custom domain",
-      "Email onboarding support",
       "Mobile-first PWA experience",
+      "Email onboarding support",
+    ],
+    costAddons: [
+      "AI Credits (never expires) — in-app purchase",
+      "Custom domain (billed at actual cost)",
+      "Background verification (billed at actual cost)",
+      "New features (billed at actual cost)",
     ],
     addons: ["Additional AI credits", "Extra team seats"],
     badge: null,
@@ -50,24 +53,29 @@ const PLANS = [
     border: "rgba(217,169,30,0.30)",
     monthlyFee: "$79",
     monthlyLabel: "/ month",
-    setupFee: "$499",
+    setupFee: "Contact us",
     setupLabel: "one-time setup",
-    revenueShare: "$1.50",
-    revenueShareLabel: "per active profile / month",
-    memberCap: "Up to 800 profiles",
-    aiCredits: "15 AI searches / member / day",
+    revenueShare: "$100",
+    revenueShareLabel: "per active profile / year",
+    memberCap: "Up to 1,000 profiles",
+    aiCredits: "10 AI Credits free with registration per profile",
     teamSeats: "4 admin seats",
     support: "Email + chat support",
     highlight: false,
     features: [
-      "Everything in Seed, plus:",
-      "Up to 800 member profiles",
-      "Enhanced AI quota (15 searches/day)",
+      "Everything in Non-profit, plus:",
+      "Up to 1,000 member profiles",
       "4 team seats with role management",
       "Analytics & growth reports",
       "Custom subscription plan configurations",
       "Priority email support",
       "Quarterly business review call",
+    ],
+    costAddons: [
+      "AI Credits (never expires) — in-app purchase",
+      "Custom domain (billed at actual cost)",
+      "Background verification (billed at actual cost)",
+      "New features (billed at actual cost)",
     ],
     addons: ["Additional AI credits", "Video calling (Q1 2026)", "Horoscope integration (Q3 2025)"],
     badge: null,
@@ -83,24 +91,28 @@ const PLANS = [
     border: "rgba(200,48,42,0.28)",
     monthlyFee: "$199",
     monthlyLabel: "/ month",
-    setupFee: "$799",
+    setupFee: "Contact us",
     setupLabel: "one-time setup",
-    revenueShare: "$2",
+    revenueShare: "$5",
     revenueShareLabel: "per active profile / month",
     memberCap: "Up to 3,000 profiles",
-    aiCredits: "50 AI searches / member / day",
+    aiCredits: "10 AI Credits free with registration per profile",
     teamSeats: "10 admin seats",
     support: "Priority support (24h SLA)",
     highlight: true,
     features: [
       "Everything in Community, plus:",
       "Up to 3,000 member profiles",
-      "High-volume AI search (50/day)",
       "10 team seats — full role management",
-      "Background verification + audit logs",
       "Revenue & subscription analytics",
       "API access for custom integrations",
       "24-hour priority support SLA",
+    ],
+    costAddons: [
+      "AI Credits (never expires) — in-app purchase",
+      "Custom domain (billed at actual cost)",
+      "Background verification + audit logs (billed at actual cost)",
+      "New features (billed at actual cost)",
     ],
     addons: ["Additional AI credits", "Extra team seats", "Video calling", "Horoscope"],
     badge: "Most Popular",
@@ -114,26 +126,30 @@ const PLANS = [
     color: "var(--brand-navy)",
     bg: "rgba(27,58,110,0.08)",
     border: "rgba(27,58,110,0.22)",
-    monthlyFee: "$39",
+    monthlyFee: "$49",
     monthlyLabel: "/ month",
-    setupFee: "$199",
+    setupFee: "Contact us",
     setupLabel: "one-time setup",
-    revenueShare: "$0.75",
-    revenueShareLabel: "per active profile / month",
+    revenueShare: "$100",
+    revenueShareLabel: "per active profile / year",
     memberCap: "Up to 150 profiles",
-    aiCredits: "10 AI searches / member / day",
+    aiCredits: "10 AI Credits free with registration per profile",
     teamSeats: "1 admin seat",
     support: "Email support",
     highlight: false,
     features: [
       "White-label website with your brand",
       "Up to 150 member profiles",
-      "AI matchmaking (10 searches/day)",
       "Basic admin portal",
       "Member subscription billing",
-      "1 custom domain",
       "Email onboarding support",
       "Mobile-first PWA",
+    ],
+    costAddons: [
+      "AI Credits (never expires) — in-app purchase",
+      "Custom domain (billed at actual cost)",
+      "Background verification (billed at actual cost)",
+      "New features (billed at actual cost)",
     ],
     addons: ["Additional AI credits", "Extra profiles (upgrade to Bureau)"],
     badge: null,
@@ -154,21 +170,26 @@ const PLANS = [
     revenueShare: "Negotiated",
     revenueShareLabel: "revenue share agreement",
     memberCap: "Unlimited profiles",
-    aiCredits: "Unlimited AI searches",
+    aiCredits: "10 AI Credits free with registration per profile",
     teamSeats: "Unlimited seats",
     support: "Dedicated account manager",
     highlight: false,
     features: [
       "Everything in Bureau, plus:",
       "Unlimited members & profiles",
-      "Unlimited AI search credits",
       "Unlimited team seats",
       "Custom revenue share agreement",
       "Dedicated account manager",
       "SLA-backed uptime guarantee",
       "Franchise network management dashboard",
-      "Custom feature development consideration",
       "Quarterly executive business reviews",
+    ],
+    costAddons: [
+      "AI Credits (never expires) — in-app purchase",
+      "Custom domain (billed at actual cost)",
+      "Background verification (billed at actual cost)",
+      "New features (billed at actual cost)",
+      "Custom feature development consideration",
     ],
     addons: ["All upcoming features included"],
     badge: "For Franchises",
@@ -205,6 +226,7 @@ const FAQ = [
 
 function PlanCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) {
   const Icon = plan.icon;
+  const costAddons = (plan as { costAddons?: string[] }).costAddons;
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
@@ -271,7 +293,7 @@ function PlanCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) {
       {/* Capacity pills */}
       <div className="grid grid-cols-1 gap-1.5 mb-5 text-xs">
         {[
-          { label: "Members", value: plan.memberCap },
+          { label: "Profiles", value: plan.memberCap },
           { label: "AI search", value: plan.aiCredits },
           { label: "Team seats", value: plan.teamSeats },
           { label: "Support", value: plan.support },
@@ -284,8 +306,8 @@ function PlanCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) {
         ))}
       </div>
 
-      {/* Features */}
-      <div className="space-y-2 mb-6 flex-1">
+      {/* Included Features */}
+      <div className="space-y-2 mb-5 flex-1">
         {plan.features.map((f) => (
           <div key={f} className="flex items-start gap-2">
             <CheckCircle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
@@ -293,6 +315,25 @@ function PlanCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) {
           </div>
         ))}
       </div>
+
+      {/* Add-ons at actual cost */}
+      {costAddons && costAddons.length > 0 && (
+        <div className="mb-5 rounded-xl p-3"
+          style={{ background: plan.highlight ? "rgba(255,255,255,0.04)" : "rgba(200,150,60,0.05)", border: `1px dashed ${plan.border}` }}>
+          <p className="text-[10px] font-bold uppercase tracking-wider mb-2"
+            style={{ color: plan.highlight ? "rgba(253,246,236,0.4)" : "var(--color-text-muted-light)" }}>
+            Add-ons · Billed at actual cost
+          </p>
+          <div className="space-y-1.5">
+            {costAddons.map((a) => (
+              <div key={a} className="flex items-start gap-1.5">
+                <span className="text-xs mt-0.5" style={{ color: plan.highlight ? "rgba(253,246,236,0.35)" : "rgba(150,120,70,0.7)" }}>+</span>
+                <span className="text-xs" style={{ color: plan.highlight ? "rgba(253,246,236,0.55)" : "var(--color-text-muted-light)" }}>{a}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* CTA */}
       <Link href="/register"
