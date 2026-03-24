@@ -44,6 +44,9 @@ export default function Navbar() {
     { href: "/partners", label: "Partners" },
     { href: "/pricing", label: "Pricing" },
     { href: "/franchise", label: "Franchise" },
+    { href: "/blog", label: "Blog" },
+    // { href: "/team", label: "Team" }, // hidden — coming soon
+    { href: "/careers", label: "Careers" },
     { href: "/download-app", label: "Get App" },
   ];
 

@@ -12,6 +12,9 @@ import {
   Instagram,
   Linkedin,
   Youtube,
+  Users,
+  Briefcase,
+  BookOpen,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -19,6 +22,9 @@ export default function Footer() {
   const footerLinks = {
     company: [
       { name: "About us", href: "/about-us", icon: Globe },
+      { name: "Our Team", href: "/team", icon: Users },
+      { name: "Careers", href: "/careers", icon: Briefcase },
+      { name: "Blog & Insights", href: "/blog", icon: BookOpen },
       { name: "FAQ's", href: "/faq", icon: HelpCircle },
       { name: "Contact & Support", href: "/contact-us", icon: Phone },
     ],
