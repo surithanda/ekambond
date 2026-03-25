@@ -1,466 +1,260 @@
 "use client";
-import React, { useState } from "react";
-import {
-  Shield,
-  Lock,
-  Eye,
-  Database,
-  Globe,
-  UserCheck,
-  FileText,
-  Bell,
-} from "lucide-react";
+import Link from "next/link";
+
+const EFFECTIVE_DATE = "March 24, 2026";
+const COMPANY_NAME = "EkamBond Matrimony Enterprise Services LLC";
+const COMPANY_SHORT = "EkamBond";
+const CONTACT_EMAIL = "privacy@ekambond.com";
+const DPO_EMAIL = "dpo@ekambond.com";
+
+const sections = [
+  {
+    id: "overview",
+    title: "1. Overview & Who We Are",
+    content: `${COMPANY_NAME} ("${COMPANY_SHORT}", "we", "us", "our") operates a Business-to-Business (B2B) white-label matrimonial technology platform. We provide software infrastructure, APIs, admin tools, and AI-powered matchmaking technology to registered business Partners — organizations such as marriage bureaus, community trusts, and professional matchmakers — who use our Platform to run their own branded matrimonial services.
+
+This Privacy Policy describes how ${COMPANY_SHORT} collects, uses, stores, and protects personal data in connection with:
+(a) Partners who register and operate the Platform, and
+(b) our own corporate operations, website visitors, and business communications.
+
+This Privacy Policy does NOT govern how Partners process the personal data of their End Users (matrimonial platform members). Each Partner is an independent data controller for their End Users' data. End Users should refer to the privacy policy of the specific Partner platform they have enrolled with for information on how their data is handled.`,
+  },
+  {
+    id: "data-controller",
+    title: "2. Data Controller vs. Data Processor",
+    content: `2.1 ${COMPANY_SHORT} as Data Controller: When we collect data directly from Partners, website visitors, or in connection with our own business operations, ${COMPANY_SHORT} acts as the data controller — meaning we determine the purpose and means of processing.
+
+2.2 ${COMPANY_SHORT} as Data Processor: When End User data is stored on the Platform on behalf of a Partner, ${COMPANY_SHORT} acts solely as a data processor, processing that data only on the documented instructions of the Partner. In this capacity:
+• We do not own, exploit, or make independent decisions regarding End User personal data.
+• We have no direct responsibility or liability to End Users for how their data is used by the Partner.
+• All rights, obligations, and accountability to End Users rests with the Partner as data controller.
+
+2.3 No Ownership of End User Profiles: ${COMPANY_SHORT} expressly declares that it has no ownership rights over any matrimonial profile or personal data submitted by End Users to a Partner's platform. This data belongs to the End User and is held in trust by the Partner.`,
+  },
+  {
+    id: "what-we-collect",
+    title: "3. Data We Collect (About Partners & Website Visitors)",
+    content: `3.1 Partner Registration Data:
+When organizations register as Partners, we collect:
+• Business name, type, and registration details.
+• Contact person name, title, email address, and phone number.
+• Business address and operational jurisdiction(s).
+• Payment and billing information (processed via Stripe, Inc. — see Section 6).
+• Correspondence and communications related to onboarding and support.
+
+3.2 Platform Usage Data:
+We collect technical and operational data when Partners use the admin portal, including:
+• Login timestamps, IP addresses, and device identifiers.
+• Feature usage logs and admin actions for security and auditing.
+• Performance metrics and error logs.
+
+3.3 Website Visitor Data:
+When individuals visit www.ekambond.com, we may collect:
+• Browser type, operating system, and device information.
+• Pages visited, time spent, and referral source (via analytics tools).
+• IP address (anonymised where technically possible).
+• Enquiry form submissions and contact details voluntarily provided.
+
+3.4 What We Do NOT Collect Directly:
+${COMPANY_SHORT} does not collect, store, or process matrimonial profile data, photographs, personal preference data, or any sensitive personal information of End Users directly. Such data flows directly between End Users and the Partner's platform and is managed by the Partner as data controller.`,
+  },
+  {
+    id: "how-we-use-data",
+    title: "4. How We Use Data",
+    content: `We use the data described in Section 3 for the following purposes:
+
+4.1 Service Delivery: To provision, operate, maintain, and improve the EkamBond Platform and to fulfill our contractual obligations to Partners.
+
+4.2 Billing & Payments: To process Partner subscription payments, issue invoices, and maintain financial records as required by law.
+
+4.3 Security & Fraud Prevention: To detect, investigate, and prevent unauthorized access, security breaches, and fraudulent activity on the Platform.
+
+4.4 Legal Compliance: To comply with applicable laws, regulations, court orders, and law enforcement requests, including data retention obligations.
+
+4.5 Communication & Support: To respond to Partner enquiries, provide technical support, send operational notices, and communicate updates to these policies or the Platform.
+
+4.6 Analytics & Improvement: To analyse aggregated, anonymised usage patterns to improve the functionality and performance of the Platform.
+
+4.7 Marketing (Opt-in Only): To send marketing communications to Partners or prospective Partners who have explicitly consented to receive such communications. Recipients may withdraw consent at any time by clicking 'Unsubscribe' or emailing ${CONTACT_EMAIL}.`,
+  },
+  {
+    id: "end-user-data",
+    title: "5. End User Data — Partner Responsibility",
+    content: `5.1 As stated in Section 2, End User personal data processed on the Platform is the responsibility of the relevant Partner. ${COMPANY_SHORT} processes this data as a data processor under the terms of the Data Processing Agreement (DPA) incorporated into the Partner Agreement.
+
+5.2 Data Isolation: Each Partner's End User data is stored in a logically isolated partition. No data from one Partner's platform is shared with, accessible to, or processed on behalf of another Partner.
+
+5.3 No Exploitation: ${COMPANY_SHORT} will never:
+• Use End User personal data for its own marketing, profiling, or commercial purposes.
+• Sell End User personal data to any third party.
+• Combine End User data across Partners.
+• Access End User data except as required to provide technical support or as instructed in writing by the Partner.
+
+5.4 Sub-processors: ${COMPANY_SHORT} may engage third-party service providers (sub-processors) to assist in providing the Platform (e.g., cloud hosting, email delivery, analytics). All sub-processors are contractually bound to process data only as instructed by ${COMPANY_SHORT} and with appropriate security measures. A list of current sub-processors is available to Partners upon request.
+
+5.5 Misuse by End Users: ${COMPANY_SHORT} has no mechanism to prevent, monitor, or control how End Users may misuse information they access through a Partner's platform (e.g., unauthorized sharing of profile details, contact information, or photographs). This responsibility lies with the Partner. ${COMPANY_SHORT} accepts no liability for harm arising from misuse of End User information by other End Users or third parties.`,
+  },
+  {
+    id: "third-parties",
+    title: "6. Third-Party Services & Data Sharing",
+    content: `We do not sell personal data. We may share data with third parties only in the following circumstances:
+
+6.1 Stripe, Inc.: Payment processing is handled by Stripe, Inc. Partner payment card details are not stored by ${COMPANY_SHORT}. Stripe's processing of payment data is governed by Stripe's own Privacy Policy (stripe.com/privacy).
+
+6.2 Cloud Infrastructure: The Platform is hosted on enterprise cloud infrastructure. Infrastructure providers process data only as directed by ${COMPANY_SHORT} and are bound by data processing agreements and industry-standard security certifications.
+
+6.3 Legal Obligations: We may disclose data to government authorities, law enforcement, or regulatory bodies where required by applicable law, a valid court order, or to protect the rights, property, or safety of ${COMPANY_SHORT}, its Partners, or the public. We will notify the affected Partner of such disclosures where legally permitted.
+
+6.4 Business Transfers: In the event of a merger, acquisition, or sale of all or substantially all of our assets, Partner data may be transferred to the acquiring entity. We will notify affected Partners sixty (60) days in advance and provide the option to terminate the Partner Agreement before any transfer.
+
+6.5 No Other Sharing: ${COMPANY_SHORT} will not share Partner or End User data with advertisers, data brokers, or other commercial third parties.`,
+  },
+  {
+    id: "international-transfers",
+    title: "7. International Data Transfers",
+    content: `${COMPANY_SHORT} operates from the United States. Data processed by ${COMPANY_SHORT} may be stored and processed in the United States or other countries where our infrastructure providers operate. Where data is transferred outside of the European Economic Area (EEA) or other regions with data protection laws, we will implement appropriate safeguards, including Standard Contractual Clauses (SCCs) as approved by the European Commission or equivalent mechanisms, to ensure the protection of personal data in accordance with applicable law.`,
+  },
+  {
+    id: "data-retention",
+    title: "8. Data Retention",
+    content: `8.1 Partner Data: We retain Partner business and account data for the duration of the Partner Agreement and for a period of seven (7) years thereafter, as required for financial, legal, and audit compliance purposes.
+
+8.2 End User Data: End User data stored on behalf of a Partner is retained in accordance with the Partner's instructions and applicable law. Upon termination of the Partner Agreement, End User data will be made available for export for thirty (30) days and then securely deleted within ninety (90) days, unless a longer retention period is required by law or mutually agreed.
+
+8.3 Request for Early Deletion: Partners may request early deletion of data subject to applicable legal retention requirements.`,
+  },
+  {
+    id: "security",
+    title: "9. Data Security",
+    content: `${COMPANY_SHORT} implements and maintains industry-standard technical and organizational security measures to protect personal data, including:
+
+• Encryption of data in transit (TLS 1.2/1.3) and at rest (AES-256).
+• Logical data isolation between Partner environments.
+• Role-based access controls and multi-factor authentication for admin access.
+• Regular security assessments, penetration testing, and vulnerability management.
+• Incident response protocols for detecting, containing, and notifying affected parties of data breaches.
+
+Notwithstanding the above, no security measure can be guaranteed to be 100% effective, and ${COMPANY_SHORT} cannot warrant absolute security of data transmitted over the internet.`,
+  },
+  {
+    id: "rights",
+    title: "10. Your Rights",
+    content: `10.1 Rights of Partners: As data subjects in relation to their own personal data (e.g., contact persons' information), Partners and their authorized representatives may exercise the following rights subject to applicable law:
+• Right of Access: Request confirmation of what data we hold about you.
+• Right to Rectification: Request correction of inaccurate or incomplete data.
+• Right to Erasure ("Right to be Forgotten"): Request deletion of your personal data, subject to legal retention obligations.
+• Right to Restriction: Request limitation of processing in certain circumstances.
+• Right to Portability: Request a copy of your data in a structured, machine-readable format.
+• Right to Object: Object to processing based on legitimate interests.
+• Right to Withdraw Consent: Where processing is based on consent, withdraw it at any time.
+
+10.2 How to Exercise Rights: Submit requests to ${DPO_EMAIL}. We will respond within thirty (30) days.
+
+10.3 End User Rights: End Users seeking to exercise data rights should contact the Partner whose platform they are a member of. ${COMPANY_SHORT} will cooperate with Partners in fulfilling such requests.`,
+  },
+  {
+    id: "cookies",
+    title: "11. Cookies & Tracking",
+    content: `Our corporate website (www.ekambond.com) uses essential cookies required for site functionality and, optionally, analytics cookies to understand visitor behaviour. We do not use advertising or tracking cookies.
+
+By continuing to use our website, you consent to our use of essential cookies. You may manage optional cookies through your browser settings at any time. Blocking cookies may affect certain website functionality.
+
+The EkamBond Partner admin portal uses session cookies strictly for authentication and security purposes. These cannot be disabled without affecting Platform functionality.`,
+  },
+  {
+    id: "children",
+    title: "12. Children's Privacy",
+    content: `The EkamBond Platform is designed for use by adult business entities and their adult members. We do not knowingly collect personal data from individuals under the age of 18. Partners are strictly prohibited from permitting minors to register as End Users on their matrimonial platforms. If we become aware that we have inadvertently processed personal data of a minor, we will delete such data promptly and notify the relevant Partner.`,
+  },
+  {
+    id: "changes",
+    title: "13. Changes to This Privacy Policy",
+    content: `We may update this Privacy Policy from time to time. When we make material changes, we will notify Partners by email and/or by a prominent notice on the Platform no less than fifteen (15) days before the changes take effect. The "Effective Date" at the top of this Policy will reflect the most recent revision. Continued use of the Platform after the effective date of any changes constitutes acceptance of the revised Privacy Policy.`,
+  },
+  {
+    id: "contact",
+    title: "14. Contact & Data Protection Officer",
+    content: `For all privacy enquiries, data subject rights requests, or to contact our Data Protection Officer:
+
+${COMPANY_NAME}
+Privacy / DPO Email: ${DPO_EMAIL}
+General Enquiries: ${CONTACT_EMAIL}
+Website: www.ekambond.com
+
+You also have the right to lodge a complaint with your local data protection supervisory authority.`,
+  },
+];
 
 export default function PrivacyPolicyClient() {
-  const [expandedSection, setExpandedSection] = useState<any>(null);
-
-  const sections = [
-    {
-      id: 1,
-      icon: Database,
-      title: "Information We Collect",
-      color: "accent",
-      items: [
-        {
-          label: "Personal Information",
-          desc: "Name, age, address, email, phone, photos, education, employment, horoscope data",
-        },
-        {
-          label: "Verification Data",
-          desc: "Job letters, criminal records, licenses (with your consent)",
-        },
-        {
-          label: "Usage Data",
-          desc: "Profile views, searches, favorites, interests, and analytics",
-        },
-        {
-          label: "Partner Data",
-          desc: "Business info, branding, API integration details",
-        },
-        {
-          label: "Device & Log Data",
-          desc: "IP address, browser, device identifiers, access logs",
-        },
-        {
-          label: "Cookies",
-          desc: "Session management, preferences, and analytics tracking",
-        },
-      ],
-    },
-    {
-      id: 2,
-      icon: Eye,
-      title: "How We Use Your Information",
-      color: "orange",
-      items: [
-        {
-          label: "Matchmaking",
-          desc: "AI recommendations, global searches, horoscope matching",
-        },
-        {
-          label: "Verification",
-          desc: "Profile authentication, background checks, trust building",
-        },
-        {
-          label: "Service Delivery",
-          desc: "Account management, events, subscriptions, support",
-        },
-        {
-          label: "Partners",
-          desc: "White-labeling, cross-border data flows, unified matching",
-        },
-        {
-          label: "Analytics",
-          desc: "Feature enhancement, usage monitoring, improvements",
-        },
-        {
-          label: "Communications",
-          desc: "Updates, notifications, marketing (with opt-out)",
-        },
-        {
-          label: "Legal",
-          desc: "Compliance, law enforcement requests, Terms enforcement",
-        },
-      ],
-    },
-    {
-      id: 3,
-      icon: Globe,
-      title: "Sharing Your Information",
-      color: "accent",
-      items: [
-        {
-          label: "With Matches",
-          desc: "Profile details shared based on visibility settings",
-        },
-        {
-          label: "Partners",
-          desc: "Data access via API for matchmaking purposes",
-        },
-        {
-          label: "Service Providers",
-          desc: "Verification firms, payment processors, analytics",
-        },
-        {
-          label: "Legal Requirements",
-          desc: "When required by law or to protect rights/safety",
-        },
-        {
-          label: "Business Transfers",
-          desc: "In case of merger, acquisition, or asset sale",
-        },
-      ],
-      note: "We do not sell your personal information",
-    },
-    {
-      id: 4,
-      icon: Lock,
-      title: "Data Security",
-      color: "orange",
-      items: [
-        {
-          label: "Protection",
-          desc: "Encryption, firewalls, secure servers for data safety",
-        },
-        {
-          label: "Privacy Controls",
-          desc: "Manage visibility, delete data, request access/export",
-        },
-        {
-          label: "Transparency",
-          desc: "Industry-standard security measures implemented",
-        },
-      ],
-      warning: "No system is 100% secure; you use Services at your own risk",
-    },
-    {
-      id: 5,
-      icon: Globe,
-      title: "International Transfers",
-      color: "accent",
-      items: [
-        {
-          label: "Global Platform",
-          desc: "Data may be transferred across borders",
-        },
-        { label: "Compliance", desc: "Follow applicable laws with safeguards" },
-        {
-          label: "Protection",
-          desc: "Standard contractual clauses for data protection",
-        },
-      ],
-    },
-    {
-      id: 6,
-      icon: Database,
-      title: "Data Retention",
-      color: "orange",
-      items: [
-        {
-          label: "Duration",
-          desc: "Data kept as needed for Services and legal obligations",
-        },
-        {
-          label: "Financial Records",
-          desc: "Retained for 7 years as required",
-        },
-        {
-          label: "Deletion",
-          desc: "Request deletion anytime (some data may remain in backups)",
-        },
-      ],
-    },
-    {
-      id: 7,
-      icon: UserCheck,
-      title: "Your Rights",
-      color: "accent",
-      items: [
-        {
-          label: "Access & Correct",
-          desc: "View and update your personal data",
-        },
-        { label: "Delete", desc: "Request deletion of your information" },
-        { label: "Opt Out", desc: "Unsubscribe from marketing communications" },
-        {
-          label: "GDPR Rights",
-          desc: "EU/UK users have portability and objection rights",
-        },
-      ],
-      contact: "privacy@ekambond.com",
-    },
-  ];
-
-  const features = [
-    { icon: Shield, label: "100% Verified", desc: "Complete profile checks" },
-    { icon: Lock, label: "Encrypted", desc: "Bank-level security" },
-    { icon: Eye, label: "Your Control", desc: "Manage visibility" },
-    { icon: FileText, label: "Transparent", desc: "Clear policies" },
-  ];
-
   return (
-    <div className="min-h-screen bg-primary">
-      <div className="relative overflow-hidden bg-gradient-to-br from-neutral via-secondary to-neutral">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-orange rounded-full blur-3xl"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-accent/20 rounded-3xl mb-8 backdrop-blur-sm">
-              <Shield className="w-12 h-12 text-accent" />
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-bold text-primary mb-6 tracking-tight">
-              Privacy Policy
-            </h1>
-            <p className="text-xl text-primary/80 max-w-3xl mx-auto mb-12">
-              Your privacy is our priority. Learn how we protect and manage your
-              data.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {features.map((feature, idx) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20"
-                  >
-                    <Icon className="w-5 h-5 text-accent" />
-                    <div className="text-left">
-                      <div className="text-primary font-semibold text-sm">
-                        {feature.label}
-                      </div>
-                      <div className="text-primary/60 text-xs">
-                        {feature.desc}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex items-center justify-center gap-6 text-primary/60 text-sm">
-              <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4" />
-                <span>Last Updated: October 07, 2025</span>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen" style={{ background: "var(--color-bg-warm)" }}>
+      {/* Header */}
+      <div className="py-16 px-4 text-center" style={{ background: "linear-gradient(135deg, #1A0A06 0%, #2D1208 100%)" }}>
+        <div className="max-w-4xl mx-auto">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+            style={{ background: "rgba(217,169,30,0.15)", border: "1px solid rgba(217,169,30,0.35)", color: "#D9A91E" }}>
+            Legal
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#FFFFFF" }}>
+            Privacy Policy
+          </h1>
+          <p className="text-base" style={{ color: "rgba(255,230,180,0.65)" }}>
+            Effective Date: {EFFECTIVE_DATE} &nbsp;·&nbsp; {COMPANY_NAME}
+          </p>
+          <p className="mt-4 text-sm max-w-2xl mx-auto" style={{ color: "rgba(255,230,180,0.55)" }}>
+            EkamBond is a B2B infrastructure provider. We are a data processor for Partner platforms. End Users should consult their Partner's own Privacy Policy.
+          </p>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <div className="mb-16 bg-gradient-to-br from-white to-surface/5 rounded-3xl p-8 lg:p-12 shadow-xl border border-surface/20">
-          <div className="flex items-start gap-6">
-            <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-              <Lock className="w-8 h-8 text-accent" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-secondary mb-4">
-                Our Commitment to You
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-4 py-14">
+        {/* Quick Nav */}
+        <div className="rounded-2xl p-6 mb-10" style={{ background: "rgba(255,255,255,0.88)", border: "1.5px solid rgba(200,150,60,0.18)" }}>
+          <p className="text-xs font-bold uppercase tracking-wider mb-4" style={{ color: "var(--brand-navy)" }}>Contents</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+            {sections.map((s) => (
+              <a key={s.id} href={`#${s.id}`}
+                className="text-sm hover:underline py-1"
+                style={{ color: "var(--brand-crimson)" }}>
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Key commitment box */}
+        <div className="rounded-2xl p-6 mb-10 border-l-4" style={{ background: "rgba(45,158,110,0.06)", borderColor: "#2D9E6E" }}>
+          <p className="font-bold mb-2" style={{ color: "#2D9E6E" }}>Our Core Privacy Commitment</p>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted-light)" }}>
+            ${COMPANY_SHORT} does not own, sell, or exploit any matrimonial profile data or End User personal information. We process End User data solely on behalf of our Partners, who are the data controllers. We will never use End User data for our own commercial purposes.
+          </p>
+        </div>
+
+        {/* Sections */}
+        <div className="space-y-10">
+          {sections.map((s) => (
+            <section key={s.id} id={s.id} className="scroll-mt-24">
+              <h2 className="text-xl font-bold mb-4 pb-3" style={{ color: "var(--color-text-on-light)", borderBottom: "2px solid rgba(200,150,60,0.2)" }}>
+                {s.title}
               </h2>
-              <p className="text-muted leading-relaxed text-lg">
-                EkamBond is committed to protecting your privacy. This Privacy
-                Policy explains how we collect, use, disclose, and safeguard
-                your information when you use our platform. By using our
-                Services, you consent to the practices described here.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="space-y-6">
-          {sections.map((section) => {
-            const Icon = section.icon;
-            const isExpanded = expandedSection === section.id;
-
-            return (
-              <div
-                key={section.id}
-                className={`
-          relative rounded-3xl border border-white/40 
-          backdrop-blur-xl bg-white/40 
-          shadow-[0_8px_32px_rgba(31,38,135,0.1)]
-          overflow-hidden transition-all duration-500
-          hover:shadow-[0_12px_40px_rgba(31,38,135,0.15)]
-        `}
-              >
-                {/* gradient shine */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-white/10 pointer-events-none" />
-
-                <button
-                  onClick={() =>
-                    setExpandedSection(isExpanded ? null : section.id)
-                  }
-                  className="w-full p-8 flex items-center justify-between text-left relative z-10 group"
-                >
-                  <div className="flex items-center gap-6">
-                    <div
-                      className={`
-                w-16 h-16 rounded-2xl flex items-center justify-center
-                bg-${section.color}/20 
-                shadow-inner backdrop-blur-lg
-                group-hover:bg-${section.color}/30
-                transition-colors duration-300
-              `}
-                    >
-                      <Icon className={`w-8 h-8 text-${section.color}`} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-[#2E2E2E] mb-1">
-                        {section.title}
-                      </h3>
-                      <p className="text-[#6B6B6B] text-sm">
-                        {section.items.length}{" "}
-                        {section.items.length === 1 ? "item" : "items"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`w-10 h-10 rounded-full bg-white/60 border border-white/40 backdrop-blur-lg flex items-center justify-center transition-transform ${
-                      isExpanded ? "rotate-180" : ""
-                    }`}
-                  >
-                    <svg
-                      className="w-6 h-6 text-[#2E2E2E]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </div>
-                </button>
-
-                {isExpanded && (
-                  <div className="px-8 pb-8 animate-slide-down relative z-10">
-                    <div className="rounded-2xl p-6 space-y-4 bg-white/60 backdrop-blur-xl border border-white/30 shadow-inner shadow-white/10">
-                      {section.items.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-white/70 hover:bg-white/80 border border-white/50 backdrop-blur-md transition-all duration-300"
-                        >
-                          <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></div>
-                          <div>
-                            <h4 className="font-semibold text-[#2E2E2E] mb-1">
-                              {item.label}
-                            </h4>
-                            <p className="text-[#6B6B6B] text-sm leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-
-                      {section.note && (
-                        <div className="mt-4 p-4 bg-[#F7E7D3]/70 rounded-xl border-l-4 border-[#EAB676]">
-                          <p className="text-[#2E2E2E] font-semibold text-sm">
-                            {section.note}
-                          </p>
-                        </div>
-                      )}
-
-                      {section.warning && (
-                        <div className="mt-4 p-4 bg-[#FFF1E6]/70 rounded-xl border-l-4 border-[#F59E0B]">
-                          <p className="text-[#5A3E1B] text-sm">
-                            {section.warning}
-                          </p>
-                        </div>
-                      )}
-
-                      {section.contact && (
-                        <div className="mt-4 pt-4 border-t border-white/50">
-                          <p className="text-[#6B6B6B] text-sm">
-                            Contact us at{" "}
-                            <a
-                              href={`mailto:${section.contact}`}
-                              className="text-[#1B3A6E] font-semibold hover:underline"
-                            >
-                              {section.contact}
-                            </a>{" "}
-                            to exercise your rights
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
+              <div className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--color-text-muted-light)" }}>
+                {s.content}
               </div>
-            );
-          })}
+            </section>
+          ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-16">
-          <div className="bg-gradient-to-br from-white to-surface/5 rounded-3xl p-8 shadow-lg border border-surface/20">
-            <div className="w-12 h-12 bg-orange/10 rounded-xl flex items-center justify-center mb-4">
-              <Bell className="w-6 h-6 text-orange" />
-            </div>
-            <h3 className="text-xl font-bold text-secondary mb-3">
-              Children's Privacy
-            </h3>
-            <p className="text-muted leading-relaxed">
-              Our Services are not for individuals under 18. We do not knowingly
-              collect data from children.
-            </p>
-          </div>
-          <div className="bg-gradient-to-br from-white to-surface/5 rounded-3xl p-8 shadow-lg border border-surface/20">
-            <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
-              <FileText className="w-6 h-6 text-accent" />
-            </div>
-            <h3 className="text-xl font-bold text-secondary mb-3">
-              Policy Updates
-            </h3>
-            <p className="text-muted leading-relaxed">
-              We may update this Policy. Changes are posted here; continued use
-              constitutes acceptance.
-            </p>
-          </div>
-        </div>
-        <div className="mt-16 bg-gradient-to-br from-secondary via-neutral to-secondary rounded-3xl p-8 lg:p-12 text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-accent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange rounded-full blur-3xl"></div>
-          </div>
-          <div className="relative">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-accent/20 rounded-2xl mb-6">
-              <Shield className="w-10 h-10 text-accent" />
-            </div>
-            <h3 className="text-3xl font-bold text-primary mb-4">
-              Have Privacy Questions?
-            </h3>
-            <p className="text-primary/80 mb-8 max-w-2xl mx-auto text-lg">
-              Our privacy team is here to answer your questions and address your
-              concerns about how we handle your data.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:privacy@ekambond.com"
-                className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-secondary px-8 py-4 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl"
-              >
-                <Lock className="w-5 h-5" />
-                Privacy Team
-              </a>
-              <a
-                href="mailto:support@ekambond.com"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-primary border border-white/20 px-8 py-4 rounded-full font-semibold transition-all backdrop-blur-sm"
-              >
-                <Bell className="w-5 h-5" />
-                General Support
-              </a>
-            </div>
-          </div>
+        {/* Footer note */}
+        <div className="mt-14 pt-8 border-t text-center" style={{ borderColor: "rgba(200,150,60,0.2)" }}>
+          <p className="text-sm" style={{ color: "var(--color-text-muted-light)" }}>
+            Privacy questions? Email{" "}
+            <a href={`mailto:${DPO_EMAIL}`} style={{ color: "var(--brand-crimson)" }}>{DPO_EMAIL}</a>
+            {" "}· See also our{" "}
+            <Link href="/terms-conditions" style={{ color: "var(--brand-crimson)" }}>Terms &amp; Conditions</Link>
+          </p>
         </div>
       </div>
-      <style>{`
-        @keyframes slide-down {
-          from { opacity: 0; max-height: 0; }
-          to { opacity: 1; max-height: 2000px; }
-        }
-        .animate-slide-down { animation: slide-down 0.3s ease-out; }
-      `}</style>
     </div>
   );
 }

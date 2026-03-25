@@ -158,15 +158,17 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"
+              className="flex flex-wrap xl:flex-nowrap items-center gap-x-3 gap-y-1 text-sm"
               style={{ color: "var(--color-text-muted-dark)" }}
             >
-              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
-              No credit card required &nbsp;•&nbsp;
-              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
-              Full admin portal included &nbsp;•&nbsp;
-              <CheckCircle2 className="w-4 h-4" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
-              live in 1–2 weeks
+              <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              <span className="whitespace-nowrap">No credit card required</span>
+              <span className="opacity-40">•</span>
+              <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              <span className="whitespace-nowrap">Full admin portal included</span>
+              <span className="opacity-40">•</span>
+              <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent-success, #2D9E6E)" }} />
+              <span className="whitespace-nowrap">live in 1–2 weeks</span>
             </motion.div>
           </div>
 

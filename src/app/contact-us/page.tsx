@@ -1,12 +1,12 @@
+import { Metadata } from "next";
+import ContactPage from "@/components/sections/contactus/ContactPage";
 
-import ContactUs from "@/components/sections/contactus/contact-us";
-
-export const metadata = {
-  title: "Contact EkamBond Matrimony | Support & Assistance",
+export const metadata: Metadata = {
+  title: "Contact Us | EkamBond Partner Network",
   description:
-    "Get in touch with EkamBond Matrimony for complimentary technical support, premium features like priority onboarding and advanced analytics, or inquiries about our matchmaking and verification services.",
+    "Get in touch with EkamBond. Call us, message us on WhatsApp, or fill out the contact form and our team will respond within 24 hours.",
 };
 
-export default function Page() {
-  return <ContactUs />;
+export default function Contact() {
+  return <ContactPage />;
 }

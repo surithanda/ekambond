@@ -12,25 +12,39 @@ import {
   Instagram,
   Linkedin,
   Youtube,
-  Users,
   Briefcase,
   BookOpen,
+  Layers,
+  DollarSign,
+  Smartphone,
+  Users,
+  Store,
+  BarChart3,
 } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
   const footerLinks = {
+    platform: [
+      { name: "Features", href: "/features", icon: Layers },
+      { name: "Services", href: "/services", icon: BarChart3 },
+      { name: "Pricing", href: "/pricing", icon: DollarSign },
+      { name: "Get the App", href: "/download-app", icon: Smartphone },
+    ],
+    partners: [
+      { name: "Become a Partner", href: "/register", icon: Users },
+      { name: "Partner Journey", href: "/partners", icon: Store },
+      { name: "Franchise", href: "/franchise", icon: Globe },
+    ],
     company: [
-      { name: "About us", href: "/about-us", icon: Globe },
-      { name: "Our Team", href: "/team", icon: Users },
       { name: "Careers", href: "/careers", icon: Briefcase },
       { name: "Blog & Insights", href: "/blog", icon: BookOpen },
       { name: "FAQ's", href: "/faq", icon: HelpCircle },
       { name: "Contact & Support", href: "/contact-us", icon: Phone },
     ],
     legal: [
-      { name: "Terms & Condition", href: "/terms-conditions", icon: FileText },
-      { name: "Privacy policy", href: "/privacy-policy", icon: Shield },
+      { name: "Terms & Conditions", href: "/terms-conditions", icon: FileText },
+      { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
     ],
   };
 
@@ -57,10 +71,10 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Links + Social */}
         <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
 
-            {/* Brand */}
-            <div className="md:col-span-1">
+            {/* Brand + Social — left column, spans 2 cols on md */}
+            <div className="col-span-2">
               <div className="flex items-center gap-3 mb-4">
                 <div className="relative w-12 h-12 flex-shrink-0">
                   <Image src="/images/ekambond-logo.png" alt="EkamBond Logo" fill className="object-contain" />
@@ -70,46 +84,8 @@ export default function Footer() {
                   <p className="text-xs tracking-widest uppercase font-semibold mt-0.5" style={{ color: "var(--brand-gold)" }}>Partner Network</p>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted-light)" }}>
-                The complete B2B platform for matrimony organizations.
-              </p>
-            </div>
-
-            {/* Company Links */}
-            <div>
-              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <a href={link.href} className="flex items-center gap-2 text-sm transition-colors hover:opacity-80"
-                      style={{ color: "var(--color-text-muted-light)" }}>
-                      <link.icon className="w-3.5 h-3.5 opacity-60" />
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal Links */}
-            <div>
-              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Legal</h3>
-              <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
-                  <li key={link.name}>
-                    <a href={link.href} className="flex items-center gap-2 text-sm transition-colors hover:opacity-80"
-                      style={{ color: "var(--color-text-muted-light)" }}>
-                      <link.icon className="w-3.5 h-3.5 opacity-60" />
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Social */}
-            <div>
-              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Follow Us</h3>
+              {/* Follow Us — below brand */}
+              <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--brand-navy)" }}>Follow Us</p>
               <div className="flex flex-wrap gap-2 mb-5">
                 {socialLinks.map((social, idx) => (
                   <a key={idx} href={social.href} aria-label={social.label}
@@ -130,14 +106,62 @@ export default function Footer() {
               </a>
             </div>
 
+            {/* Platform Links */}
+            <div>
+              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Platform</h3>
+              <ul className="space-y-3">
+                {footerLinks.platform.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} className="flex items-center gap-2 text-sm transition-colors hover:opacity-80"
+                      style={{ color: "var(--color-text-muted-light)" }}>
+                      <link.icon className="w-3.5 h-3.5 opacity-60" />
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Partners Links */}
+            <div>
+              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Partners</h3>
+              <ul className="space-y-3">
+                {footerLinks.partners.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} className="flex items-center gap-2 text-sm transition-colors hover:opacity-80"
+                      style={{ color: "var(--color-text-muted-light)" }}>
+                      <link.icon className="w-3.5 h-3.5 opacity-60" />
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Links */}
+            <div>
+              <h3 className="text-xs font-semibold mb-5 uppercase tracking-wider" style={{ color: "var(--brand-navy)" }}>Company</h3>
+              <ul className="space-y-3">
+                {footerLinks.company.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} className="flex items-center gap-2 text-sm transition-colors hover:opacity-80"
+                      style={{ color: "var(--color-text-muted-light)" }}>
+                      <link.icon className="w-3.5 h-3.5 opacity-60" />
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* Dark bottom bar — matches logo warm palette */}
+      {/* Dark bottom bar */}
       <div className="relative" style={{ background: "linear-gradient(135deg, #1A0A06 0%, #2D1208 50%, #1A0A06 100%)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 flex-wrap">
             <p className="text-xs" style={{ color: "rgba(255,230,180,0.55)" }}>
               © {new Date().getFullYear()}{" "}
               <span className="font-semibold" style={{ color: "rgba(255,243,220,0.85)" }}>
@@ -145,6 +169,16 @@ export default function Footer() {
               </span>
               . All rights reserved.
             </p>
+            {/* Legal links in bottom bar */}
+            <div className="flex items-center gap-4">
+              {footerLinks.legal.map((link) => (
+                <a key={link.name} href={link.href}
+                  className="text-xs hover:underline transition-colors"
+                  style={{ color: "rgba(255,230,180,0.55)" }}>
+                  {link.name}
+                </a>
+              ))}
+            </div>
             <div className="flex items-center gap-2">
               <span className="text-xs" style={{ color: "rgba(255,230,180,0.45)" }}>Technical Partner:</span>
               <span

@@ -16,7 +16,7 @@ const PARTNERS = [
     logo: "/images/chaturvarnam-1-logo.png",
     name: "Chaturvarnam",
     tagline: "Community-driven matrimony rooted in shared values",
-    location: "🇺🇸 United States",
+    location: "🇮🇳 India / 🇺🇸 United States",
     desc: "Chaturvarnam builds culturally meaningful connections for their community, with EkamBond handling all technology so they focus on people.",
   },
 ];

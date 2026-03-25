@@ -105,14 +105,14 @@ const journeySteps = [
 
 // ─── Comparison ───────────────────────────────────────────────────────────────
 const comparisonRows = [
-  { aspect: "Time to launch", ekam: "1–2 weeks", inhouse: "6–18 months", generic: "2–4 weeks" },
-  { aspect: "Development cost", ekam: "Zero", inhouse: "$50,000–$300,000", generic: "Setup + hidden fees" },
-  { aspect: "AI-powered search", ekam: "✅ Built-in NLP", inhouse: "❌ Build from scratch", generic: "❌ Not available" },
-  { aspect: "White-label branding", ekam: "✅ Full control", inhouse: "✅ Custom build", generic: "⚠️ Limited / co-branded" },
-  { aspect: "Admin portal", ekam: "✅ Full-featured", inhouse: "Custom built", generic: "⚠️ Basic" },
-  { aspect: "Stripe billing", ekam: "✅ Integrated", inhouse: "❌ Custom integration", generic: "⚠️ Platform-controlled" },
-  { aspect: "Background verification", ekam: "✅ Built-in workflow", inhouse: "❌ Not included", generic: "❌ Not available" },
-  { aspect: "Ongoing updates", ekam: "✅ Automatic", inhouse: "❌ Paid re-development", generic: "⚠️ Platform's roadmap" },
+  { aspect: "Time to launch", ekam: "1–2 weeks", inhouse: "6–18 months" },
+  { aspect: "Development cost", ekam: "Zero", inhouse: "$50,000–$300,000" },
+  { aspect: "AI-powered search", ekam: "✅ Built-in NLP", inhouse: "❌ Build from scratch" },
+  { aspect: "White-label branding", ekam: "✅ Full control", inhouse: "✅ Custom build" },
+  { aspect: "Admin portal", ekam: "✅ Full-featured", inhouse: "Custom built" },
+  { aspect: "Stripe billing", ekam: "✅ Integrated", inhouse: "❌ Custom integration" },
+  { aspect: "Background verification", ekam: "✅ Built-in workflow", inhouse: "❌ Not included" },
+  { aspect: "Ongoing updates", ekam: "✅ Automatic", inhouse: "❌ Paid re-development" },
 ];
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
@@ -681,20 +681,18 @@ export default function PartnersPage() {
           </div>
           <div className="rounded-3xl overflow-hidden" style={{ border: "1.5px solid rgba(200,150,60,0.20)", background: "rgba(255,255,255,0.92)" }}>
             {/* Header */}
-            <div className="grid grid-cols-4 px-6 py-4"
+            <div className="grid grid-cols-3 px-6 py-4"
               style={{ background: "linear-gradient(135deg, #1A0A06 0%, #2D1208 100%)", borderBottom: "1px solid rgba(217,169,30,0.2)" }}>
               <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--brand-gold)" }}>Feature</p>
               <p className="text-xs font-bold uppercase tracking-wider text-center" style={{ color: "var(--brand-gold)" }}>EkamBond</p>
               <p className="text-xs font-bold uppercase tracking-wider text-center" style={{ color: "rgba(255,255,255,0.5)" }}>Build In-House</p>
-              <p className="text-xs font-bold uppercase tracking-wider text-center" style={{ color: "rgba(255,255,255,0.5)" }}>Generic Platform</p>
             </div>
             {comparisonRows.map((row, i) => (
-              <div key={row.aspect} className="grid grid-cols-4 px-6 py-4 items-center"
+              <div key={row.aspect} className="grid grid-cols-3 px-6 py-4 items-center"
                 style={{ background: i % 2 === 0 ? "rgba(253,246,236,0.5)" : "rgba(255,255,255,0.5)", borderBottom: i < comparisonRows.length - 1 ? "1px solid rgba(200,150,60,0.08)" : "none" }}>
                 <p className="text-sm font-semibold" style={{ color: "var(--color-text-on-light)" }}>{row.aspect}</p>
                 <p className="text-sm font-bold text-center" style={{ color: "#2D9E6E" }}>{row.ekam}</p>
                 <p className="text-sm text-center" style={{ color: "var(--color-text-muted-light)" }}>{row.inhouse}</p>
-                <p className="text-sm text-center" style={{ color: "var(--color-text-muted-light)" }}>{row.generic}</p>
               </div>
             ))}
           </div>

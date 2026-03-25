@@ -77,13 +77,13 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out"
       style={getNavbarStyle()}
     >
-      <div className="px-4 sm:px-6 lg:px-12 py-2 lg:py-3">
-        <div className="max-w-full mx-auto flex items-center justify-between">
+      <div className="px-4 sm:px-6 lg:px-8 xl:px-12 py-2 lg:py-3">
+        <div className="max-w-full mx-auto flex items-center justify-between gap-2">
 
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 z-50">
             {/* Logo — enlarged */}
-            <div className="relative w-14 h-14 lg:w-20 lg:h-20 flex-shrink-0">
+            <div className="relative w-12 h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 flex-shrink-0">
               <Image
                 src="/images/ekambond-logo.png"
                 alt="EkamBond Logo"
@@ -94,7 +94,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col leading-none gap-0.5" style={{ width: "fit-content" }}>
               <span
-                className="text-xl lg:text-3xl font-extrabold whitespace-nowrap"
+                className="text-lg lg:text-2xl xl:text-3xl font-extrabold whitespace-nowrap"
                 style={{ color: "#1B3A6E", letterSpacing: "-0.02em" }}
               >
                 EkamBond
@@ -115,45 +115,47 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div
-            className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 rounded-full px-10 py-3 transition-all duration-500 ease-out"
-            style={getDesktopNavStyle()}
+            className="hidden lg:flex flex-1 justify-center mx-2 xl:mx-4"
           >
-            <div className="flex items-center space-x-9">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm tracking-wide transition-all duration-300 relative group pb-0.5 font-medium`}
-                  style={{
-                    // Nav links sit inside a white pill — always use dark colors
-                    color: isActive(link.href) ? "#1B3A6E" : "#4B5563",
-                  }}
-                >
-                  {link.label}
-                  {/* Gold underline on active */}
-                  <span
-                    className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                      isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                    style={{ background: "#D9A91E" }}
-                  />
-                </Link>
-              ))}
+            <div
+              className="flex items-center rounded-full px-4 xl:px-8 py-2.5 transition-all duration-500 ease-out overflow-x-auto max-w-full"
+              style={getDesktopNavStyle()}
+            >
+              <div className="flex items-center gap-3 xl:gap-5 2xl:gap-7 flex-nowrap">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-xs xl:text-sm tracking-wide transition-all duration-300 relative group pb-0.5 font-medium whitespace-nowrap flex-shrink-0`}
+                    style={{
+                      color: isActive(link.href) ? "#1B3A6E" : "#4B5563",
+                    }}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                        isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                      style={{ background: "#D9A91E" }}
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
             <Link
               href="/register"
-              className="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block"
+              className="px-3 xl:px-4 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block whitespace-nowrap"
               style={{ background: "rgba(200,48,42,0.10)", color: "#C8302A", border: "1.5px solid rgba(200,48,42,0.25)" }}
             >
               Register
             </Link>
             <Link
               href="/register"
-              className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 rounded-full text-xs xl:text-sm font-semibold transition-all duration-300 hover:scale-105 inline-block whitespace-nowrap"
               style={{
                 background: "linear-gradient(135deg, #1B3A6E 0%, #3A5FA0 100%)",
                 color: "#FFFFFF",
