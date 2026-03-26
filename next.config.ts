@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   reactStrictMode: true,
-  swcMinify:true,
   images:{
+        unoptimized: true,
         domains: ["placehold.co", "randomuser.me"],
     remotePatterns:[
       {

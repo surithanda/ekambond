@@ -1,21 +1,10 @@
-import HeroSection from '@/components/sections/services/hero-section'
-import ServicesNewsletter from '@/components/sections/services/service-newsletter'
-import ServicesSection from '@/components/sections/services/services-section'
-import React from 'react'
+import ServicesPage from '@/components/sections/services/ServicesPage';
 
 export const metadata = {
-  title: "EkamBond Matrimony Services | Verification & Matchmaking Assistance",
-  description: "Learn about EkamBond's comprehensive services such as educational and employment checks, AI-based match filtering, website white labeling, match maker support, event management, and partners onboarding for seamless matrimonial solutions.",
+  title: "EkamBond Services | White-Label Matrimony Platform Services",
+  description: "Everything you need to run a matrimony business — white-label platform, AI matchmaking, background verification, member billing, analytics, and full onboarding support.",
 };
 
-const Services = () => {
-  return (
-    <div>
-      <HeroSection />
-      <ServicesSection />
-      <ServicesNewsletter />
-    </div>
-  )
+export default function Services() {
+  return <ServicesPage />;
 }
-
-export default Services

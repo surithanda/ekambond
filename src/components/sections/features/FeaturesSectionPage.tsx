@@ -60,7 +60,7 @@ export default function FeaturesSectionPage() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.strokeStyle = '#EA580C'; // Orange-600
+      ctx.strokeStyle = '#D9A91E'; // Orange-600
       ctx.lineWidth = 0.3;
       
       for (let i = 0; i < particles.length; i++) {
@@ -135,7 +135,7 @@ export default function FeaturesSectionPage() {
       <motion.div 
         className="absolute w-[500px] h-[500px] rounded-full opacity-20 blur-2xl"
         style={{ 
-          background: 'radial-gradient(circle, #EA580C 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #D9A91E 0%, transparent 70%)',
           x: x1,
           y: y1,
           top: '15%',
@@ -146,7 +146,7 @@ export default function FeaturesSectionPage() {
       <motion.div 
         className="absolute w-[400px] h-[400px] rounded-full opacity-15 blur-2xl"
         style={{ 
-          background: 'radial-gradient(circle, #DC2626 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #1B3A6E 0%, transparent 70%)',
           x: x2,
           y: y2,
           bottom: '15%',

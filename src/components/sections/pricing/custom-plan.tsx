@@ -20,11 +20,11 @@ export default function CustomPlan() {
 
   const options = [
     { id: "crm", name: "CRM Integration", icon: Users, price: 15, color: "#D9A91E" },
-    { id: "api", name: "API Access", icon: Settings, price: 20, color: "#C84B31" },
+    { id: "api", name: "API Access", icon: Settings, price: 20, color: "#1B3A6E" },
     { id: "support", name: "Extended Support", icon: Shield, price: 25, color: "#D9A91E" },
-    { id: "custom", name: "System Customization", icon: Zap, price: 30, color: "#C84B31" },
+    { id: "custom", name: "System Customization", icon: Zap, price: 30, color: "#1B3A6E" },
     { id: "sla", name: "SLA Metric", icon: TrendingUp, price: 20, color: "#D9A91E" },
-    { id: "extra", name: "Extra Services", icon: Plus, price: 15, color: "#C84B31" },
+    { id: "extra", name: "Extra Services", icon: Plus, price: 15, color: "#1B3A6E" },
   ];
 
   const toggleOption = (optionId: string) => {
@@ -67,7 +67,7 @@ export default function CustomPlan() {
         <motion.div
           className="absolute w-[600px] h-[600px] rounded-full opacity-15"
           style={{
-            background: 'radial-gradient(circle, #C84B31 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #1B3A6E 0%, transparent 70%)',
             right: '-10%',
             bottom: '10%',
           }}
@@ -86,7 +86,7 @@ export default function CustomPlan() {
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full"
             style={{
-              backgroundColor: i % 2 === 0 ? '#D9A91E' : '#C84B31',
+              backgroundColor: i % 2 === 0 ? '#D9A91E' : '#1B3A6E',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -118,7 +118,7 @@ export default function CustomPlan() {
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full mb-6 relative"
           style={{ 
-            background: 'linear-gradient(135deg, #D9A91E 0%, #C84B31 100%)',
+            background: 'linear-gradient(135deg, #D9A91E 0%, #1B3A6E 100%)',
             boxShadow: '0 10px 40px rgba(217, 169, 30, 0.4)'
           }}
         >
@@ -129,7 +129,7 @@ export default function CustomPlan() {
               opacity: [0.5, 0.8, 0.5],
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            style={{ background: 'linear-gradient(135deg, #D9A91E, #C84B31)' }}
+            style={{ background: 'linear-gradient(135deg, #D9A91E, #1B3A6E)' }}
           />
           <motion.div
             animate={{ rotate: 360 }}
@@ -140,9 +140,9 @@ export default function CustomPlan() {
           <span className="text-white font-bold text-sm tracking-wide relative z-10">CUSTOM SOLUTION</span>
         </motion.div>
 
-        <h2 className="text-5xl md:text-7xl font-black mb-6" style={{ color: '#1A1A1A' }}>
+        <h2 className="text-5xl md:text-7xl font-black mb-6" style={{ color: '#0F2145' }}>
           Build Your
-          <span className="block mt-2 bg-gradient-to-r from-[#D9A91E] via-[#C84B31] to-[#D9A91E] bg-clip-text text-transparent">
+          <span className="block mt-2 bg-gradient-to-r from-[#D9A91E] via-[#1B3A6E] to-[#D9A91E] bg-clip-text text-transparent">
             Perfect Plan
           </span>
         </h2>
@@ -162,7 +162,7 @@ export default function CustomPlan() {
         <motion.div 
           className="absolute inset-0 rounded-[2rem] blur-3xl opacity-30"
           style={{
-            background: 'linear-gradient(135deg, #D9A91E, #C84B31)',
+            background: 'linear-gradient(135deg, #D9A91E, #1B3A6E)',
           }}
           animate={{
             scale: [1, 1.05, 1],
@@ -175,7 +175,7 @@ export default function CustomPlan() {
         <div 
           className="relative rounded-[2rem] overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, #1A1A1A 0%, #242424 100%)',
+            background: 'linear-gradient(135deg, #0F2145 0%, #1B3A6E 100%)',
             boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.5)',
           }}
         >
@@ -184,16 +184,16 @@ export default function CustomPlan() {
             className="absolute inset-0 rounded-[2rem] pointer-events-none"
             style={{
               padding: '2px',
-              background: 'linear-gradient(135deg, #D9A91E, #C84B31, #D9A91E)',
+              background: 'linear-gradient(135deg, #D9A91E, #1B3A6E, #D9A91E)',
               WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
               WebkitMaskComposite: 'xor',
               maskComposite: 'exclude',
             }}
             animate={{
               background: [
-                'linear-gradient(135deg, #D9A91E, #C84B31, #D9A91E)',
-                'linear-gradient(225deg, #C84B31, #D9A91E, #C84B31)',
-                'linear-gradient(135deg, #D9A91E, #C84B31, #D9A91E)',
+                'linear-gradient(135deg, #D9A91E, #1B3A6E, #D9A91E)',
+                'linear-gradient(225deg, #1B3A6E, #D9A91E, #1B3A6E)',
+                'linear-gradient(135deg, #D9A91E, #1B3A6E, #D9A91E)',
               ],
             }}
             transition={{ duration: 3, repeat: Infinity }}
@@ -228,7 +228,7 @@ export default function CustomPlan() {
                 >
                   <motion.div
                     className="w-12 h-12 rounded-xl flex items-center justify-center relative"
-                    style={{ background: 'linear-gradient(135deg, #D9A91E, #C84B31)' }}
+                    style={{ background: 'linear-gradient(135deg, #D9A91E, #1B3A6E)' }}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -238,7 +238,7 @@ export default function CustomPlan() {
                         scale: [1, 1.3, 1],
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      style={{ background: 'linear-gradient(135deg, #D9A91E, #C84B31)' }}
+                      style={{ background: 'linear-gradient(135deg, #D9A91E, #1B3A6E)' }}
                     />
                     <Settings className="w-6 h-6 text-white relative z-10" />
                   </motion.div>
@@ -326,7 +326,7 @@ export default function CustomPlan() {
                                       exit={{ scale: 0, rotate: 180 }}
                                       transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                      <Check className="w-5 h-5" style={{ color: '#1A1A1A' }} strokeWidth={3} />
+                                      <Check className="w-5 h-5" style={{ color: '#0F2145' }} strokeWidth={3} />
                                     </motion.div>
                                   )}
                                 </AnimatePresence>
@@ -350,7 +350,7 @@ export default function CustomPlan() {
                 >
                   <motion.div
                     className="w-12 h-12 rounded-xl flex items-center justify-center relative"
-                    style={{ background: 'linear-gradient(135deg, #C84B31, #D9A91E)' }}
+                    style={{ background: 'linear-gradient(135deg, #1B3A6E, #D9A91E)' }}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -360,7 +360,7 @@ export default function CustomPlan() {
                         scale: [1, 1.3, 1],
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      style={{ background: 'linear-gradient(135deg, #C84B31, #D9A91E)' }}
+                      style={{ background: 'linear-gradient(135deg, #1B3A6E, #D9A91E)' }}
                     />
                     <Users className="w-6 h-6 text-white relative z-10" />
                   </motion.div>
@@ -406,7 +406,7 @@ export default function CustomPlan() {
                           left: 0,
                           top: 0,
                           width: `${(employees / 1000) * 100}%`,
-                          background: 'linear-gradient(90deg, #D9A91E, #C84B31)',
+                          background: 'linear-gradient(90deg, #D9A91E, #1B3A6E)',
                           boxShadow: '0 0 20px rgba(217, 169, 30, 0.5)',
                         }}
                         animate={{
@@ -433,7 +433,7 @@ export default function CustomPlan() {
                           [&::-webkit-slider-thumb]:shadow-lg
                           [&::-webkit-slider-thumb]:shadow-[#D9A91E]/50
                           [&::-webkit-slider-thumb]:border-4
-                          [&::-webkit-slider-thumb]:border-[#1A1A1A]
+                          [&::-webkit-slider-thumb]:border-[#0F2145]
                           hover:[&::-webkit-slider-thumb]:scale-110
                           [&::-webkit-slider-thumb]:transition-transform"
                         style={{
@@ -452,7 +452,7 @@ export default function CustomPlan() {
                         </label>
                         <motion.span 
                           key={offices}
-                          initial={{ scale: 1.2, color: '#C84B31' }}
+                          initial={{ scale: 1.2, color: '#1B3A6E' }}
                           animate={{ scale: 1, color: '#EFECE6' }}
                           className="text-4xl font-black"
                         >
@@ -464,7 +464,7 @@ export default function CustomPlan() {
                         initial={{ scale: 1.3 }}
                         animate={{ scale: 1 }}
                         className="text-2xl font-black"
-                        style={{ color: '#C84B31' }}
+                        style={{ color: '#1B3A6E' }}
                       >
                         +${offices * 2}
                       </motion.div>
@@ -476,7 +476,7 @@ export default function CustomPlan() {
                           left: 0,
                           top: 0,
                           width: `${(offices / 50) * 100}%`,
-                          background: 'linear-gradient(90deg, #C84B31, #D9A91E)',
+                          background: 'linear-gradient(90deg, #1B3A6E, #D9A91E)',
                           boxShadow: '0 0 20px rgba(200, 75, 49, 0.5)',
                         }}
                         animate={{
@@ -501,9 +501,9 @@ export default function CustomPlan() {
                           [&::-webkit-slider-thumb]:rounded-full 
                           [&::-webkit-slider-thumb]:cursor-pointer 
                           [&::-webkit-slider-thumb]:shadow-lg
-                          [&::-webkit-slider-thumb]:shadow-[#C84B31]/50
+                          [&::-webkit-slider-thumb]:shadow-[#1B3A6E]/50
                           [&::-webkit-slider-thumb]:border-4
-                          [&::-webkit-slider-thumb]:border-[#1A1A1A]
+                          [&::-webkit-slider-thumb]:border-[#0F2145]
                           hover:[&::-webkit-slider-thumb]:scale-110
                           [&::-webkit-slider-thumb]:transition-transform"
                         style={{
@@ -560,13 +560,13 @@ export default function CustomPlan() {
                     <motion.div
                       className="h-0.5 rounded-full"
                       style={{
-                        background: 'linear-gradient(90deg, #D9A91E, #C84B31, #D9A91E)',
+                        background: 'linear-gradient(90deg, #D9A91E, #1B3A6E, #D9A91E)',
                       }}
                       animate={{
                         background: [
-                          'linear-gradient(90deg, #D9A91E, #C84B31, #D9A91E)',
-                          'linear-gradient(90deg, #C84B31, #D9A91E, #C84B31)',
-                          'linear-gradient(90deg, #D9A91E, #C84B31, #D9A91E)',
+                          'linear-gradient(90deg, #D9A91E, #1B3A6E, #D9A91E)',
+                          'linear-gradient(90deg, #1B3A6E, #D9A91E, #1B3A6E)',
+                          'linear-gradient(90deg, #D9A91E, #1B3A6E, #D9A91E)',
                         ],
                       }}
                       transition={{ duration: 3, repeat: Infinity }}
@@ -582,7 +582,7 @@ export default function CustomPlan() {
                     >
                       <span className="text-xl font-bold">Total Monthly</span>
                       <motion.span 
-                        className="text-5xl font-black bg-gradient-to-r from-[#D9A91E] to-[#C84B31] bg-clip-text text-transparent"
+                        className="text-5xl font-black bg-gradient-to-r from-[#D9A91E] to-[#1B3A6E] bg-clip-text text-transparent"
                         animate={{
                           scale: [1, 1.05, 1],
                         }}
@@ -598,8 +598,8 @@ export default function CustomPlan() {
                       whileTap={{ scale: 0.98 }}
                       className="w-full py-6 rounded-2xl font-black text-xl relative overflow-hidden group mt-4"
                       style={{
-                        background: 'linear-gradient(135deg, #D9A91E, #C84B31)',
-                        color: '#1A1A1A',
+                        background: 'linear-gradient(135deg, #D9A91E, #1B3A6E)',
+                        color: '#0F2145',
                         boxShadow: '0 15px 35px rgba(217, 169, 30, 0.3)',
                       }}
                     >

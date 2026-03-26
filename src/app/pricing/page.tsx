@@ -1,10 +1,10 @@
-import PricingClient from "@/components/sections/pricing/pricing-client";
+import PricingPage from "@/components/sections/pricing/PricingPage";
 
 export const metadata = {
-  title: "EkamBond Matrimony Pricing | Cost Model & Revenue Sharing",
-  description: "Understand EkamBond's pricing structure, including partner onboarding, white labeling, support for bureaus and matchmakers, individual subscriptions, and how payments work with revenue sharing for successful matches.",
+  title: "EkamBond Matrimony Pricing | Partner Plans & Revenue Sharing",
+  description: "Five pricing plans for every type of matrimony partner — from solo matchmakers to enterprise franchise networks. Transparent revenue share model. You keep your member revenue.",
 };
 
 export default function Pricing() {
-  return <PricingClient />;
+  return <PricingPage />;
 }
