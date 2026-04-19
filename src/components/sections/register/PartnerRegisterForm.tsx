@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFormik } from "formik";
@@ -8,7 +8,7 @@ import Image from "next/image";
 import {
   Building2, User, Phone, MapPin, Globe, Linkedin, Facebook,
   MessageCircle, CheckCircle, ArrowRight, ArrowLeft, Loader2,
-  Mail, FileText, Link as LinkIcon,
+  Mail, FileText, Link as LinkIcon, Lock, Eye,
 } from "lucide-react";
 
 // ─── Reference Data ─────────────────────────────────────────────────────────
@@ -66,15 +66,23 @@ const GENDERS = [
 
 // ─── Form Steps ──────────────────────────────────────────────────────────────
 const steps = [
-  { id: 1, title: "Business Info", icon: Building2 },
-  { id: 2, title: "Address", icon: MapPin },
-  { id: 3, title: "Primary Contact", icon: User },
-  { id: 4, title: "Online Presence", icon: Globe },
+  { id: 1, title: "Login Info", icon: Lock },
+  { id: 2, title: "Business Info", icon: Building2 },
+  { id: 3, title: "Address", icon: MapPin },
+  { id: 4, title: "Primary Contact", icon: User },
+  { id: 5, title: "Online Presence", icon: Globe },
+  { id: 6, title: "Preview", icon: Eye },
 ];
 
 // ─── Validation Schemas ───────────────────────────────────────────────────────
 const validationSchemas = [
-  // Step 1 — Business Info
+  // Step 1 — Login Info
+  Yup.object({
+    username: Yup.string().required("Username is required"),
+    password: Yup.string().required("Password is required").min(8, "Password must be at least 8 characters"),
+    confirm_password: Yup.string().required("Confirm Password is required").oneOf([Yup.ref('password')], "Passwords must match"),
+  }),
+  // Step 2 — Business Info
   Yup.object({
     business_name: Yup.string().required("Business name is required"),
     alias: Yup.string().required("Short alias / brand slug is required").max(45),
@@ -83,7 +91,7 @@ const validationSchemas = [
     business_ITIN: Yup.string().required("Business ITIN / Tax ID is required"),
     business_description: Yup.string().required("Brief description is required").max(255),
   }),
-  // Step 2 — Address
+  // Step 3 — Address
   Yup.object({
     address_line1: Yup.string().required("Address is required"),
     city: Yup.string().required("City is required"),
@@ -94,7 +102,7 @@ const validationSchemas = [
     primary_phone: Yup.string().required("Primary phone is required").matches(/^\d{6,15}$/, "Enter a valid phone number"),
     secondary_phone: Yup.string().matches(/^\d{6,15}$/, "Enter a valid phone number").optional(),
   }),
-  // Step 3 — Primary Contact
+  // Step 4 — Primary Contact
   Yup.object({
     primary_contact_first_name: Yup.string().required("First name is required"),
     primary_contact_last_name: Yup.string().required("Last name is required"),
@@ -102,7 +110,7 @@ const validationSchemas = [
     primary_contact_gender: Yup.string().optional(),
     primary_contact_date_of_birth: Yup.date().optional(),
   }),
-  // Step 4 — Online Presence
+  // Step 5 — Online Presence
   Yup.object({
     business_website: Yup.string().url("Enter a valid URL (include https://)").required("Website is required"),
     domain_root_url: Yup.string().url("Enter a valid URL").optional(),
@@ -110,20 +118,24 @@ const validationSchemas = [
     business_facebook: Yup.string().url("Enter a valid Facebook URL").optional(),
     business_whatsapp: Yup.string().optional(),
   }),
+  // Step 6 — Preview
+  Yup.object({}),
 ];
 
 const initialValues = {
   // Step 1
+  username: "", password: "", confirm_password: "",
+  // Step 2
   business_name: "", alias: "", business_email: "",
   business_registration_number: "", business_ITIN: "", business_description: "",
-  // Step 2
+  // Step 3
   address_line1: "", city: "", country: 0, state: 0, zip: "",
   primary_phone_country_code: 0, primary_phone: "", secondary_phone: "",
-  // Step 3
+  // Step 4
   primary_contact_first_name: "", primary_contact_last_name: "",
   primary_contact_email: "", primary_contact_gender: "",
   primary_contact_date_of_birth: "",
-  // Step 4
+  // Step 5
   business_website: "", domain_root_url: "",
   business_linkedin: "", business_facebook: "", business_whatsapp: "",
 };
@@ -227,6 +239,16 @@ export default function PartnerRegisterForm() {
         return;
       }
       // Final submit
+      const invalidStepIndex = validationSchemas.findIndex(
+        (schema) => !schema.isValidSync(values)
+      );
+
+      if (invalidStepIndex !== -1) {
+        setApiError("Please complete all required fields in all steps.");
+        setStep(invalidStepIndex);
+        return;
+      }
+
       setSubmitting(true);
       setApiError("");
       try {
@@ -252,6 +274,26 @@ export default function PartnerRegisterForm() {
   });
 
   const goBack = () => setStep((s) => Math.max(0, s - 1));
+
+  const handleStepClick = (targetIndex: number) => {
+    if (targetIndex === step) return;
+
+    if (targetIndex < step) {
+      setStep(targetIndex);
+      return;
+    }
+
+    // Ensure all previous steps are fully valid before allowing a forward jump
+    for (let j = 0; j < Math.min(targetIndex, steps.length - 1); j++) {
+      const isValid = validationSchemas[j].isValidSync(formik.values);
+      if (!isValid) {
+        setStep(j);
+        formik.submitForm(); // Triggers validation errors for the invalid step
+        return;
+      }
+    }
+    setStep(targetIndex);
+  };
 
   const selectedCountry = COUNTRIES.find((c) => c.id === Number(formik.values.country));
   const statesForCountry = STATES_BY_COUNTRY[Number(formik.values.country)] || [];
@@ -307,33 +349,35 @@ export default function PartnerRegisterForm() {
       </div>
 
       {/* Progress bar */}
-      <div className="sticky top-0 z-20 px-4 py-4 border-b"
+      <div className="sticky top-0 z-20 px-4 pt-4 pb-4 sm:pb-8 border-b"
         style={{ background: "rgba(253,246,236,0.95)", backdropFilter: "blur(12px)", borderColor: "var(--brand-gold-border)" }}>
         <div className="max-w-2xl mx-auto">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-start justify-between">
             {steps.map((s, i) => {
               const StepIcon = s.icon;
               const isActive = i === step;
-              const isDone = i < step;
+              // Ensure Preview step doesn't show as randomly "Done" since it's just the review step.
+              const isDone = i === steps.length - 1 ? false : validationSchemas[i].isValidSync(formik.values);
               return (
-                <div key={s.id} className="flex items-center flex-1">
-                  <div className="flex flex-col items-center gap-1 flex-shrink-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center transition-all"
+                <div key={s.id} className={i === steps.length - 1 ? "flex items-start" : "flex items-start flex-1"}>
+                  <div className="relative flex flex-col items-center">
+                    <button type="button" onClick={() => handleStepClick(i)} className="w-9 h-9 flex-shrink-0 rounded-full flex items-center justify-center transition-all cursor-pointer outline-none z-10"
                       style={{
-                        background: isDone ? "var(--brand-crimson)" : isActive ? "var(--brand-gold)" : "rgba(200,150,60,0.15)",
-                        color: isDone || isActive ? "#fff" : "var(--color-text-muted-light)",
-                        border: isActive ? "none" : "1.5px solid rgba(200,150,60,0.25)",
+                        background: isDone ? "#52796F" : isActive ? "var(--brand-gold)" : "#ffffff",
+                        color: isDone || isActive ? "#fff" : "#9ca3af",
+                        border: isDone || isActive ? "none" : "2px dashed #d1d5db",
+                        boxShadow: isActive ? "0 0 0 4px rgba(200,150,60,0.2)" : "none"
                       }}>
                       {isDone ? <CheckCircle className="w-4 h-4" /> : <StepIcon className="w-4 h-4" />}
-                    </div>
-                    <span className="text-xs font-semibold hidden sm:block"
-                      style={{ color: isActive ? "var(--brand-crimson)" : isDone ? "var(--brand-navy)" : "var(--color-text-muted-light)" }}>
+                    </button>
+                    <span className="absolute top-11 whitespace-nowrap text-xs font-semibold hidden sm:block delay-75 transition-colors"
+                      style={{ color: isActive ? "var(--brand-crimson)" : isDone ? "var(--brand-navy)" : "#9ca3af" }}>
                       {s.title}
                     </span>
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="h-0.5 flex-1 mx-1 rounded-full"
-                      style={{ background: isDone ? "var(--brand-crimson)" : "rgba(200,150,60,0.2)" }} />
+                    <div className="h-0.5 flex-1 mx-2 sm:mx-3 rounded-full mt-[18px] transition-colors"
+                      style={{ background: isDone ? "#52796F" : "#e5e7eb" }} />
                   )}
                 </div>
               );
@@ -355,8 +399,23 @@ export default function PartnerRegisterForm() {
               className="rounded-3xl p-8 md:p-10"
               style={{ background: "rgba(255,255,255,0.92)", boxShadow: "var(--shadow-card)" }}
             >
-              {/* ── Step 1: Business Info ── */}
+              {/* ── Step 1: Login Info ── */}
               {step === 0 && (
+                <div className="space-y-5">
+                  <SectionTitle icon={Lock} title="Login Information" />
+                  <Field label="Username" name="username" required formik={formik}
+                    icon={User} placeholder="Choose a username" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Field label="Password" name="password" type="password" required formik={formik}
+                      icon={Lock} placeholder="Enter password" />
+                    <Field label="Confirm Password" name="confirm_password" type="password" required formik={formik}
+                      icon={Lock} placeholder="Confirm password" />
+                  </div>
+                </div>
+              )}
+
+              {/* ── Step 2: Business Info ── */}
+              {step === 1 && (
                 <div className="space-y-5">
                   <SectionTitle icon={Building2} title="Business Information" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -379,8 +438,8 @@ export default function PartnerRegisterForm() {
                 </div>
               )}
 
-              {/* ── Step 2: Address & Phone ── */}
-              {step === 1 && (
+              {/* ── Step 3: Address & Phone ── */}
+              {step === 2 && (
                 <div className="space-y-5">
                   <SectionTitle icon={MapPin} title="Business Address & Contact" />
                   <Field label="Address Line 1" name="address_line1" required formik={formik}
@@ -428,8 +487,8 @@ export default function PartnerRegisterForm() {
                 </div>
               )}
 
-              {/* ── Step 3: Primary Contact ── */}
-              {step === 2 && (
+              {/* ── Step 4: Primary Contact ── */}
+              {step === 3 && (
                 <div className="space-y-5">
                   <SectionTitle icon={User} title="Primary Contact Person" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -453,8 +512,8 @@ export default function PartnerRegisterForm() {
                 </div>
               )}
 
-              {/* ── Step 4: Online Presence ── */}
-              {step === 3 && (
+              {/* ── Step 5: Online Presence ── */}
+              {step === 4 && (
                 <div className="space-y-5">
                   <SectionTitle icon={Globe} title="Online Presence" />
                   <Field label="Business Website" name="business_website" type="url" required formik={formik}
@@ -469,6 +528,81 @@ export default function PartnerRegisterForm() {
                     icon={Facebook} placeholder="https://facebook.com/..." />
                   <Field label="WhatsApp Number (optional)" name="business_whatsapp" formik={formik}
                     icon={MessageCircle} placeholder="+91 98765 43210" />
+                </div>
+              )}
+
+              {/* ── Step 6: Preview ── */}
+              {step === 5 && (
+                <div className="space-y-5">
+                  <SectionTitle icon={Eye} title="Preview Information" />
+                  <div className="rounded-xl p-6 text-sm" style={{ background: "rgba(255,255,255,0.6)", border: "1.5px solid rgba(200,150,60,0.2)" }}>
+                    <div className="space-y-5" style={{ color: "var(--color-text-on-light)" }}>
+
+                      {/* Login Info */}
+                      <div>
+                        <h3 className="font-semibold mb-2" style={{ color: "var(--brand-navy)" }}>Login Information</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                          <div><span className="font-medium opacity-70">Username:</span> {formik.values.username || "-"}</div>
+                          <div><span className="font-medium opacity-70">Password:</span> {formik.values.password ? "********" : "-"}</div>
+                        </div>
+                      </div>
+                      <Divider />
+
+                      {/* Business Info */}
+                      <div>
+                        <h3 className="font-semibold mb-2" style={{ color: "var(--brand-navy)" }}>Business Information</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                          <div><span className="font-medium opacity-70">Name:</span> {formik.values.business_name || "-"}</div>
+                          <div><span className="font-medium opacity-70">Alias:</span> {formik.values.alias || "-"}</div>
+                          <div><span className="font-medium opacity-70">Email:</span> {formik.values.business_email || "-"}</div>
+                          <div><span className="font-medium opacity-70">Reg. Num:</span> {formik.values.business_registration_number || "-"}</div>
+                          <div><span className="font-medium opacity-70">Tax ID/ITIN:</span> {formik.values.business_ITIN || "-"}</div>
+                          <div className="col-span-1 md:col-span-2"><span className="font-medium opacity-70">Description:</span> {formik.values.business_description || "-"}</div>
+                        </div>
+                      </div>
+                      <Divider />
+
+                      {/* Address & Contact */}
+                      <div>
+                        <h3 className="font-semibold mb-2" style={{ color: "var(--brand-navy)" }}>Address & Contact</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                          <div className="col-span-1 md:col-span-2"><span className="font-medium opacity-70">Address:</span> {formik.values.address_line1 || "-"}</div>
+                          <div><span className="font-medium opacity-70">City:</span> {formik.values.city || "-"}</div>
+                          <div><span className="font-medium opacity-70">ZIP:</span> {formik.values.zip || "-"}</div>
+                          <div><span className="font-medium opacity-70">Country:</span> {COUNTRIES.find(c => c.id === Number(formik.values.country))?.name || "-"}</div>
+                          <div><span className="font-medium opacity-70">State:</span> {STATES_BY_COUNTRY[Number(formik.values.country)]?.find(s => s.id === Number(formik.values.state))?.name || (Number(formik.values.state) === -1 ? "Not listed" : "-")}</div>
+                          <div><span className="font-medium opacity-70">Primary Phone:</span> {COUNTRIES.find(c => c.id === Number(formik.values.primary_phone_country_code))?.code || ""} {formik.values.primary_phone || "-"}</div>
+                          <div><span className="font-medium opacity-70">Secondary Phone:</span> {formik.values.secondary_phone || "-"}</div>
+                        </div>
+                      </div>
+                      <Divider />
+
+                      {/* Primary Contact */}
+                      <div>
+                        <h3 className="font-semibold mb-2" style={{ color: "var(--brand-navy)" }}>Primary Contact Person</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                          <div><span className="font-medium opacity-70">Name:</span> {formik.values.primary_contact_first_name} {formik.values.primary_contact_last_name}</div>
+                          <div><span className="font-medium opacity-70">Email:</span> {formik.values.primary_contact_email || "-"}</div>
+                          <div><span className="font-medium opacity-70">Gender:</span> {GENDERS.find(g => g.value === String(formik.values.primary_contact_gender))?.label || "-"}</div>
+                          <div><span className="font-medium opacity-70">DOB:</span> {formik.values.primary_contact_date_of_birth || "-"}</div>
+                        </div>
+                      </div>
+                      <Divider />
+
+                      {/* Online Presence */}
+                      <div>
+                        <h3 className="font-semibold mb-2" style={{ color: "var(--brand-navy)" }}>Online Presence</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs break-all">
+                          <div><span className="font-medium opacity-70">Website:</span> {formik.values.business_website || "-"}</div>
+                          <div><span className="font-medium opacity-70">Domain URL:</span> {formik.values.domain_root_url || "-"}</div>
+                          <div><span className="font-medium opacity-70">LinkedIn:</span> {formik.values.business_linkedin || "-"}</div>
+                          <div><span className="font-medium opacity-70">Facebook:</span> {formik.values.business_facebook || "-"}</div>
+                          <div><span className="font-medium opacity-70">WhatsApp:</span> {formik.values.business_whatsapp || "-"}</div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -494,6 +628,8 @@ export default function PartnerRegisterForm() {
                 <button type="submit" disabled={submitting} className="eb-btn-primary">
                   {submitting ? (
                     <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</>
+                  ) : step === steps.length - 2 ? (
+                    <>Preview <ArrowRight className="w-4 h-4" /></>
                   ) : step < steps.length - 1 ? (
                     <>Next <ArrowRight className="w-4 h-4" /></>
                   ) : (
